@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Oracle11g的安装及汉化, Double-Sail">
+    <meta name="keywords" content="SQL语言基础, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Oracle11g的安装及汉化 | Double-Sail</title>
+    <title>SQL语言基础 | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Oracle11g的安装及汉化</h1>
+                    <h1 class="description center-align post-title">SQL语言基础</h1>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Oracle-11g/">
-                                <span class="chip bg-color">Oracle 11g</span>
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
                             </a>
                         
                     </div>
@@ -453,14 +453,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-25
+                    2020-04-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-27
+                    2020-04-11
                 </div>
                 
 
@@ -475,21 +475,272 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Oracle11g的安装及汉化"><a href="#Oracle11g的安装及汉化" class="headerlink" title="Oracle11g的安装及汉化"></a>Oracle11g的安装及汉化</h1><a id="more"></a>
+                <h1 id="SQL语言基础（部分）"><a href="#SQL语言基础（部分）" class="headerlink" title="SQL语言基础（部分）"></a>SQL语言基础（部分）</h1><h2 id="1-分组查询"><a href="#1-分组查询" class="headerlink" title="1.    分组查询"></a>1.    分组查询</h2><h3 id="1-1-在group-by中使用rollup"><a href="#1-1-在group-by中使用rollup" class="headerlink" title="1.1    在group by中使用rollup"></a>1.1    在group by中使用rollup</h3><p>首先输出emp表中的数据；</p>
+<TABLE BORDER="1">
+<TR><TH>EMPNO</TH><TH>ENAME</TH><TH>JOB</TH><TH>MGR</TH><TH>HIREDATE</TH><TH>SAL</TH><TH>COMM</TH><TH>DEPTNO</TH></TR>
+<TR><TD>7369</TD><TD>SMITH</TD><TD>CLERK</TD><TD>7902</TD><TD>1980/12/17</TD><TD>800.00</TD><TD>&nbsp;</TD><TD>20</TD></TR>
+<TR><TD>7499</TD><TD>ALLEN</TD><TD>SALESMAN</TD><TD>7698</TD><TD>1981/2/20</TD><TD>1600.00</TD><TD>300.00</TD><TD>30</TD></TR>
+<TR><TD>7521</TD><TD>WARD</TD><TD>SALESMAN</TD><TD>7698</TD><TD>1981/2/22</TD><TD>1250.00</TD><TD>500.00</TD><TD>30</TD></TR>
+<TR><TD>7566</TD><TD>JONES</TD><TD>MANAGER</TD><TD>7839</TD><TD>1981/4/2</TD><TD>2975.00</TD><TD>&nbsp;</TD><TD>20</TD></TR>
+<TR><TD>7654</TD><TD>MARTIN</TD><TD>SALESMAN</TD><TD>7698</TD><TD>1981/9/28</TD><TD>1250.00</TD><TD>1400.00</TD><TD>30</TD></TR>
+<TR><TD>7698</TD><TD>BLAKE</TD><TD>MANAGER</TD><TD>7839</TD><TD>1981/5/1</TD><TD>2850.00</TD><TD>&nbsp;</TD><TD>30</TD></TR>
+<TR><TD>7782</TD><TD>CLARK</TD><TD>MANAGER</TD><TD>7839</TD><TD>1981/6/9</TD><TD>2450.00</TD><TD>&nbsp;</TD><TD>10</TD></TR>
+<TR><TD>7788</TD><TD>SCOTT</TD><TD>ANALYST</TD><TD>7566</TD><TD>1987/4/19</TD><TD>3000.00</TD><TD>&nbsp;</TD><TD>20</TD></TR>
+<TR><TD>7839</TD><TD>KING</TD><TD>PRESIDENT</TD><TD>&nbsp;</TD><TD>1981/11/17</TD><TD>5000.00</TD><TD>&nbsp;</TD><TD>10</TD></TR>
+<TR><TD>7844</TD><TD>TURNER</TD><TD>SALESMAN</TD><TD>7698</TD><TD>1981/9/8</TD><TD>1500.00</TD><TD>0.00</TD><TD>30</TD></TR>
+<TR><TD>7876</TD><TD>ADAMS</TD><TD>CLERK</TD><TD>7788</TD><TD>1987/5/23</TD><TD>1100.00</TD><TD>&nbsp;</TD><TD>20</TD></TR>
+<TR><TD>7900</TD><TD>JAMES</TD><TD>CLERK</TD><TD>7698</TD><TD>1981/12/3</TD><TD>950.00</TD><TD>&nbsp;</TD><TD>30</TD></TR>
+<TR><TD>7902</TD><TD>FORD</TD><TD>ANALYST</TD><TD>7566</TD><TD>1981/12/3</TD><TD>3000.00</TD><TD>&nbsp;</TD><TD>20</TD></TR>
+<TR><TD>7934</TD><TD>MILLER</TD><TD>CLERK</TD><TD>7782</TD><TD>1982/1/23</TD><TD>1300.00</TD><TD>&nbsp;</TD><TD>10</TD></TR>
+</TABLE>
+**在group by中使用rollup**
 
-<p>​        很多的教程都是推荐的官网下载<strong>Oracle</strong>以及<strong>PLSQL development</strong>，但是官网下载速度实在是感人，两个g的文件，告诉我要下载十四个小时，头皮发麻。所以开始着手在各大博客网站，寻找百度网盘链接。</p>
-<p>​        虽然资源很容易找到，但是并没有一步到位的博客，要么用的是自带的SQLdevelopment，要么就是没有汉化（习惯了各大没有汉化的软件，不汉化倒也可以），要么就是精简版的，少几个文件。在点了几个博主的博客之后，也算是安装完成。</p>
-<p>​        虽然安装软件不是什么有难度的事情，但是在学习之前，因为安装软件，产生的一些烦心事，显然会影响学习热情。为了解决这种小问题，写下这些，希望能帮助解决问题，也算是记录生活。</p>
-<h2 id="Oracle11g安装"><a href="#Oracle11g安装" class="headerlink" title="Oracle11g安装"></a>Oracle11g安装</h2><p>先给上链接，链接包含标题所提的所有文件。</p>
-<p>链接：<a href="https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA" target="_blank" rel="noopener">https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA</a><br>提取码：n7tp</p>
-<p>​        Oracle的具体安装步骤，各大教学视频的第一步就是叫你怎么装软件。具体步骤一一截图，实在繁琐，也无必要，在此就不详细赘述。在此就给一个教学视频<a href="https://www.bilibili.com/video/BV17b411V75B?p=2" target="_blank" rel="noopener">链接</a>吧，讲的还可以，至少逻辑不乱，说话很清楚，视频也没有音频问题。</p>
-<h4 id="几条注意事项"><a href="#几条注意事项" class="headerlink" title="几条注意事项"></a>几条注意事项</h4><ol>
-<li>一定要将Oracle11g文件夹中的两个压缩文件，解压到同一个目录下，否则在安装到百分之四五十的时候，会报错。</li>
-<li>如果出现安装错误，需要重头再来的话，千万不要直接在win10系统里的卸载程序功能中去卸载Oracle，否则再再次安装时，需要输入sid密码的时候，会报sid已经被使用的错误。具体的卸载过程<a href="https://jingyan.baidu.com/album/95c9d20d7ca910ec4f756141.html?picindex=5" target="_blank" rel="noopener">点此</a>观看。</li>
-</ol>
-<h2 id="PLSQL-development的安装及汉化"><a href="#PLSQL-development的安装及汉化" class="headerlink" title="PLSQL development的安装及汉化"></a>PLSQL development的安装及汉化</h2><p>​        点击PLSQL development文件夹中的plsqldev1302x64压缩包，现在32位的电脑不多了，大多是64位的，当然文件夹中也提供了32位的版本。解压完之后，直接点击安装文件安装，然后无脑下一步就行了。</p>
-<p>​        安装完事之后，第一次打开软件会让你输入license，直接输入注册码.txt中的内容即可。</p>
-<p>​        汉化也是直接点击chinese.exe文件，然后出现安装路径，需要选择PLSQL的安装路径。安装完后，在重启软件即可。</p>
+<pre><code class="plsql">select deptno 部门编号,job 岗位,avg(sal) 平均工资 from emp group by rollup(deptno,job);</code></pre>
+<p><strong>输出为：</strong></p>
+<TABLE BORDER="1">
+<TR><TH>&#37096;&#38376;&#32534;&#21495;</TH><TH>&#23703;&#20301;</TH><TH>&#24179;&#22343;&#24037;&#36164;</TH></TR>
+<TR><TD>10</TD><TD>CLERK</TD><TD>1300</TD></TR>
+<TR><TD>10</TD><TD>MANAGER</TD><TD>2450</TD></TR>
+<TR><TD>10</TD><TD>PRESIDENT</TD><TD>5000</TD></TR>
+<TR><TD>10</TD><TD>&nbsp;</TD><TD>2916.66666666667</TD></TR>
+<TR><TD>20</TD><TD>CLERK</TD><TD>950</TD></TR>
+<TR><TD>20</TD><TD>ANALYST</TD><TD>3000</TD></TR>
+<TR><TD>20</TD><TD>MANAGER</TD><TD>2975</TD></TR>
+<TR><TD>20</TD><TD>&nbsp;</TD><TD>2175</TD></TR>
+<TR><TD>30</TD><TD>CLERK</TD><TD>950</TD></TR>
+<TR><TD>30</TD><TD>MANAGER</TD><TD>2850</TD></TR>
+<TR><TD>30</TD><TD>SALESMAN</TD><TD>1400</TD></TR>
+<TR><TD>30</TD><TD>&nbsp;</TD><TD>1566.66666666667</TD></TR>
+<TR><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>2073.21428571429</TD></TR>
+</TABLE>
+2916为10号部门的平均工资，2175为20部门的平均工资，1566为30部门的凭据工资；
+
+<p>2073为所有雇员的平均工资。</p>
+<h3 id="1-2-在group-by中使用cube"><a href="#1-2-在group-by中使用cube" class="headerlink" title="1.2    在group by中使用cube"></a>1.2    在group by中使用cube</h3><pre><code class="plsql">select deptno 部门编号,job 岗位,avg(sal) 平均工资 from emp group by cube(deptno,job);</code></pre>
+<TABLE BORDER="1">
+<TR><TH>&#37096;&#38376;&#32534;&#21495;</TH><TH>&#23703;&#20301;</TH><TH>&#24179;&#22343;&#24037;&#36164;</TH></TR>
+<TR><TD>&nbsp;</TD><TD>&nbsp;</TD><TD>2073.21428571429</TD></TR>
+<TR><TD>&nbsp;</TD><TD>CLERK</TD><TD>1037.5</TD></TR>
+<TR><TD>&nbsp;</TD><TD>ANALYST</TD><TD>3000</TD></TR>
+<TR><TD>&nbsp;</TD><TD>MANAGER</TD><TD>2758.33333333333</TD></TR>
+<TR><TD>&nbsp;</TD><TD>SALESMAN</TD><TD>1400</TD></TR>
+<TR><TD>&nbsp;</TD><TD>PRESIDENT</TD><TD>5000</TD></TR>
+<TR><TD>10</TD><TD>&nbsp;</TD><TD>2916.66666666667</TD></TR>
+<TR><TD>10</TD><TD>CLERK</TD><TD>1300</TD></TR>
+<TR><TD>10</TD><TD>MANAGER</TD><TD>2450</TD></TR>
+<TR><TD>10</TD><TD>PRESIDENT</TD><TD>5000</TD></TR>
+<TR><TD>20</TD><TD>&nbsp;</TD><TD>2175</TD></TR>
+<TR><TD>20</TD><TD>CLERK</TD><TD>950</TD></TR>
+<TR><TD>20</TD><TD>ANALYST</TD><TD>3000</TD></TR>
+<TR><TD>20</TD><TD>MANAGER</TD><TD>2975</TD></TR>
+<TR><TD>30</TD><TD>&nbsp;</TD><TD>1566.66666666667</TD></TR>
+<TR><TD>30</TD><TD>CLERK</TD><TD>950</TD></TR>
+<TR><TD>30</TD><TD>MANAGER</TD><TD>2850</TD></TR>
+<TR><TD>30</TD><TD>SALESMAN</TD><TD>1400</TD></TR>
+</TABLE>
+可以看到，不仅输出了每个部门的平均工资，还输出了每一个岗位的平均工资，以及全部员工的平均工资。
+
+
+
+<h2 id="2-多表关联查询"><a href="#2-多表关联查询" class="headerlink" title="2.    多表关联查询"></a>2.    多表关联查询</h2><h3 id="2-1-表的别名"><a href="#2-1-表的别名" class="headerlink" title="2.1    表的别名"></a>2.1    表的别名</h3><p>多表关联查询，多个表存在相同的列，必须使用表名来限定列的引用。但是查询变的复杂时，每次都需要限定就会显得十分冗长，所以需要设定表的别名。</p>
+<p><strong>举例：</strong></p>
+<pre><code class="plsql">SQL&gt; select e.job 岗位,e.empno 员工编号,e.ename 员工名称,d.dname 部门 from emp e,dept d where e.deptno=d.deptno and e.job=&#39;MANAGER&#39;;
+
+岗位       员工编号 员工名称   部门
+--------- ----- ---------- --------------
+MANAGER    7782 CLARK      ACCOUNTING
+MANAGER    7566 JONES      RESEARCH
+MANAGER    7698 BLAKE      SALES</code></pre>
+<p><strong>注意：</strong>SQL不区分大小写，但是表中的内容区分大小写</p>
+<pre><code class="plsql">-- manager用小写就无法显示。
+SQL&gt; select e.job 岗位,e.empno 员工编号,e.ename 员工名称,d.dname 部门 from emp e,dept d where e.deptno=d.deptno and e.job=&#39;manager&#39;;
+
+岗位       员工编号 员工名称   部门
+--------- ----- ---------- --------------</code></pre>
+<p><strong>心得：</strong>表的关联相关SQL语句书写时，不是从前向后的写，而是先写好from后面的内容，再定义where子句（运            用已经定义过的表的别名，而不是原先的表名），最后写select后面的内容。</p>
+<h3 id="2-2-内连接"><a href="#2-2-内连接" class="headerlink" title="2.2    内连接"></a>2.2    内连接</h3><p>简单的说就是用<code>inner join</code>（inner可以省略）指定用于连接的两个表，使用<code>on</code>指定连接表的连接条件。进一步限定查询范围，使用<code>where</code>语句即可。</p>
+<p><strong>举例：</strong></p>
+<pre><code class="plsql">--通过deptno内连接emp和dept两张表，并检索两个表中相关字段的信息
+SQL&gt; select e.empno 员工编号，e.ename 员工名称，d.dname 部门 from emp e join dept d on e.deptno=d.deptno;
+
+ 员工编号 员工名称   部门
+----- ---------- --------------
+ 7782 CLARK      ACCOUNTING
+ 7839 KING       ACCOUNTING
+ 7934 MILLER     ACCOUNTING
+ 7566 JONES      RESEARCH
+ 7902 FORD       RESEARCH
+ 7876 ADAMS      RESEARCH
+ 7369 SMITH      RESEARCH
+ 7788 SCOTT      RESEARCH
+ 7521 WARD       SALES
+ 7844 TURNER     SALES
+ 7499 ALLEN      SALES
+ 7900 JAMES      SALES
+ 7698 BLAKE      SALES
+ 7654 MARTIN     SALES
+
+14 rows selected</code></pre>
+<h3 id="2-3-外连接"><a href="#2-3-外连接" class="headerlink" title="2.3    外连接"></a>2.3    外连接</h3><p>内连接只会显示<code>on</code>之后限定条件的行。而外连接可以显示不能满足限定条件的行</p>
+<p>外连接主要分为左外连接，右外连接，完全外连接。</p>
+<p><strong>左、右外连接：</strong>即在查询结果中不仅包含了满足连接条件的数据行，还包含左表中不满足条件的行。右外连接的道                            理类似。</p>
+<p><strong>举例：</strong></p>
+<pre><code class="plsql">SQL&gt; insert into emp(empno,ename,job) values(9527,&#39;YANGFAN&#39;,&#39;probie&#39;);
+1 row inserted
+
+SQL&gt; select e.empno,e.ename,e.job,d.deptno,d.dname from emp e left join dept d on e.deptno=d.deptno;
+EMPNO ENAME      JOB       DEPTNO DNAME
+----- ---------- --------- ------ --------------
+ 7934 MILLER     CLERK         10 ACCOUNTING
+ 7839 KING       PRESIDENT     10 ACCOUNTING
+ 7782 CLARK      MANAGER       10 ACCOUNTING
+ 7902 FORD       ANALYST       20 RESEARCH
+ 7876 ADAMS      CLERK         20 RESEARCH
+ 7788 SCOTT      ANALYST       20 RESEARCH
+ 7566 JONES      MANAGER       20 RESEARCH
+ 7369 SMITH      CLERK         20 RESEARCH
+ 7900 JAMES      CLERK         30 SALES
+ 7844 TURNER     SALESMAN      30 SALES
+ 7698 BLAKE      MANAGER       30 SALES
+ 7654 MARTIN     SALESMAN      30 SALES
+ 7521 WARD       SALESMAN      30 SALES
+ 7499 ALLEN      SALESMAN      30 SALES
+ 9527 YANGFAN    probie           
+
+15 rows selected</code></pre>
+<p>​     可以看到虽然插入数据行的deptno列值为NULL，但该行记录仍然出现在查询结果中，这说明左外连接的查询结果会包含左表中不满足“连接条件”的数据行。（右链接的道理类似）</p>
+<p><strong>完全外连接：</strong>当执行完全外连接时，Oracle会执行一个完整的左右外连接查询，然后将查询结果合并。并消除重                       复的记录行。</p>
+<h3 id="2-4-自然连接"><a href="#2-4-自然连接" class="headerlink" title="2.4    自然连接"></a>2.4    自然连接</h3><p>和内连接功能类似，指在检索多个表时，Oracle会将第一个中的列与第二个表中具有相同名称的列自动连接。自然连接中不需要明确指定进行连接的列，使用<code>natural join</code>关键字。</p>
+<pre><code class="plsql">SQL&gt; select empno,ename,job,dname from emp natural join dept where sal&gt;2000;
+
+EMPNO ENAME      JOB       DNAME
+----- ---------- --------- --------------
+ 7782 CLARK      MANAGER   ACCOUNTING
+ 7839 KING       PRESIDENT ACCOUNTING
+ 7902 FORD       ANALYST   RESEARCH
+ 7788 SCOTT      ANALYST   RESEARCH
+ 7566 JONES      MANAGER   RESEARCH
+ 7698 BLAKE      MANAGER   SALES
+
+6 rows selected</code></pre>
+<h3 id="2-5-自链接"><a href="#2-5-自链接" class="headerlink" title="2.5    自链接"></a>2.5    自链接</h3><p>主要运用在自参照表上显示上下级关系或者层次关系。自参照表即是在同一张表的不同列之间有参照关系或者主从关系。（自己和自己连接）</p>
+<p><strong>举例：</strong>查询所有管理者的下属员工信息。</p>
+<pre><code class="plsql">SQL&gt; select em2.ename 上层管理者,em1.ename 下属员工 from emp em1 left join emp em2 on em1.mgr=em2.empno order by em1.mgr;
+
+上层管理者 下属员工
+---------- ----------
+JONES      SCOTT
+JONES      FORD
+BLAKE      MARTIN
+BLAKE      WARD
+BLAKE      TURNER
+BLAKE      JAMES
+BLAKE      ALLEN
+CLARK      MILLER
+SCOTT      ADAMS
+KING       CLARK
+KING       BLAKE
+KING       JONES
+FORD       SMITH
+
+14 rows selected
+</code></pre>
+<h3 id="2-6-交叉连接"><a href="#2-6-交叉连接" class="headerlink" title="2.6    交叉连接"></a>2.6    交叉连接</h3><p>简单地说就是不需要任何连接条件连接，使用<code>cross join</code>关键字来实现。</p>
+<pre><code class="plsql">--交叉连接dept和emp表，计算出查询结果的行数。
+SQL&gt; select count(*) from dept cross join emp;
+
+  COUNT(*)
+----------
+        56</code></pre>
+<h2 id="3-子查询"><a href="#3-子查询" class="headerlink" title="3.    子查询"></a>3.    子查询</h2><h3 id="3-1-什么是子查询"><a href="#3-1-什么是子查询" class="headerlink" title="3.1    什么是子查询"></a>3.1    什么是子查询</h3><p>如果某个操作需要依赖于另一个select语句查询的结果，就需要子查询。</p>
+<pre><code class="plsql">--从emp表中查询部门名称（dname）为RESEARCH的员工信息。
+--两个表deptno一样，通过deptno连接两个表，从而定位RESEARCH
+SQL&gt; select empno,ename,job from emp where deptno=(select deptno from dept where dname=&#39;RESEARCH&#39;);
+
+EMPNO ENAME      JOB
+----- ---------- ---------
+ 7369 SMITH      CLERK
+ 7566 JONES      MANAGER
+ 7788 SCOTT      ANALYST
+ 7876 ADAMS      CLERK
+ 7902 FORD       ANALYST</code></pre>
+<h3 id="3-2-单行子查询"><a href="#3-2-单行子查询" class="headerlink" title="3.2    单行子查询"></a>3.2    单行子查询</h3><p>返回一行数据的子查询语句。</p>
+<p><strong>举例：</strong></p>
+<pre><code class="plsql">--查询出既不是最高工资，也不是最低工资的员工信息。
+SQL&gt; select empno,ename,sal from emp where sal&gt;(select min(sal) from emp) and sal&lt;(select max(sal) from emp);
+
+EMPNO ENAME            SAL
+----- ---------- ---------
+ 7499 ALLEN        1600.00
+ 7521 WARD         1250.00
+ 7566 JONES        2975.00
+ 7654 MARTIN       1250.00
+ 7698 BLAKE        2850.00
+ 7782 CLARK        2450.00
+ 7788 SCOTT        3000.00
+ 7844 TURNER       1500.00
+ 7876 ADAMS        1100.00
+ 7900 JAMES         950.00
+ 7902 FORD         3000.00
+ 7934 MILLER       1300.00
+
+12 rows selected</code></pre>
+<h3 id="3-3-多行子查询"><a href="#3-3-多行子查询" class="headerlink" title="3.3    多行子查询"></a>3.3    多行子查询</h3><p>返回多行数据的子查询语句。当在使用where子句时，必须使用多行比较符（IN、ANY、ALL）</p>
+<p><strong>举例（in）：</strong>外查询尝试与子查询结果中的任何一个结果进行匹配。</p>
+<pre><code class="plsql">--查询不是SALES部门的员工信息。
+SQL&gt; select empno,ename,job from emp where deptno in(select deptno from dept where dname&lt;&gt;&#39;SALES&#39;）;
+
+EMPNO ENAME      JOB
+----- ---------- ---------
+ 7782 CLARK      MANAGER
+ 7839 KING       PRESIDENT
+ 7934 MILLER     CLERK
+ 7566 JONES      MANAGER
+ 7902 FORD       ANALYST
+ 7876 ADAMS      CLERK
+ 7369 SMITH      CLERK
+ 7788 SCOTT      ANALYST
+
+8 rows selected</code></pre>
+<p><strong>举例（any）：</strong>必须与单行操作符结合使用，并且返回行只要匹配子查询的任何一个结果即可。</p>
+<pre><code class="plsql">--查询工资大于10号部门的任意一名员工工资的其他部门员工信息。
+SQL&gt; select deptno,ename,sal from emp where sal&gt;any(select sal from emp where deptno=10) and deptno&lt;&gt;10;
+
+DEPTNO ENAME            SAL
+------ ---------- ---------
+    20 SCOTT        3000.00
+    20 FORD         3000.00
+    20 JONES        2975.00
+    30 BLAKE        2850.00
+    30 ALLEN        1600.00
+    30 TURNER       1500.00
+
+6 rows selected</code></pre>
+<p><strong>举例（all）：</strong>必须与单行运算符结合使用，并且返回行必须匹配所有子查询结果。</p>
+<pre><code class="plsql">--查询工资大于30号部门所有员工工资的员工信息。
+SQL&gt; select deptno,ename,sal from emp where sal&gt;all(select sal from emp where deptno=30);
+
+DEPTNO ENAME            SAL
+------ ---------- ---------
+    20 JONES        2975.00
+    20 SCOTT        3000.00
+    20 FORD         3000.00
+    10 KING         5000.00</code></pre>
+<h3 id="3-4-关联子查询"><a href="#3-4-关联子查询" class="headerlink" title="3.4    关联子查询"></a>3.4    关联子查询</h3><p>简单地说，就是前面两个查询的外查询和内查询是分开执行的，互不干扰。但是有些子查询的内查询的执行需要借助于外查询，外查询的执行也离不开内查询，这是就需要使用关联子查询。</p>
+<p><strong>举例：</strong></p>
+<pre><code class="plsql">--检索工资大于同职位平均工资的员工信息。
+SQL&gt;  select empno,ename,sal,job from emp f where sal&gt;(select avg(sal) from emp where job=f.job) order by job;
+
+EMPNO ENAME            SAL JOB
+----- ---------- --------- ---------
+ 7876 ADAMS        1100.00 CLERK
+ 7934 MILLER       1300.00 CLERK
+ 7566 JONES        2975.00 MANAGER
+ 7698 BLAKE        2850.00 MANAGER
+ 7499 ALLEN        1600.00 SALESMAN
+ 7844 TURNER       1500.00 SALESMAN
+
+6 rows selected</code></pre>
 
             </div>
             <hr/>
@@ -515,7 +766,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/">http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/</a>
+                    <a href="http://Double-Sail.github.io/2020/04/11/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">http://Double-Sail.github.io/2020/04/11/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +804,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Oracle-11g/">
-                                    <span class="chip bg-color">Oracle 11g</span>
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
                                 </a>
                             
                         </div>
@@ -725,7 +976,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-03-25T23-54-28',
+        id: '2020-04-11T20-12-39',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -751,36 +1002,32 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2020/04/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PLSQL学习日志（一）">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="贪心算法原理与实践">
                         
-                        <span class="card-title">PLSQL学习日志（一）</span>
+                        <span class="card-title">贪心算法原理与实践</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PLSQL编程
-
-1.1    PL/SQL简介1.1.1    PL/SQL块结构DECLARE（可选） 
---定义标识符，标识符：变量，常量，游标 
-BEGIN：开始执行主体（必须） --类似于java中的main方法
---SQL 语句
+                            贪心算法贪心算法的原理贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。
+贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/technology/" class="post-category">
-                                    technology
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构与算法
                                 </a>
                             
                             
@@ -790,8 +1037,8 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PLSQL/">
-                        <span class="chip bg-color">PLSQL</span>
+                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E3%80%81Java/">
+                        <span class="chip bg-color">贪心算法、Java</span>
                     </a>
                     
                 </div>
@@ -805,28 +1052,40 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/22/Markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%B9%A6%E5%86%99%E4%B8%8E%E8%BF%90%E7%94%A8%EF%BC%88Typora%EF%BC%89/">
+                <a href="/2020/04/11/%E6%AD%A3%E5%88%99%E5%BC%8F-Oracle/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Markdown的基本书写与运用（Typora）">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="正则式--Oracle">
                         
-                        <span class="card-title">Markdown的基本书写与运用（Typora）</span>
+                        <span class="card-title">正则式--Oracle</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Markdown的基本书写运用（Typora）
+                            Oracle正则表达式1.    常用字符1.1    匹配字符
 
-一、拥有有快捷键的书写操作与测试Ctrl 1到Ctrl 6:==普通文本，一级~六级标题==；（一个#代表一级标题，以此类推六个#代表六级）
 
-一级标题二级标题三级标题四级标题五级标题六级标
+字符类
+匹配的字符
+举 例
+
+
+
+\d
+从０-９的任一数字
+\d\d 匹配 72, 但不匹配 aa 或 7a
+
+
+\D
+任一非数字字符
+\D\D\D 匹配 abc, 但不
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-11
                             </span>
                         <span class="publish-author">
                             
@@ -843,8 +1102,8 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E5%BC%8F/">
+                        <span class="chip bg-color">正则式</span>
                     </a>
                     
                 </div>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Oracle11g的安装及汉化, Double-Sail">
+    <meta name="keywords" content="PLSQL学习日志（二）, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Oracle11g的安装及汉化 | Double-Sail</title>
+    <title>PLSQL学习日志（二） | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Oracle11g的安装及汉化</h1>
+                    <h1 class="description center-align post-title">PLSQL学习日志（二）</h1>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Oracle-11g/">
-                                <span class="chip bg-color">Oracle 11g</span>
+                            <a href="/tags/PLSQL/">
+                                <span class="chip bg-color">PLSQL</span>
                             </a>
                         
                     </div>
@@ -453,14 +453,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-25
+                    2020-04-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-27
+                    2020-04-06
                 </div>
                 
 
@@ -475,21 +475,161 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Oracle11g的安装及汉化"><a href="#Oracle11g的安装及汉化" class="headerlink" title="Oracle11g的安装及汉化"></a>Oracle11g的安装及汉化</h1><a id="more"></a>
+                <h1 id="过程、函数、包"><a href="#过程、函数、包" class="headerlink" title="过程、函数、包"></a>过程、函数、包</h1><a id="more"></a>
 
-<p>​        很多的教程都是推荐的官网下载<strong>Oracle</strong>以及<strong>PLSQL development</strong>，但是官网下载速度实在是感人，两个g的文件，告诉我要下载十四个小时，头皮发麻。所以开始着手在各大博客网站，寻找百度网盘链接。</p>
-<p>​        虽然资源很容易找到，但是并没有一步到位的博客，要么用的是自带的SQLdevelopment，要么就是没有汉化（习惯了各大没有汉化的软件，不汉化倒也可以），要么就是精简版的，少几个文件。在点了几个博主的博客之后，也算是安装完成。</p>
-<p>​        虽然安装软件不是什么有难度的事情，但是在学习之前，因为安装软件，产生的一些烦心事，显然会影响学习热情。为了解决这种小问题，写下这些，希望能帮助解决问题，也算是记录生活。</p>
-<h2 id="Oracle11g安装"><a href="#Oracle11g安装" class="headerlink" title="Oracle11g安装"></a>Oracle11g安装</h2><p>先给上链接，链接包含标题所提的所有文件。</p>
-<p>链接：<a href="https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA" target="_blank" rel="noopener">https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA</a><br>提取码：n7tp</p>
-<p>​        Oracle的具体安装步骤，各大教学视频的第一步就是叫你怎么装软件。具体步骤一一截图，实在繁琐，也无必要，在此就不详细赘述。在此就给一个教学视频<a href="https://www.bilibili.com/video/BV17b411V75B?p=2" target="_blank" rel="noopener">链接</a>吧，讲的还可以，至少逻辑不乱，说话很清楚，视频也没有音频问题。</p>
-<h4 id="几条注意事项"><a href="#几条注意事项" class="headerlink" title="几条注意事项"></a>几条注意事项</h4><ol>
-<li>一定要将Oracle11g文件夹中的两个压缩文件，解压到同一个目录下，否则在安装到百分之四五十的时候，会报错。</li>
-<li>如果出现安装错误，需要重头再来的话，千万不要直接在win10系统里的卸载程序功能中去卸载Oracle，否则再再次安装时，需要输入sid密码的时候，会报sid已经被使用的错误。具体的卸载过程<a href="https://jingyan.baidu.com/album/95c9d20d7ca910ec4f756141.html?picindex=5" target="_blank" rel="noopener">点此</a>观看。</li>
+<h2 id="1-1-存储过程"><a href="#1-1-存储过程" class="headerlink" title="1.1    存储过程"></a>1.1    存储过程</h2><h3 id="1-1-1-创建存储过程"><a href="#1-1-1-创建存储过程" class="headerlink" title="1.1.1    创建存储过程"></a>1.1.1    创建存储过程</h3><p>存储过程是事先经过编译并存储在数据库中的一段SQL语句的集合，调用存储过程可以简化应用开发人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是有好处的。</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li>允许模块化程序设计，就是说只需要创建一次过程，以后在程序中就可以调用该过程任意次。</li>
+<li>允许更快执行，如果某操作需要执行大量SQL语句或重复执行，存储过程比SQL语句执行的要快。</li>
+<li>减少网络流量，例如一个需要数百行的SQL代码的操作由一条执行语句完成，不需要在网络中发送数百行代码。</li>
+<li>更好的安全机制，对于没有权限执行存储过程的用户，也可授权他们执行存储过程。 </li>
+</ul>
+<h3 id="1-1-2-创建存储过程的语法"><a href="#1-1-2-创建存储过程的语法" class="headerlink" title="1.1.2    创建存储过程的语法"></a>1.1.2    <strong>创建存储过程的语法</strong></h3><pre><code class="plsql">create [or replace] procedure 存储过程名（param1 in type，param2 out type）
+as
+   变量1 类型（值范围）;
+   变量2 类型（值范围）;
+begin
+   语句;
+exception
+   when others then
+        rollback;
+end;</code></pre>
+<h3 id="1-1-3-存储过程的参数"><a href="#1-1-3-存储过程的参数" class="headerlink" title="1.1.3    存储过程的参数"></a>1.1.3    存储过程的参数</h3><p>oracle为了增强存储过程的灵活性，提供向存储过程传入参数的功能。参数是一种向程序单元输入和输出数据的机制。具体参数模式如下：</p>
+<ul>
+<li><strong>in</strong>是参数的默认模式，这种模式就是在程序运行的时候已经具有值，在程序体中值不会改变。参数值由调用方传入，并且只能被存储过程读取。</li>
+</ul>
+<p>eg. 创建一个过程，定义三个in模式变量，然后将这三个变量的值插入到dept表中，代码如下：</p>
+<pre><code class="plsql">create or replace procedure insert dept(
+    num_deptno in number,    --定义N模式的变量,它存储部门编号
+    var_ename in varchar2,    --定义N模式的变量,它存储部门名称
+    var_loc in varchar2)is
+begin
+    insert into dept        
+    values(num_deptno,var_ename,var_loc);    --向dept表中插入记录
+    commit;        --提交数据库
+end insert dept;</code></pre>
+<p>注意：存储过程的参数不可以指定长度。</p>
+<p>在调用这个存储过程时，需要传入参数来保证执行部分有值参与操作。具体有以下三种传递方法：</p>
+<ol>
+<li><p>指定名称传递</p>
+<p>语法如下：</p>
+<p><code>过程名称（参数名称1=&gt;参数值[,参数名称2=&gt;参数值2]）</code></p>
+<p>拿上一小节的过程举例</p>
+<pre><code class="plsql">begin
+ insert_dept(var_ename=&gt;&#39;采购部&#39;;var_loc=&gt;&#39;成都&#39;,num_deptno=&gt;15);
+end;</code></pre>
+</li>
 </ol>
-<h2 id="PLSQL-development的安装及汉化"><a href="#PLSQL-development的安装及汉化" class="headerlink" title="PLSQL development的安装及汉化"></a>PLSQL development的安装及汉化</h2><p>​        点击PLSQL development文件夹中的plsqldev1302x64压缩包，现在32位的电脑不多了，大多是64位的，当然文件夹中也提供了32位的版本。解压完之后，直接点击安装文件安装，然后无脑下一步就行了。</p>
-<p>​        安装完事之后，第一次打开软件会让你输入license，直接输入注册码.txt中的内容即可。</p>
-<p>​        汉化也是直接点击chinese.exe文件，然后出现安装路径，需要选择PLSQL的安装路径。安装完后，在重启软件即可。</p>
+<p><strong>可以看到，传递参数值和参数的定义顺序无关，但与参数的个数有关。</strong></p>
+<ol start="2">
+<li>按位置传递</li>
+</ol>
+<p>指定名称传递直观易读，但是在参数过多时，会显得代码冗长。所以可以直接按位置传递，这种方式和参数定义顺序有关，必须和过程中定义的参数顺序相同。</p>
+<pre><code class="plsql">begin
+ insert_dept(15,&#39;采购部&#39;;&#39;成都&#39;);
+end;</code></pre>
+<ol start="3">
+<li>混合方式传递</li>
+</ol>
+<p>即将二者有点结合在一起。</p>
+<pre><code class="plsql">exec insert_dept (15,var_loc=&gt;&#39;成都&#39;,var_ename=&gt;&#39;采购部&#39;);</code></pre>
+<ul>
+<li><p><strong>out</strong> 模式定义的参数只能在过程体内部赋值，表示该参数可以将某个值传递回调用他的过程。</p>
+</li>
+<li><p><strong>in out</strong> 表示高参数可以向该过程中传递值，也可以将某个值传出去。</p>
+</li>
+<li><p><strong>in参数的默认值</strong>  oracle在声明in参数的同时给其初始化一个默认值没。这样在运行过程时，如果没有参数，就会使用这个默认参数。</p>
+</li>
+</ul>
+<p><strong>注意：</strong>在使用in模式时，若是使用默认参数可能会出现传值的顺序不固定的情况，所以   </p>
+<p>​            最好使用指定名称传递，这样程序就不会出现混乱。</p>
+<h3 id="1-1-4-删除存储过程"><a href="#1-1-4-删除存储过程" class="headerlink" title="1.1.4    删除存储过程"></a>1.1.4    删除存储过程</h3><p>将过程从内存中删除，释放内存空间，用以下语句：</p>
+<pre><code class="plsql">drop procedure count_num;</code></pre>
+<p><strong>eg.</strong> 定一个存体过程:获取给定部门的工资私(通过out参数),要:部门号和工总定义方数</p>
+<pre><code class="plsql">--定一个存体过程:获取给定部门的工资私(通过out参数),要:部门号和工总定义方数
+create or replace procedure get_sal2 (dept_id number,sumsal out number)
+is
+       cursor salary_cursor is select salary from employees where department_id=dept_id;
+begin
+       sumsal :=0;
+       for c in salary_cursor loop
+           sumsal :=sumsal+c.salary;
+       end loop;
+       dbms_output.put_line(sumsal);
+end;</code></pre>
+<p>调用过程并传参</p>
+<pre><code class="plsql">declare
+  v_sal number(10):=0;
+begin
+  get_sal2(80,v_sal);
+end;</code></pre>
+<h2 id="1-2-函数"><a href="#1-2-函数" class="headerlink" title="1.2    函数"></a>1.2    函数</h2><h3 id="1-2-1-创建函数"><a href="#1-2-1-创建函数" class="headerlink" title="1.2.1    创建函数"></a>1.2.1    创建函数</h3><p>与存储过程的功能类似，但是不同的是函数有一个返回值，且不需要单独的语句调用。Oracle创建函数是通过PL/SQL自定义编写的，通过关键字function按照自己的需求把复杂的业务逻辑封装进PL/SQL函数中，函数提供一个返回值，返回给使用者。这样使用者就不需要去理解业务逻辑，把PL/SQL函数中的业务逻辑交给专门的开发人员进行编写。</p>
+<p>PL/SQL函数主要有下面几部分组成：</p>
+<ol>
+<li>输入部分：PL/SQL函数可以有输入参数，在调用函数时，必须给输入参数赋值。</li>
+<li>逻辑计算部分：逻辑计算部分是由PL/SQL块组成业务逻辑计算部分。这部分主要是通过输入参数、表数据、SQL计算函数等进行逻辑计算得到想要的结果。</li>
+<li>输出部分：通过逻辑计算部分，我们会得到一个函数的唯一返回值进行返回（函数必须要有返回值）。</li>
+</ol>
+<p><strong>语法结构如下：</strong></p>
+<pre><code class="plsql">create [or replace] function 函数名 ([p1,p2...pn])
+--中括号里面是入参，oracle创建函数可以不需要入参。
+return datatype
+is|as
+--声明部分 
+begin
+--PL/SQL程序块
+end</code></pre>
+<p><strong>eg.</strong> 创建一个函数，输出hello world，并且给函数一个字符串参数</p>
+<pre><code class="plsql">--返回一个hello world！
+create or replace function hello_world(v_logo varchar2)
+ return  varchar2
+ is
+begin
+  return &#39;hello world!&#39;||v_logo;
+end;</code></pre>
+<p><strong>调用函数</strong></p>
+<ul>
+<li>运用PLSQL语句编写</li>
+</ul>
+<pre><code class="plsql">begin
+  dbms_output.put_line(hello_world(&#39;杨帆&#39;)); 
+end;</code></pre>
+<ul>
+<li>直接使用sql语句</li>
+</ul>
+<pre><code class="plsql">select hello_world(&#39;杨帆&#39;) from  dual;</code></pre>
+<h3 id="1-2-2-删除函数"><a href="#1-2-2-删除函数" class="headerlink" title="1.2.2    删除函数"></a>1.2.2    删除函数</h3><p>Oracle函数的修改是通过<code>or replace</code>关键词对原有的函数进行编辑覆盖，因此可以通过<strong>pl/sql developer</strong>工具直接点击右键进行编辑修改，修改完点击执行，即可完成覆盖。</p>
+<p>Oracle函数的删除是通过drop命令进行删除的，语法结构如下：</p>
+<pre><code class="plsql">drop function 函数名;</code></pre>
+<h2 id="1-3-程序包"><a href="#1-3-程序包" class="headerlink" title="1.3    程序包"></a>1.3    程序包</h2><h3 id="1-3-1-程序包的规范"><a href="#1-3-1-程序包的规范" class="headerlink" title="1.3.1    程序包的规范"></a>1.3.1    程序包的规范</h3><p>该“规范”用于规定在程序包中可以使用哪些变量、类型、游标和子程序(指各种命名的 PLSQL块),需要注意的是程序包一定要在“包主体”之前被创建,其语法格式如下：</p>
+<pre><code class="plsql">CREATE OR REPLACE PACKAGE 程序包名称 IS
+    规范内声明的变量；
+    规范内声明的类型；
+    规范内定义的游标；
+    规范内声明的函数；--但定义参数和返回值类型，不包括函数体；
+    规范内声明的存储过程；--但仅定义参数，不包括存储过程主体；
+END； </code></pre>
+<h3 id="1-3-2-程序包的主体"><a href="#1-3-2-程序包的主体" class="headerlink" title="1.3.2    程序包的主体"></a>1.3.2    程序包的主体</h3><p>程序包的主体包含了在规范中声明的游标,过程和函数的实现代码。另外,也可以在程序包的主体中声明一些内部变量,<strong>程序包主体的名称必须与规范的名称相同</strong>,这样通过这个相同的名称 Oracle就可以将“规范”和“主体”结合在一起组成程序包,并实现一起进行编译代码,在实现函数或存储过程主体时,可以将每一个函数成存储过程作为一个独立的 PL/SQL块来处理。与创建“规范”不同的是,创建程序包主体使用create package body语句,而不是 create package语句。建程序包主体的代码如下：</p>
+<pre><code class="plsql">CREATE [OR REPLACE] PACKAGE BODY 包名称 IS
+ 程序包主体的内部变量；
+ 游标主体;
+ 从规范中引入的函数头的声明;
+ BEGIN
+   功能语句;--这是函数主要功能的实现部分。
+ EXCEPTION
+   异常处理语句；
+ END
+
+ 从规范中引入的存储过程头部声明；
+ BEGIN
+    功能语句;--这是存储过程的功能的实现部分
+ EXCEPTION
+    异常处理语句；
+ END
+……
+END;</code></pre>
+<p>​    </p>
 
             </div>
             <hr/>
@@ -515,7 +655,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/">http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/</a>
+                    <a href="http://Double-Sail.github.io/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/">http://Double-Sail.github.io/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +693,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Oracle-11g/">
-                                    <span class="chip bg-color">Oracle 11g</span>
+                                <a href="/tags/PLSQL/">
+                                    <span class="chip bg-color">PLSQL</span>
                                 </a>
                             
                         </div>
@@ -725,7 +865,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-03-25T23-54-28',
+        id: '2020-04-06T02-58-48',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -751,6 +891,56 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2020/04/06/%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99%E9%98%BF%E6%8B%89%E4%BC%AF%E6%95%B0%E5%AD%97%E2%80%94%E2%80%94Oracle/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="中文数字转换为小写阿拉伯数字——Oracle">
+                        
+                        <span class="card-title">中文数字转换为小写阿拉伯数字——Oracle</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Oracle实现中文数字转换成阿拉伯数字1.    通过if…elsif语句实现下面是用最简单的if…else语句实现“一至二十”的中文数字转换成阿拉伯数字，即使用条件判断语句去实现一一对应的关系。
+create or replace fu
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Oracle%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                        <span class="chip bg-color">Oracle数字类型转换</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">
                     <div class="card-image">
                         
@@ -772,9 +962,9 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,59 +982,6 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                     
                     <a href="/tags/PLSQL/">
                         <span class="chip bg-color">PLSQL</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/22/Markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%B9%A6%E5%86%99%E4%B8%8E%E8%BF%90%E7%94%A8%EF%BC%88Typora%EF%BC%89/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Markdown的基本书写与运用（Typora）">
-                        
-                        <span class="card-title">Markdown的基本书写与运用（Typora）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Markdown的基本书写运用（Typora）
-
-一、拥有有快捷键的书写操作与测试Ctrl 1到Ctrl 6:==普通文本，一级~六级标题==；（一个#代表一级标题，以此类推六个#代表六级）
-
-一级标题二级标题三级标题四级标题五级标题六级标
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/technology/" class="post-category">
-                                    technology
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>

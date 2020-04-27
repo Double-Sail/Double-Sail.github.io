@@ -1,0 +1,1608 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="PLSQL学习日志（一）, Double-Sail">
+    <meta name="description" content="记录点滴！">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>PLSQL学习日志（一） | Double-Sail</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Double-Sail</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Double-Sail</div>
+        <div class="logo-desc">
+            
+            记录点滴！
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Double-Sail" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Double-Sail" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">PLSQL学习日志（一）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/PLSQL/">
+                                <span class="chip bg-color">PLSQL</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/technology/" class="post-category">
+                                technology
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-05
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-04-05
+                </div>
+                
+
+                
+
+                
+
+                
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="PLSQL编程"><a href="#PLSQL编程" class="headerlink" title="PLSQL编程"></a>PLSQL编程</h1><a id="more"></a>
+
+<h2 id="1-1-PL-SQL简介"><a href="#1-1-PL-SQL简介" class="headerlink" title="1.1    PL/SQL简介"></a>1.1    PL/SQL简介</h2><h3 id="1-1-1-PL-SQL块结构"><a href="#1-1-1-PL-SQL块结构" class="headerlink" title="1.1.1    PL/SQL块结构"></a>1.1.1    PL/SQL块结构</h3><pre><code class="plsql">DECLARE（可选） 
+--定义标识符，标识符：变量，常量，游标 
+BEGIN：开始执行主体（必须） --类似于java中的main方法
+--SQL 语句 PL/SQL 语句  
+EXCEPTION（可选） 
+--异常处理 
+END：
+--结束执行主体（必须） 
+</code></pre>
+<p>eg.定义一个代码块，计算两个整数的和与这两个整数的差的商</p>
+<pre><code class="plsql">SQL&gt; set serveroutput on;
+SQL&gt; declare
+  2    a int:=100;
+  3    b int:=200;
+  4    c number;
+  5  begin
+  6    c:=(a+b)/(a-b);
+  7    dbms_output.put_line(c); 
+  8  exception
+  9    when zero_divide then
+ 10    dbms_output.put_line(&#39;除数不允许是0！&#39;); 
+ 11  end;
+ 12  /
+
+-3
+
+PL/SQL procedure successfully completed</code></pre>
+<h3 id="1-1-2-代码注释和标识符"><a href="#1-1-2-代码注释和标识符" class="headerlink" title="1.1.2     代码注释和标识符"></a>1.1.2     代码注释和标识符</h3><p><strong>单行注释：</strong>– 开始后面加上注释内容</p>
+<pre><code class="plsql">begin
+    dbms_output.put_line(&#39;hello world!&#39;);   --这是一条输出hello world!的语句。
+end;</code></pre>
+<p><strong>多行注释：</strong> 类似于java<code>/*注释内容*/</code> </p>
+<pre><code class="plsql">SQL&gt; set serveroutput on;
+/*计算两个整数的和
+与这两个整数的差的商*/ 
+SQL&gt; declare
+  2    a int:=100;
+  3    b int:=200;
+  4    c number;
+  5  begin
+  6    c:=(a+b)/(a-b);
+  7    dbms_output.put_line(c); 
+  8  exception
+  9    when zero_divide then
+ 10    dbms_output.put_line(&#39;除数不允许是0！&#39;); 
+ 11  end;</code></pre>
+<p><strong>标识符：</strong></p>
+<p>科学计数法和幂操作符<code>**</code>。例如<code>6*10**3</code>即表示输入6*10^3。</p>
+<p><strong>注意：</strong>如果使用分隔符<code>[],&lt;&gt;,{}</code>等为字符串赋值，那么不仅需要在分隔符前后加单引号，而且要带前缀q。</p>
+<pre><code class="plsql">string_var:=q&#39;[I&#39;m a string!]&#39;;</code></pre>
+<h2 id="1-2-基本数据类型"><a href="#1-2-基本数据类型" class="headerlink" title="1.2     基本数据类型"></a>1.2     基本数据类型</h2><p> ORACLE基本数据类型（亦叫内置数据类型 built-in datatypes)可以按类型分为：字符串类型、数字类型、日期类型、LOB类型、LONG RAW&amp; RAW类型、ROWID &amp; UROWID类型。</p>
+<h3 id="1-2-1-字符串类型"><a href="#1-2-1-字符串类型" class="headerlink" title="1.2.1    字符串类型"></a><strong>1.2.1    字符串类型</strong></h3><p>  字符串数据类型还可以依据存储空间分为固定长度类型（CHAR/NCHAR) 和可变长度类型（VARCHAR2/NVARCHAR2)两种.</p>
+<p><strong>固定长度：</strong>是指虽然输入的字段值小于该字段的限制长度，但是实际存储数据时，会先<strong>自动向右补足空格</strong>后，才将字段值的内容存储到数据块中。这种方式虽然比较<strong>浪费空间</strong>，但是<strong>存储效率较可变长度类型要好</strong>。<strong>同时还能减少数据行迁移情况发生。</strong></p>
+<p><strong>可变长度：</strong>是指当输入的字段值小于该字段的限制长度时，直接将字段值的内容存储到数据块中，而<strong>不会补上空白</strong>，这样<strong>可以节省数据块空间</strong>。</p>
+<h4 id="1-2-1-1-CHAR类型"><a href="#1-2-1-1-CHAR类型" class="headerlink" title="1.2.1.1    CHAR类型"></a>1.2.1.1    CHAR类型</h4><p>CHAR类型，定长字符串，会用空格填充来达到其最大长度。非NULL的CHAR（12）总是包含12字节信息。CHAR字段最多<strong>可以存储2,000字节</strong>的信息。如果创建表时，<strong>不指定CHAR长度，则默认为1</strong>。另外你可以指定它存储字节或字符，例如 CHAR(12 BYTYE) CHAR(12 CHAR).一般来说默认是存储字节，你可以查看数据库参数</p>
+<p><strong>注意：</strong>数据库的NLS_CHARACTERSET 为AL32UTF8，即一个汉字占用三到四个字节。如果NLS_CHARACTERSET为ZHS16GBK，则一个字符占用两个字节。</p>
+<p>如果串的长度小于或等于250（0x01~0xFA）， Oracle 会使用1 个字节来表示长度。对于所有长度超过250 的串，都会在一个标志字节0xFE 后跟有两个字节来表示长度。因此，如果有一个包含“Hello World”的VARCHAR2(80)，则在块中可能如图12.-1 所示</p>
+<p><a href="https://images0.cnblogs.com/blog/73542/201308/17210329-244cdf8ea8d94ca38c17b7a290a06f48.jpg" target="_blank" rel="noopener"><img src="https://images0.cnblogs.com/blog/73542/201308/17210330-6b3f3139189a42a29acc15005ae1c75f.jpg" alt="clip_image002"></a></p>
+<h4 id="1-2-1-2-NCHAR类型"><a href="#1-2-1-2-NCHAR类型" class="headerlink" title="1.2.1.2    NCHAR类型"></a><strong>1.2.1.2    NCHAR类型</strong></h4><p>这是一个包含UNICODE格式数据的定长字符串。<strong>NCHAR字段最多可以存储2,000字节的信息</strong>。它的最大长度取决于国家字符集。另外查询时，如果字段是NCHAR类型，则需要如下书写</p>
+<p>SELECT translated_description FROM product_descriptions</p>
+<p>WHERE translated_name = N’LCD Monitor 11/PM’;</p>
+<h4 id="1-2-1-3-VARCHAR类型"><a href="#1-2-1-3-VARCHAR类型" class="headerlink" title="1.2.1.3     VARCHAR类型"></a><strong>1.2.1.3     VARCHAR类型</strong></h4><p>不要使用VARCHAR数据类型。使用<strong>VARCHAR2</strong>数据类型。虽然VARCHAR数据类型目前是VARCHAR2的同义词，VARCHAR数据类型将计划被重新定义为一个单独的数据类型用于可变长度的字符串相比，具有不同的比较语义。</p>
+<h4 id="1-2-1-4-VARCHAR2类型"><a href="#1-2-1-4-VARCHAR2类型" class="headerlink" title="1.2.1.4    VARCHAR2类型"></a><strong>1.2.1.4    VARCHAR2类型</strong></h4><p>变长字符串，与CHAR类型不同，它不会使用空格填充至最大长度。VARCHAR2最多可以存储4,000字节的信息。</p>
+<h4 id="1-2-1-5-NVARCHAR2类型"><a href="#1-2-1-5-NVARCHAR2类型" class="headerlink" title="1.2.1.5    NVARCHAR2类型"></a><strong>1.2.1.5    NVARCHAR2类型</strong></h4><p>这是一个包含UNICODE格式数据的变长字符串。 NVARCHAR2最多可以存储4,000字节的信息。</p>
+<h3 id="1-2-2-数字类型"><a href="#1-2-2-数字类型" class="headerlink" title="1.2.2    数字类型"></a>1.2.2    数字类型</h3><h4 id="1-2-2-1-NUMBER类型"><a href="#1-2-2-1-NUMBER类型" class="headerlink" title="1.2.2.1    NUMBER类型"></a><strong>1.2.2.1    NUMBER类型</strong></h4><p>NUMBER(P,S)是最常见的数字类型，可以存放数据范围为10^130<del>10^126（不包含此值)，需要1</del>22字节(BYTE)不等的存储空间。</p>
+<p><strong>P</strong> 表示有效数字的位数，最多不能超过38个有效数字</p>
+<p><strong>S</strong>是Scale的英文缩写，可以使用的范围为-84~127。Scale为正数时，表示从小数点到最低有效数字的位数，它为负数时，表示从最大有效数字到小数点的位数</p>
+<p>下面是官方文档的示例</p>
+<table>
+<thead>
+<tr>
+<th><strong><em>\</em>Actual Data**</strong></th>
+<th><strong><em>\</em>Specified As**</strong></th>
+<th><strong><em>\</em>Stored As**</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>123.89</td>
+<td>NUMBER</td>
+<td>123.89</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(3)</td>
+<td>124</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(6,2)</td>
+<td>123.89</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(6,1)</td>
+<td>123.9</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(3)</td>
+<td>124</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(4,2)</td>
+<td>exceeds precision</td>
+</tr>
+<tr>
+<td>123.89</td>
+<td>NUMBER(6,-2)</td>
+<td>100</td>
+</tr>
+<tr>
+<td>.01234</td>
+<td>NUMBER(4,5)</td>
+<td>.01234</td>
+</tr>
+<tr>
+<td>.00012</td>
+<td>NUMBER(4,5)</td>
+<td>.00012</td>
+</tr>
+<tr>
+<td>.000127</td>
+<td>NUMBER(4,5)</td>
+<td>.00013</td>
+</tr>
+<tr>
+<td>.0000012</td>
+<td>NUMBER(2,7)</td>
+<td>.0000012</td>
+</tr>
+<tr>
+<td>.00000123</td>
+<td>NUMBER(2,7)</td>
+<td>.0000012</td>
+</tr>
+<tr>
+<td>1.2e-4</td>
+<td>NUMBER(2,5)</td>
+<td>0.00012</td>
+</tr>
+<tr>
+<td>1.2e-5</td>
+<td>NUMBER(2,5)</td>
+<td>0.00001</td>
+</tr>
+</tbody></table>
+<h4 id="1-2-2-2-INTEGER类型"><a href="#1-2-2-2-INTEGER类型" class="headerlink" title="1.2.2.2 INTEGER类型"></a><strong>1.2.2.2 INTEGER类型</strong></h4><p>INTEGER是NUMBER的子类型，<strong>它等同于NUMBER（38,0）</strong>，用来存储整数。若<strong>插入、更新的数值有小数，则会被四舍五入。</strong></p>
+<h4 id="1-2-2-3-浮点数"><a href="#1-2-2-3-浮点数" class="headerlink" title="1.2.2.3 浮点数"></a><strong>1.2.2.3 浮点数</strong></h4><p>浮点数可以有一个十进制数点任何地方从第一个到最后一个数字，或者可以在所有有没有小数点。指数可能（可选） 用于以下数量增加的范围 （例如， 1.777e-20)。刻度值不适用于浮点数字，因为可以显示在小数点后的位数的数量不受限制。</p>
+<p>Oracle 数据库提供了专为浮点数的两种数值数据类型：</p>
+<p><strong>BINARY_FLOAT</strong></p>
+<p><strong>BINARY_FLOAT 是 32 位</strong>、 单精度浮点数字数据类型。可以支持至少6位精度,每个 BINARY_FLOAT 的值需要 5 个字节，包括长度字节。</p>
+<p><strong>BINARY_DOUBLE</strong></p>
+<p><strong>BINARY_DOUBLE 是为 64 位</strong>，双精度浮点数字数据类型。每个 BINARY_DOUBLE 的值需要 9 个字节，包括长度字节。</p>
+<h4 id="1-2-2-4-FLOAT类型"><a href="#1-2-2-4-FLOAT类型" class="headerlink" title="1.2.2.4 FLOAT类型"></a><strong>1.2.2.4 FLOAT类型</strong></h4><p>FLOAT类型也<strong>是NUMBER的子类型</strong>。</p>
+<p>Float(n),数 n 指示位的精度，可以存储的值的数目。N 值的范围可以<strong>从 1 到 126</strong>。若要从二进制转换为十进制的精度，请将 n 乘以 0.30103。要从十进制转换为二进制的精度，请用 3.32193 乘小数精度。126 位二进制精度的最大值是大约相当于 38 位小数精度。</p>
+<h3 id="1-2-3-日期类型"><a href="#1-2-3-日期类型" class="headerlink" title="1.2.3    日期类型"></a><strong>1.2.3</strong>    <strong>日期类型</strong></h3><p>日期类型用于存储日期数据，但是并不是使用一般的格式（2012-08-08）直接存储到数据库的。</p>
+<h4 id="1-2-3-1-DATE类型"><a href="#1-2-3-1-DATE类型" class="headerlink" title="1.2.3.1    DATE类型"></a><strong>1.2.3.1    DATE类型</strong></h4><p>DATE是最常用的数据类型，日期数据类型存储日期和时间信息。虽然可以用字符或数字类型表示日期和时间信息，但是日期数据类型具有特殊关联的属性。为每个日期值，Oracle 存储以下信息： 世纪、 年、 月、 日期、 小时、 分钟和秒。<strong>一般占用7个字节的存储空间。</strong></p>
+<h4 id="1-2-3-2-TIMESTAMP类型"><a href="#1-2-3-2-TIMESTAMP类型" class="headerlink" title="1.2.3.2    TIMESTAMP类型"></a><strong>1.2.3.2    TIMESTAMP类型</strong></h4><p>这是一个7字节或12字节的定宽日期/时间数据类型。它与DATE数据类型不同，因为TIMESTAMP可以包含小数秒，带小数秒的TIMESTAMP在小数点右边最多可以保留9位</p>
+<p><strong>还有以下几个不常用的日期类型</strong></p>
+<ul>
+<li>TIMESTAMP WITH TIME ZONE类型</li>
+<li>TIMESTAMP WITH LOCAL TIME ZONE类型</li>
+<li>INTERVAL YEAR TO MOTH</li>
+<li>INTERVAL DAY TO SECOND</li>
+<li></li>
+</ul>
+<h3 id="1-2-4-LOB类型"><a href="#1-2-4-LOB类型" class="headerlink" title="1.2.4     LOB类型"></a>1.2.4     <strong>LOB类型</strong></h3><p>内置的LOB数据类型包括BLOB、<strong>CLOB</strong>、NCLOB、BFILE（外部存储）的大型化和非结构化数据，如文本、图像、视屏、空间数据存储。</p>
+<h4 id="1-2-4-1-CLOB-数据类型"><a href="#1-2-4-1-CLOB-数据类型" class="headerlink" title="1.2.4.1 CLOB 数据类型"></a><strong>1.2.4.1 CLOB 数据类型</strong></h4><p>  它存储单字节和多字节字符数据。支持固定宽度和可变宽度的字符集。CLOB对象可以存储最多 (4 gigabytes-1) * (database block size) 大小的字符</p>
+<h4 id="1-2-5-2-NCLOB-数据类型"><a href="#1-2-5-2-NCLOB-数据类型" class="headerlink" title="1.2.5.2 NCLOB 数据类型"></a><strong>1.2.5.2 NCLOB 数据类型</strong></h4><p>  它存储UNICODE类型的数据，支持固定宽度和可变宽度的字符集，NCLOB对象可以存储最多(4 gigabytes-1) * (database block size)大小的文本数据。</p>
+<h4 id="1-2-4-3-BLOB-数据类型"><a href="#1-2-4-3-BLOB-数据类型" class="headerlink" title="1.2.4.3 BLOB 数据类型"></a><strong>1.2.4.3 BLOB 数据类型</strong></h4><p>  它存储非结构化的二进制数据大对象，它可以被认为是没有字符集语义的比特流，一般是图像、声音、视频等文件。BLOB对象最多存储(4 gigabytes-1) * (database block size)的二进制数据。</p>
+<h4 id="1-2-4-4-BFILE-数据类型"><a href="#1-2-4-4-BFILE-数据类型" class="headerlink" title="1.2.4.4 BFILE 数据类型"></a><strong>1.2.4.4 BFILE 数据类型</strong></h4><p>  二进制文件，存储在数据库外的系统文件，只读的，数据库会将该文件当二进制文件处理</p>
+<h3 id="1-2-5-RAW-amp-LONG-RAW类型"><a href="#1-2-5-RAW-amp-LONG-RAW类型" class="headerlink" title="1.2.5    RAW &amp; LONG RAW类型"></a>1.2.5    <strong>RAW &amp; LONG RAW类型</strong></h3><h4 id="1-2-5-1-LONG类型"><a href="#1-2-5-1-LONG类型" class="headerlink" title="1.2.5.1 LONG类型"></a><strong>1.2.5.1 LONG类型</strong></h4><p>它<strong>存储变长字符串</strong>，<strong>最多达2G的字符数据</strong>（<strong>2GB是指2千兆字节</strong>， 而不是2千兆字符），与VARCHAR2 或CHAR 类型一样，存储在LONG 类型中的文本要进行字符集转换。<strong>ORACLE建议开发中使用CLOB替代LONG类型</strong>。支持LONG 列只是为了保证向后兼容性。CLOB类型比LONG类型的限制要少得多。 LONG类型的限制如下：</p>
+<ol>
+<li><p>一个表中只有一列可以为LONG型</p>
+</li>
+<li><p>LONG列不能定义为主键或唯一约束</p>
+</li>
+<li><p>不能建立索引</p>
+</li>
+<li><p>LONG数据不能指定正则表达式</p>
+</li>
+<li><p>函数或存储过程不能接受LONG数据类型的参数</p>
+</li>
+<li><p>LONG列不能出现在WHERE子句或完整性约束（除了可能会出现NULL和NOT NULL约束）</p>
+</li>
+</ol>
+<h4 id="1-2-5-2-LONG-RAW-类型"><a href="#1-2-5-2-LONG-RAW-类型" class="headerlink" title="1.2.5.2 LONG RAW 类型"></a><strong>1.2.5.2 LONG RAW 类型</strong></h4><p>能存储2GB 的原始二进制数据（不用进行字符集转换的数据）</p>
+<h4 id="1-2-5-3-RAW类型"><a href="#1-2-5-3-RAW类型" class="headerlink" title="1.2.5.3 RAW类型"></a><strong>1.2.5.3 RAW类型</strong></h4><p>用于<strong>存储二进制或字符类型数据</strong>，变长二进制数据类型，这说明采用这种数据类型存储的数据不会发生字符集转换。<strong>这种类型最多可以存储2,000字节的信息</strong></p>
+<h3 id="1-2-6-特殊数据类型"><a href="#1-2-6-特殊数据类型" class="headerlink" title="1.2.6    特殊数据类型"></a>1.2.6    特殊数据类型</h3><h4 id="1-2-6-1-type类型"><a href="#1-2-6-1-type类型" class="headerlink" title="1.2.6.1    %type类型"></a>1.2.6.1    %type类型</h4><p>​    使用%TYPE类型声明一个指定列名相同的数据类型，他通常紧跟着指定列名的后面。<br>声明一个EMP表JOB列相同数据类型变量    </p>
+<pre><code class="plsql">SQL&gt; set serveroutput on; 
+SQL&gt; declare
+  2    VAR_ENAME EMP.ENAME%TYPE;
+  3    VAR_JOB EMP.JOB%TYPE;
+  4  BEGIN
+  5    SELECT ENAME,JOB
+  6    INTO VAR_ENAME,VAR_JOB
+  7    FROM EMP WHERE EMPNO=7369;
+  8    DBMS_OUTPUT.PUT_LINE( VAR_ENAME||&#39;的职务是&#39;||VAR_JOB);
+  9  END;
+ 10/
+
+ SMITH的职务是CLERK
+
+ PL/SQL procedure successfully completed</code></pre>
+<h4 id="1-2-6-2-RECORD类型"><a href="#1-2-6-2-RECORD类型" class="headerlink" title="1.2.6.2    RECORD类型"></a>1.2.6.2    RECORD类型</h4><p>记录之意。RECORD类型存储多个行列组成的数据。</p>
+<h3 id="1-2-7-定义变量"><a href="#1-2-7-定义变量" class="headerlink" title="1.2.7    定义变量"></a>1.2.7    定义变量</h3><h4 id="1-2-7-1-定义变量"><a href="#1-2-7-1-定义变量" class="headerlink" title="1.2.7.1    定义变量"></a>1.2.7.1    定义变量</h4><p>运行过程中可以改变数据存储结构。<code>&lt;变量名&gt;&lt;数据类型&gt;[&lt;长度&gt;:=&lt;初始值&gt;]；</code></p>
+<p><strong>eg.</strong> 定义一个用于存储国家名称的可变字符串常量var_countryname，该变量的最大长度是50，并且该变量的初始值为中国</p>
+<pre><code class="plsql">`var_countryname varchar2(50):=&quot;中国&quot;;`</code></pre>
+<h4 id="1-2-7-2-定义常量"><a href="#1-2-7-2-定义常量" class="headerlink" title="1.2.7.2    定义常量"></a>1.2.7.2    定义常量</h4><p>常量指定值在运行过程中不可改变的数据存储结构。比如一些防止被修改的数值，列如圆周率，光速等。最好定义常量</p>
+<p><code>&lt;常量名&gt; constant &lt;数据类型&gt;:=&lt;常量值&gt;;</code></p>
+<p><strong>eg.</strong> 定义常量存储一年的天数</p>
+<pre><code class="plsql">con_day constant integer:=365;</code></pre>
+<h2 id="1-3-流程控制语句"><a href="#1-3-流程控制语句" class="headerlink" title="1.3 流程控制语句"></a>1.3 流程控制语句</h2><p>编程语言的流程控制语句的逻辑类似，只是在写法上有一定的区别。</p>
+<h3 id="1-3-1-选择语句"><a href="#1-3-1-选择语句" class="headerlink" title="1.3.1    选择语句"></a>1.3.1    选择语句</h3><h4 id="1-3-1-1-if…then语句"><a href="#1-3-1-1-if…then语句" class="headerlink" title="1.3.1.1    if…then语句"></a>1.3.1.1    if…then语句</h4><p>最简单的一种形式，只做一种情况的判断。语法格式如下：</p>
+<pre><code class="plsql">if &lt;条件表达式&gt; then        --条件表达式的值为true时，执行语句1。否则end if
+    语句1
+end if;</code></pre>
+<h4 id="1-3-1-2-if…then…else"><a href="#1-3-1-2-if…then…else" class="headerlink" title="1.3.1.2    if…then…else"></a>1.3.1.2    if…then…else</h4><p>最常用到的一种选择语句，可以实现判断两种情况。语法格式如下：</p>
+<pre><code class="plsql">if &lt;条件表达式&gt; then        --条件表达式的值为true时，执行语句1。否则执行语句2
+    语句1;
+else
+    语句2;
+end if;</code></pre>
+<h4 id="1-3-1-3-if…then…elsif"><a href="#1-3-1-3-if…then…elsif" class="headerlink" title="1.3.1.3    if…then…elsif"></a>1.3.1.3    if…then…elsif</h4><p>实现多分支判断选择，是程序的判断条件更加丰富，更加多样化。该语句判断哪个判断分支的条件是true，就执行哪个分支。语法格式如下：</p>
+<pre><code class="plsql">if &lt;条件表达式1&gt; then        --哪个判断分支的条件是true，就执行哪个分支。
+    语句1;
+elsif&lt;条件表达式2&gt; then
+    语句2;
+…………
+else
+    语句n;
+end if;</code></pre>
+<h4 id="1-3-1-4-case"><a href="#1-3-1-4-case" class="headerlink" title="1.3.1.4    case"></a>1.3.1.4    case</h4><p>和if…then…elsif类似。case关键字后有一个选择器，通常是一个变量，程序就从这个选择器开始执行。后面是when子句，并且在when关键字的后面是一个表达式，程序将根据选择器的值去匹配每一个when子句的表达式的值。语法格式如下：</p>
+<pre><code class="plsql">case&lt;变量&gt;
+    when&lt;表达式1&gt; then  --表达式通常是一个常量。
+        语句1;
+    when&lt;表达式1&gt; then 
+        语句2;
+    …………
+    when&lt;表达式1&gt; then 
+        语句n;
+    else
+        语句
+end case;</code></pre>
+<h3 id="1-3-2-循环语句"><a href="#1-3-2-循环语句" class="headerlink" title="1.3.2    循环语句"></a>1.3.2    循环语句</h3><h4 id="1-3-2-1-loop…exit-when…end"><a href="#1-3-2-1-loop…exit-when…end" class="headerlink" title="1.3.2.1    loop…exit when…end"></a>1.3.2.1    loop…exit when…end</h4><p>先执行一个循环体语句，当when之后的条件表达式是true时，则跳出循环，否则再执行一次循环体。语法格式如下：</p>
+<pre><code class="plsql">loop
+    语句；
+    exit when 条件语句;
+end loop;</code></pre>
+<h4 id="1-3-2-2-while…loop…end"><a href="#1-3-2-2-while…loop…end" class="headerlink" title="1.3.2.2    while…loop…end"></a>1.3.2.2    while…loop…end</h4><p>while语句根据他的条件表达式执行零次或者多次循环体，每次执行循环体时，先判断条件表达式是否为true，是true则执行循环体，否则跳出循环。语法格式如下：</p>
+<pre><code class="plsql">while 条件 loop
+    语句;
+end loop;</code></pre>
+<h4 id="1-3-2-3-for…in…loop…end"><a href="#1-3-2-3-for…in…loop…end" class="headerlink" title="1.3.2.3    for…in…loop…end"></a>1.3.2.3    for…in…loop…end</h4><p>for语句是一个可以预置循环次数的循环控制语句，有一个循环计数器，通常是一个整型变量。通过这个循环计数器来控制循环执行的次数。该计数器可以从小到大的进行记录，也可以相反。另外该计数器的合法性有上限制和下限值控制，若计数器在限定范围内，则程序执行循环，否则跳出循环。语法格式如下：</p>
+<pre><code class="plsql">for 变量 in [reverse] 下限值..上限值 loop/*默认是循环递增，使用reverse之后*/    语句                                 /*就是循环递减*/
+end loop;                                     
+</code></pre>
+<h4 id="1-3-2-4-goto"><a href="#1-3-2-4-goto" class="headerlink" title="1.3.2.4    goto"></a>1.3.2.4    goto</h4><p>goto语句是一个无条件转向语句。当执行时，控制程序会立即转到由标签标识的语句。label使用在plsql中定义的符号。标签使用双箭头括号&lt;&lt;&gt;&gt;括起来。语法格式如下：</p>
+<pre><code class="plsql">goto label；</code></pre>
+<pre><code class="plsql">程序其他部分
+&lt;&lt;goto_mark&gt;&gt;        --定义一个转向标签
+程序其他部分
+if 条件 then
+    goto goto_mark;        --如果条件成立则立即转向goto_mark执行
+程序其他部分</code></pre>
+<p><strong>注意：</strong>goto语句会使程序代码复杂，容易出错，且可读性差。几乎所有的goto语言都可以使用其他的控制结构来实现。</p>
+<h2 id="1-4-PL-SQL-游标"><a href="#1-4-PL-SQL-游标" class="headerlink" title="1.4     PL/SQL 游标"></a>1.4     PL/SQL 游标</h2><h3 id="1-4-1-基本原理"><a href="#1-4-1-基本原理" class="headerlink" title="1.4.1    基本原理"></a>1.4.1    基本原理</h3><p>位于内存中的 “临时表”。 具体如下：</p>
+<p>游标是从数据表中提取出来的数据，以临时表的形式存放到内存中，在游标中有一个 数据指针，在初始状态下指向的是首记录，利用 fetch 语句可以移动该指针，从而对游标中的数据进行各种操作，然后将操作结果写回到数据库中。为应用程序提供了一种对多行数据查询结果集中的每一行数据进行单独处理的方法。</p>
+<h3 id="1-4-2-显示游标"><a href="#1-4-2-显示游标" class="headerlink" title="1.4.2    显示游标"></a>1.4.2    显示游标</h3><h4 id="1-4-2-1-运用游标的步骤"><a href="#1-4-2-1-运用游标的步骤" class="headerlink" title="1.4.2.1    运用游标的步骤"></a>1.4.2.1    运用游标的步骤</h4><p>使用户定义的一种游标，通常用于操作查询结果集，使用它处理数据的步骤如下：</p>
+<ol>
+<li><strong>声明游标:</strong>主要包括游标名称和为游标提供结果集的select语句。语法格式如下：</li>
+</ol>
+<pre><code class="plsql">CURSOR 游标名( 参数 列表)   [返回值类型]   IS   Select 语句;</code></pre>
+<ol start="2">
+<li><strong>打开游标:</strong>执行Select 语句，获得结果集存储到游标中，此时游标指向结果集头， 而不是第一条记录。语法格式如下：</li>
+</ol>
+<pre><code class="plsql">Open 游标名( 参数 列表);</code></pre>
+<ol start="3">
+<li><strong>读取游标:</strong>（可能是一个反复操作的步骤，因为游标只能读取一行数据，所以对于多条记录需要反复的读取，直到数据为空为止）</li>
+</ol>
+<pre><code class="plsql">Fetch  游标名 InTo  临时记录或属性类型变量；</code></pre>
+<ol start="4">
+<li><strong>关闭游标:</strong>将游标放入缓冲池中，没有完全释放资源。可重新打开。</li>
+</ol>
+<pre><code class="plsql">Close  游标名；</code></pre>
+<h4 id="1-4-2-2-隐式游标"><a href="#1-4-2-2-隐式游标" class="headerlink" title="1.4.2.2    隐式游标"></a>1.4.2.2    隐式游标</h4><p>在执行一个sql语句时，Oracle会自动创建一个隐式游标。这个游标是内存中处理该语句的工作区域。隐式游标主要是处理数据操纵语句（update，delete等）的执行结果。特殊情况下，也可以处理select语句的查询结果。当使用隐式游标的属性时，需要在属性前面加上隐式游标的默认名称——SQL。</p>
+<h4 id="1-4-2-3-游标属性"><a href="#1-4-2-3-游标属性" class="headerlink" title="1.4.2.3    游标属性"></a>1.4.2.3    游标属性</h4><p>%found    布尔属性，当最近一次度记录时成功返回，则值为true</p>
+<p>%notfound    布尔属性，与%found相反</p>
+<p>%isopen    布尔属性，当游标已打开时返回true</p>
+<p>%rowcount    数字属性，返回从游标中读取的记录数。</p>
+<p>eg.</p>
+<pre><code class="plsql">Begin
+   Update emp Set  SAL = SAL + 0.1  Where JOB = &#39;CLERK&#39;;
+   If  SQL%Found  Then
+    DBMS_OUTPUT.PUT_LINE(&#39;已经更新！&#39;);
+   Else
+    DBMS_OUTPUT.PUT_LINE(&#39;更新失败！&#39;);
+   End  If；
+  End；</code></pre>
+<h3 id="1-4-3-通过for语句循环游标"><a href="#1-4-3-通过for语句循环游标" class="headerlink" title="1.4.3    通过for语句循环游标"></a>1.4.3    通过for语句循环游标</h3><p>根据1.4.2.1的游标使用四大步骤可以用while语句来实现一个游标的使用</p>
+<pre><code class="plsql">--打印出80部门所有的员工的工资
+declare
+--声明一个记录类型
+  type emp_record is record(
+        v_sal employees.salary%type,
+        v_empid employees.employee_id%type
+  );
+  --声明一个记录类型的变量
+  v_emp_record emp_record;
+
+  --定义游标
+  cursor emp_sal_cursor is select salary,employee_id from employees where department_id = 80; 
+begin
+  --打开游标
+   open emp_sal_cursor;
+
+   --提取游标
+   fetch emp_sal_cursor into v_emp_record;
+
+   --设置循环
+   while emp_sal_cursor%found loop
+                                                      dbms_output.put_line(&#39;empid:&#39;||v_emp_record.v_empid||&#39;,&#39;||&#39;salary:&#39;||v_emp_record.v_sal);  --这里的salary与employee_id的顺序要和记录类型中设置变量的顺序一样
+     fetch emp_sal_cursor into v_emp_record;
+   end loop;
+
+   --关闭游标
+   close emp_sal_cursor;*/
+END;</code></pre>
+<ol>
+<li>在for语句遍历隐式游标时，在in后面提供有select语句检索的结果集，在检索过程中，oracle会自动提供一个隐式游标SQL；</li>
+<li>在for语句遍历显式游标时，在in后面提供游标的名称，语法格式如下；</li>
+</ol>
+<pre><code class="plsql">for 变量 in 游标名称 loop
+    语句；
+end loop；</code></pre>
+<p>所以利用for语句可以很大的简化游标使用的代码量。但是理论步骤上还是那四步。下面是根据上面的while语句设计的游标使用代码的for语句代码设计</p>
+<pre><code class="plsql">--打印出80部门所有的员工的工资
+declare
+  --定义游标
+  cursor emp_sal_cursor is select salary,employee_id from employees where department_id = 80; 
+begin
+  for c in emp_sal_cursor loop
+    dbms_output.put_line(&#39;empid:&#39;||c.employee_id||&#39;,&#39;||&#39;salary:&#39;||c.salary);
+   end loop;
+END;</code></pre>
+<h2 id="1-5-PL-SQL异常处理"><a href="#1-5-PL-SQL异常处理" class="headerlink" title="1.5 PL/SQL异常处理"></a>1.5 PL/SQL异常处理</h2><h3 id="1-5-1-异常处理方式"><a href="#1-5-1-异常处理方式" class="headerlink" title="1.5.1    异常处理方式"></a>1.5.1    异常处理方式</h3><p>Oracle提供了三种异常处理方式：</p>
+<ol>
+<li>预定义异常    用于处理常见的Oracle错误</li>
+<li>非预定义异常   用于处理预定义异常所不能处理的Oracle错误</li>
+<li>自定义异常    用于处理于Oracle错误无关的其他情况</li>
+</ol>
+<p>语法：</p>
+<pre><code class="plsql">EXCEPTION
+ WHEN exception_Name THEN --exception_Name为异常的名字
+  　 说明1;
+ WHEN OTHERS THEN
+　　　说明2;</code></pre>
+<h3 id="1-5-2-处理预定义异常"><a href="#1-5-2-处理预定义异常" class="headerlink" title="1.5.2    处理预定义异常"></a>1.5.2    处理预定义异常</h3><table>
+<thead>
+<tr>
+<th>命名的系统异常</th>
+<th>产生原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>access_into_null</td>
+<td>未定义对象</td>
+</tr>
+<tr>
+<td>case_not_found</td>
+<td>case中若未包含相应的when，并且没有设置</td>
+</tr>
+<tr>
+<td>collection_is_null</td>
+<td>集合元素未初始化</td>
+</tr>
+<tr>
+<td>curser_already_open</td>
+<td>游标已经打开</td>
+</tr>
+<tr>
+<td>dup_val_on_index</td>
+<td>唯一索引对应的列上有重复的值</td>
+</tr>
+<tr>
+<td>invalid_cursor</td>
+<td>在不合法的游标上进行操作</td>
+</tr>
+<tr>
+<td>invalid_number</td>
+<td>内嵌的 sql 语句不能将字符转换为数字</td>
+</tr>
+<tr>
+<td>no_data_found</td>
+<td>使用 select into  未返回行，或应用索引表未初始化的</td>
+</tr>
+<tr>
+<td>too_many_rows</td>
+<td>执行 select into  时，结果集超过一行</td>
+</tr>
+<tr>
+<td>zero_divide</td>
+<td>除数为 0</td>
+</tr>
+<tr>
+<td>subscript_beyond_count</td>
+<td>元素下标超过嵌套表或varray的最大值</td>
+</tr>
+<tr>
+<td>subscript_outside_limit</td>
+<td>使用嵌套表或 varray  时，将下标指定为负数</td>
+</tr>
+<tr>
+<td>value_error</td>
+<td>赋值时，变量长度不足以容纳实际数据</td>
+</tr>
+<tr>
+<td>login_denied</td>
+<td>pl/sql 应用程序连接到  oracle 数据库时，提供了不正确的用户名或密码</td>
+</tr>
+<tr>
+<td>not_logged_on</td>
+<td>pl/sql  应用程序在没有连接 oralce 数据库的情况下访问数据</td>
+</tr>
+<tr>
+<td>program_error</td>
+<td>pl/sql  内部问题，可能需要重装数据字典＆ pl./sql系统包</td>
+</tr>
+<tr>
+<td>rowtype_mismatch</td>
+<td>主游标变量与 pl/sql 游标变量的返回类型不兼容</td>
+</tr>
+<tr>
+<td>self_is_null</td>
+<td>使用对象类型时，在 null  对象上调用对象方法</td>
+</tr>
+<tr>
+<td>storage_error</td>
+<td>运行 pl/sql  时，超出内存空间</td>
+</tr>
+<tr>
+<td>sys_invalid_id</td>
+<td>无效的 rowid 字符串</td>
+</tr>
+<tr>
+<td>timeout_on_resource</td>
+<td>oracle 在等待资源时超时</td>
+</tr>
+</tbody></table>
+<h3 id="1-5-3-处理非预定义异常"><a href="#1-5-3-处理非预定义异常" class="headerlink" title="1.5.3    处理非预定义异常"></a>1.5.3    处理非预定义异常</h3><p>使用非预定义异常包括三步：</p>
+<ol>
+<li>在定义部分定义异常名</li>
+<li>在异常和Oracle错误之间建立关联</li>
+<li>在异常处理部分捕捉并处理异常。 </li>
+</ol>
+<p>当定义Oracle错误和异常之间的关联关系时，需要使用伪过程EXCEPTION_INIT。</p>
+<ol>
+<li>首先的定义部分定义异常</li>
+<li>使用progma exception_init(exception_name,exception_number) 在异常和oracle错误之间建立关联，<br>这时要求用户知道可能出现的错误号（异常函数sqlcode、sqlerrm和 raise_application_error）；</li>
+<li>最终在异常处理部分捕捉并处理异常。</li>
+</ol>
+<p>下面<strong>以更新特定雇员的部门号</strong>，并处理<strong>ORA-02291</strong>错误为例，说明使用非预定义异常的方法。示例如下:</p>
+<pre><code class="plsql">DECLARE
+  e_integrity EXCEPTION; --1、定义部分
+  PRAGMA EXCEPTION_INIT (e_integrity, -2291);  --2、建立关联关系
+BEGIN
+  UPDATE emp SET deptno= &amp;dno WHERE empno = &amp;eno;
+EXCEPTION
+  WHEN e_integrity THEN  --3、捕捉处理
+    DBMS_OUTPUT.PUT_LINE(‘该部门不存在’);
+END;</code></pre>
+<p>1.5.4    处理自定义异常</p>
+<p>预定义异常和非预定义异常都与Oracle错误有关，并且当出现Oracle错误时会隐含触发相应异常；<br>而自定义异常与Oracle错误没有任何关联，它是由开发人员为特定情况所定义的异常。<br>当使用自定义异常时，</p>
+<ol>
+<li>需要在定义部分（DECLARE）定义异常</li>
+<li>再执行部分（BEGIN）触发异常（使用RAISE语句）</li>
+<li>在异常处理部分（EXCEPTION）捕捉并处理异常。 </li>
+</ol>
+<p>eg. 查询100号员工 的工资，如果工资太高了，则输出“工资太高了！”。</p>
+<pre><code class="plsql">declare
+  e_too_high_sal exception;
+  v_sal employees.salary%type;
+
+begin
+  select salary into v_sal from employees where employee_id=100;
+
+  if v_sal&gt;10000 then
+  raise e_too_high_sal;
+  end if;
+exception
+  when e_too_high_sal then dbms_output.put_line(&#39;工资太高了！&#39;);
+end; 
+
+--结果输出工资太高了！</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://Double-Sail.github.io" rel="external nofollow noreferrer">Double-Sail</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://Double-Sail.github.io/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">http://Double-Sail.github.io/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="http://Double-Sail.github.io" target="_blank">Double-Sail</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/PLSQL/">
+                                    <span class="chip bg-color">PLSQL</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2020-04-05T23-44-19',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="PLSQL学习日志（二）">
+                        
+                        <span class="card-title">PLSQL学习日志（二）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            过程、函数、包
+
+1.1    存储过程1.1.1    创建存储过程存储过程是事先经过编译并存储在数据库中的一段SQL语句的集合，调用存储过程可以简化应用开发人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/PLSQL/">
+                        <span class="chip bg-color">PLSQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Oracle11g的安装及汉化">
+                        
+                        <span class="card-title">Oracle11g的安装及汉化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Oracle11g的安装及汉化
+
+​        很多的教程都是推荐的官网下载Oracle以及PLSQL development，但是官网下载速度实在是感人，两个g的文件，告诉我要下载十四个小时，头皮发麻。所以开始着手在各大博客网站，寻找
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Oracle-11g/">
+                        <span class="chip bg-color">Oracle 11g</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="http://Double-Sail.github.io" target="_blank">Double-Sail</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Double-Sail" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2407748395@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2407748395" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2407748395" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

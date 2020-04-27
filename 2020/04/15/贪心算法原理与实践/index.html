@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Oracle11g的安装及汉化, Double-Sail">
+    <meta name="keywords" content="贪心算法原理与实践, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Oracle11g的安装及汉化 | Double-Sail</title>
+    <title>贪心算法原理与实践 | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Oracle11g的安装及汉化</h1>
+                    <h1 class="description center-align post-title">贪心算法原理与实践</h1>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Oracle-11g/">
-                                <span class="chip bg-color">Oracle 11g</span>
+                            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E3%80%81Java/">
+                                <span class="chip bg-color">贪心算法、Java</span>
                             </a>
                         
                     </div>
@@ -440,8 +440,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/technology/" class="post-category">
-                                technology
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构与算法
                             </a>
                         
                     </div>
@@ -453,14 +453,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-25
+                    2020-04-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-27
+                    2020-04-22
                 </div>
                 
 
@@ -475,21 +475,143 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Oracle11g的安装及汉化"><a href="#Oracle11g的安装及汉化" class="headerlink" title="Oracle11g的安装及汉化"></a>Oracle11g的安装及汉化</h1><a id="more"></a>
-
-<p>​        很多的教程都是推荐的官网下载<strong>Oracle</strong>以及<strong>PLSQL development</strong>，但是官网下载速度实在是感人，两个g的文件，告诉我要下载十四个小时，头皮发麻。所以开始着手在各大博客网站，寻找百度网盘链接。</p>
-<p>​        虽然资源很容易找到，但是并没有一步到位的博客，要么用的是自带的SQLdevelopment，要么就是没有汉化（习惯了各大没有汉化的软件，不汉化倒也可以），要么就是精简版的，少几个文件。在点了几个博主的博客之后，也算是安装完成。</p>
-<p>​        虽然安装软件不是什么有难度的事情，但是在学习之前，因为安装软件，产生的一些烦心事，显然会影响学习热情。为了解决这种小问题，写下这些，希望能帮助解决问题，也算是记录生活。</p>
-<h2 id="Oracle11g安装"><a href="#Oracle11g安装" class="headerlink" title="Oracle11g安装"></a>Oracle11g安装</h2><p>先给上链接，链接包含标题所提的所有文件。</p>
-<p>链接：<a href="https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA" target="_blank" rel="noopener">https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA</a><br>提取码：n7tp</p>
-<p>​        Oracle的具体安装步骤，各大教学视频的第一步就是叫你怎么装软件。具体步骤一一截图，实在繁琐，也无必要，在此就不详细赘述。在此就给一个教学视频<a href="https://www.bilibili.com/video/BV17b411V75B?p=2" target="_blank" rel="noopener">链接</a>吧，讲的还可以，至少逻辑不乱，说话很清楚，视频也没有音频问题。</p>
-<h4 id="几条注意事项"><a href="#几条注意事项" class="headerlink" title="几条注意事项"></a>几条注意事项</h4><ol>
-<li>一定要将Oracle11g文件夹中的两个压缩文件，解压到同一个目录下，否则在安装到百分之四五十的时候，会报错。</li>
-<li>如果出现安装错误，需要重头再来的话，千万不要直接在win10系统里的卸载程序功能中去卸载Oracle，否则再再次安装时，需要输入sid密码的时候，会报sid已经被使用的错误。具体的卸载过程<a href="https://jingyan.baidu.com/album/95c9d20d7ca910ec4f756141.html?picindex=5" target="_blank" rel="noopener">点此</a>观看。</li>
+                <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="贪心算法的原理"><a href="#贪心算法的原理" class="headerlink" title="贪心算法的原理"></a>贪心算法的原理</h2><p>贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。</p>
+<p>贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备<strong>无后效性</strong>，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</p>
+<h2 id="贪心算法的思路"><a href="#贪心算法的思路" class="headerlink" title="贪心算法的思路"></a>贪心算法的思路</h2><ol>
+<li>建立数学模型来描述问题；</li>
+<li>把求解的问题分成若干个子问题；</li>
+<li>对每一子问题求解，得到子问题的局部最优解；</li>
+<li>把子问题的局部最优解合成原来问题的一个解。</li>
 </ol>
-<h2 id="PLSQL-development的安装及汉化"><a href="#PLSQL-development的安装及汉化" class="headerlink" title="PLSQL development的安装及汉化"></a>PLSQL development的安装及汉化</h2><p>​        点击PLSQL development文件夹中的plsqldev1302x64压缩包，现在32位的电脑不多了，大多是64位的，当然文件夹中也提供了32位的版本。解压完之后，直接点击安装文件安装，然后无脑下一步就行了。</p>
-<p>​        安装完事之后，第一次打开软件会让你输入license，直接输入注册码.txt中的内容即可。</p>
-<p>​        汉化也是直接点击chinese.exe文件，然后出现安装路径，需要选择PLSQL的安装路径。安装完后，在重启软件即可。</p>
+<h2 id="类比动态规划"><a href="#类比动态规划" class="headerlink" title="类比动态规划"></a>类比动态规划</h2><p>大部分最优解问题的大致思路都是<strong>将一个问题拆分成为一个个的子问题</strong>，把对整个问题的求解转化为对子问题树的遍历，所以只要将整个子问题树全部遍历一遍即可。但是很多情况下这是不可行的。</p>
+<p>贪心算法和动态规划有一定的相似性，都是处理这类最优解问题的。并有一个要求就是：<strong>组成最优解的每一个子问题的解，对于这个子问题本身肯定也是最优的。</strong></p>
+<p>那对整个子问题树遍历不可行，那就可以考虑将子问题树进行修剪，剔除掉一些非解的分支。</p>
+<p><strong>动态规划</strong>的一个特点是自上而下的分析问题，再自下而上的解决问题。即对每一个子树的根，求出每一个叶子的值，并且以最优解作为自己的值，其他的直接抛弃。</p>
+<p><strong>贪心算法</strong>可以使用的状况是可以证明每一个子树的根的值不取决于下面叶子的值，而只取决于当前问题的状况。也就是说不需要知道一个节点所有子树的情况，就可以求出这个节点的值，可以说算是动态规划的一种特殊情况。</p>
+<p>由于贪心算法的特点，对于子问题树的遍历不需要像动态规划一样去自下而上，直接选择最优的路，一直往下处理就可以了。</p>
+<h2 id="贪心算法实例"><a href="#贪心算法实例" class="headerlink" title="贪心算法实例"></a>贪心算法实例</h2><p>数据结构与算法一直是IT行业面试的重点，就有过这样一道面试题。</p>
+<p><strong>eg.</strong>给一根长度为n绳子，请把绳子剪成m段（m、n都是整数，n＞1并且m＞1）。每段的绳子的长度记为k[0]、k[1]、……、k[m]。k[0]<em>k[1]</em>…*k[m]可能的最大乘积是多少？</p>
+<p><strong>思路：</strong></p>
+<p>一开始看到这个问题是求最大乘积，即最优解，那么联想到的就是动态规划或者贪心算法。</p>
+<p>长度为n的绳子直接分析，会狠复杂，需要算一个二元多次方程，那么考虑长度短的绳子：</p>
+<ul>
+<li>if n=1，2，3时，由于只能切成整数那对应的乘积只能是0，1，2。</li>
+<li>if n=4,那就可以切成（13）（22）（121）（1111）这四种情况，在这四种方法中最大的乘积时4。</li>
+<li>if n=5,那就可以切成（14）（23）（113）（122）（212）（1121）（11111）。最大乘积是6。</li>
+</ul>
+<p>再继续往下分析，可以发现当n&gt;5时，总是可以切出两个数字相乘的结果大于被切分的这个数，但是1,2,3这三个数切出来的数会比自己小，4这个数正好是切出乘积等于自己的两个数。</p>
+<p>那么按照动态规划的方法，一直往下切分，会一直切出全是1的树，再自下往上的去分析，1没有必要分析，因为无法再切分，在网上就只有被切分成（11）的2，因为其他的数字都包含了2，所以2就是除1以外的最下级，分析得出，最优解是1，发现小于自己，进一步服务于3的分析，最优解是2（因为之前知道2不能切分，所以只能是1*2），发现又是比自己小，所以3也不可以切分。直到4发现可以切分成为（22）的形式，保证不小于自己。再往后分析，发现最优解都是先按3来切分，那么一个数除以三，余数只能是012。</p>
+<ul>
+<li>余数是0则完美切分。</li>
+<li>余数是1，则回想，发现1*3&lt;4,即最后分成的4不应该再继续切出3，所以只能是（22）。</li>
+<li>余数是2，则回想,发现3+2=5，而5的最优解就是被切成（23），所以无需改动。</li>
+</ul>
+<p><strong>总结思路：</strong>最优解就是先按照3来切，切到最后如果剩下4则切成（22），如果不是4，则无需改动。</p>
+<p><strong>注：</strong>可以利用数学归纳法来证明先按3切分是最优解的方式。数学归纳法的思想也是类似于动态规划和贪心算法。都是将一个证明划分成一个个的子小块，在证明每一个子小块都正确，最后得出整体正确。</p>
+<p>所以按照上面分析出来的结论，可以直接使用贪心算法，不用再自下而上的求解。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="java">public class CuttingRope {
+    // ======动态规划======
+    public int maxProductAfterCutting_solution1(int length) {
+        if (length &lt;= 1)
+            return 0;
+        if (length == 2)
+            return 1;
+        if (length == 3)
+            return 2;
+        int[] product = new int[length + 1]; // 用于存放最大乘积值
+        // 下面几个不是乘积，因为其本身长度比乘积大
+        product[0] = 0;
+        product[1] = 1;
+        product[2] = 2;
+        product[3] = 3;
+
+        // 开始从下到上计算长度为i绳子的最大乘积值product[i]
+        for (int i = 4; i &lt;= length; i++) {
+            int max = 0;
+            // 算不同子长度的乘积，找出最大的乘积
+            for (int j = 1; j &lt;= i / 2; j++) {
+                if (max &lt; product[j] * product[i - j])
+                    max = product[j] * product[i - j];
+            }
+            product[i] = max;
+        }
+        return product[length];
+    }
+
+    // =======贪婪算法========
+    public int maxProductAfterCutting_solution2(int length) {
+        if (length &lt;= 1)
+            return 0;
+        if (length == 2)
+            return 1;
+        if (length == 3)
+            return 2;
+        int timesOf3 = length / 3;
+        int timesOf2 = 0;
+        if (length - timesOf3 * 3 == 1) {
+            timesOf3--;
+            // timesOf2=2;  //错误！
+        }
+        timesOf2 = (length - timesOf3 * 3) / 2;
+        return (int) (Math.pow(3, timesOf3) * Math.pow(2, timesOf2));
+    }
+
+    // =====测试代码======
+    void test(String testName, int length, int expected) {
+        if (testName != null)
+            System.out.println(testName + &quot;:&quot;);
+        if (maxProductAfterCutting_solution1(length) == expected) {
+            System.out.print(&quot;    动态规划:&quot; + &quot;passed  &quot;);
+        } else {
+            System.out.print(&quot;    动态规划:&quot; + &quot;failed  &quot;);
+        }
+
+        if (maxProductAfterCutting_solution2(length) == expected) {
+            System.out.println(&quot;贪婪算法:&quot; + &quot;passed  &quot;);
+        } else {
+            System.out.println(&quot;贪婪算法:&quot; + &quot;failed  &quot;);
+        }
+    }
+
+    void test1() {
+        test(&quot;test1&quot;, 1, 0);
+    }
+
+    void test2() {
+        test(&quot;test2&quot;, 2, 1);
+    }
+
+    void test3() {
+        test(&quot;test3&quot;, 3, 2);
+    }
+
+    void test4() {
+        test(&quot;test4&quot;, 4, 4);
+    }
+
+    void test5() {
+        test(&quot;test5&quot;, 5, 6);
+    }
+
+    void test6() {
+        test(&quot;test6&quot;, 10, 36);
+    }
+
+    void test7() {
+        test(&quot;test7&quot;, 50, 86093442);
+    }
+
+    public static void main(String[] args) {
+        CuttingRope demo = new CuttingRope();
+        demo.test1();
+        demo.test2();
+        demo.test3();
+        demo.test4();
+        demo.test5();
+        demo.test6();
+        demo.test7();
+    }
+}</code></pre>
 
             </div>
             <hr/>
@@ -515,7 +637,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/">http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/</a>
+                    <a href="http://Double-Sail.github.io/2020/04/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/">http://Double-Sail.github.io/2020/04/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +675,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Oracle-11g/">
-                                    <span class="chip bg-color">Oracle 11g</span>
+                                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E3%80%81Java/">
+                                    <span class="chip bg-color">贪心算法、Java</span>
                                 </a>
                             
                         </div>
@@ -725,7 +847,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-03-25T23-54-28',
+        id: '2020-04-15T22-39-53',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -751,29 +873,25 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2020/04/27/PLSQL%E5%AE%9E%E7%8E%B0%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PLSQL学习日志（一）">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="PLSQL实现先序遍历">
                         
-                        <span class="card-title">PLSQL学习日志（一）</span>
+                        <span class="card-title">PLSQL实现先序遍历</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PLSQL编程
-
-1.1    PL/SQL简介1.1.1    PL/SQL块结构DECLARE（可选） 
---定义标识符，标识符：变量，常量，游标 
-BEGIN：开始执行主体（必须） --类似于java中的main方法
---SQL 语句
+                            PLSQL实现先序遍历理论传统的遍历方法需要判断是否有左孩子右兄弟，还有递归的操作。那么想到可不可以不进行递归，直接一条线的去进行遍历，这样就可以降低时间复杂度。
+首先根节点赋值（1，2），后续插入节点则根据一定的排序操作进行赋值更新，这样
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
                         </span>
                         <span class="publish-author">
                             
@@ -790,8 +908,8 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PLSQL/">
-                        <span class="chip bg-color">PLSQL</span>
+                    <a href="/tags/PLSQL%E3%80%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
+                        <span class="chip bg-color">PLSQL、先序遍历</span>
                     </a>
                     
                 </div>
@@ -805,28 +923,27 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/22/Markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%B9%A6%E5%86%99%E4%B8%8E%E8%BF%90%E7%94%A8%EF%BC%88Typora%EF%BC%89/">
+                <a href="/2020/04/11/SQL%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Markdown的基本书写与运用（Typora）">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SQL语言基础">
                         
-                        <span class="card-title">Markdown的基本书写与运用（Typora）</span>
+                        <span class="card-title">SQL语言基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Markdown的基本书写运用（Typora）
+                            SQL语言基础（部分）1.    分组查询1.1    在group by中使用rollup首先输出emp表中的数据；
 
-一、拥有有快捷键的书写操作与测试Ctrl 1到Ctrl 6:==普通文本，一级~六级标题==；（一个#代表一级标题，以此类推六个#代表六级）
-
-一级标题二级标题三级标题四级标题五级标题六级标
+EMPNOENAMEJOBMGRHIREDATESALCOMMDEPTNO
+7369SMITHCLERK7902198
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-11
                             </span>
                         <span class="publish-author">
                             
@@ -843,8 +960,8 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
                     </a>
                     
                 </div>

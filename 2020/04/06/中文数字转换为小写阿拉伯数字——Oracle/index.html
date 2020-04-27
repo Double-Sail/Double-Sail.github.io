@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Oracle11g的安装及汉化, Double-Sail">
+    <meta name="keywords" content="中文数字转换为小写阿拉伯数字——Oracle, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Oracle11g的安装及汉化 | Double-Sail</title>
+    <title>中文数字转换为小写阿拉伯数字——Oracle | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Oracle11g的安装及汉化</h1>
+                    <h1 class="description center-align post-title">中文数字转换为小写阿拉伯数字——Oracle</h1>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Oracle-11g/">
-                                <span class="chip bg-color">Oracle 11g</span>
+                            <a href="/tags/Oracle%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                                <span class="chip bg-color">Oracle数字类型转换</span>
                             </a>
                         
                     </div>
@@ -453,14 +453,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-25
+                    2020-04-06
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-03-27
+                    2020-04-09
                 </div>
                 
 
@@ -475,21 +475,156 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Oracle11g的安装及汉化"><a href="#Oracle11g的安装及汉化" class="headerlink" title="Oracle11g的安装及汉化"></a>Oracle11g的安装及汉化</h1><a id="more"></a>
+                <h1 id="Oracle实现中文数字转换成阿拉伯数字"><a href="#Oracle实现中文数字转换成阿拉伯数字" class="headerlink" title="Oracle实现中文数字转换成阿拉伯数字"></a>Oracle实现中文数字转换成阿拉伯数字</h1><h2 id="1-通过if…elsif语句实现"><a href="#1-通过if…elsif语句实现" class="headerlink" title="1.    通过if…elsif语句实现"></a>1.    通过if…elsif语句实现</h2><p>下面是用最简单的if…else语句实现“一至二十”的中文数字转换成阿拉伯数字，即使用条件判断语句去实现一一对应的关系。</p>
+<pre><code class="plsql">create or replace function numchange(val in varchar2)
+return number is res number;
 
-<p>​        很多的教程都是推荐的官网下载<strong>Oracle</strong>以及<strong>PLSQL development</strong>，但是官网下载速度实在是感人，两个g的文件，告诉我要下载十四个小时，头皮发麻。所以开始着手在各大博客网站，寻找百度网盘链接。</p>
-<p>​        虽然资源很容易找到，但是并没有一步到位的博客，要么用的是自带的SQLdevelopment，要么就是没有汉化（习惯了各大没有汉化的软件，不汉化倒也可以），要么就是精简版的，少几个文件。在点了几个博主的博客之后，也算是安装完成。</p>
-<p>​        虽然安装软件不是什么有难度的事情，但是在学习之前，因为安装软件，产生的一些烦心事，显然会影响学习热情。为了解决这种小问题，写下这些，希望能帮助解决问题，也算是记录生活。</p>
-<h2 id="Oracle11g安装"><a href="#Oracle11g安装" class="headerlink" title="Oracle11g安装"></a>Oracle11g安装</h2><p>先给上链接，链接包含标题所提的所有文件。</p>
-<p>链接：<a href="https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA" target="_blank" rel="noopener">https://pan.baidu.com/s/1dCA0ZgzIOjfpWmKi13auJA</a><br>提取码：n7tp</p>
-<p>​        Oracle的具体安装步骤，各大教学视频的第一步就是叫你怎么装软件。具体步骤一一截图，实在繁琐，也无必要，在此就不详细赘述。在此就给一个教学视频<a href="https://www.bilibili.com/video/BV17b411V75B?p=2" target="_blank" rel="noopener">链接</a>吧，讲的还可以，至少逻辑不乱，说话很清楚，视频也没有音频问题。</p>
-<h4 id="几条注意事项"><a href="#几条注意事项" class="headerlink" title="几条注意事项"></a>几条注意事项</h4><ol>
-<li>一定要将Oracle11g文件夹中的两个压缩文件，解压到同一个目录下，否则在安装到百分之四五十的时候，会报错。</li>
-<li>如果出现安装错误，需要重头再来的话，千万不要直接在win10系统里的卸载程序功能中去卸载Oracle，否则再再次安装时，需要输入sid密码的时候，会报sid已经被使用的错误。具体的卸载过程<a href="https://jingyan.baidu.com/album/95c9d20d7ca910ec4f756141.html?picindex=5" target="_blank" rel="noopener">点此</a>观看。</li>
-</ol>
-<h2 id="PLSQL-development的安装及汉化"><a href="#PLSQL-development的安装及汉化" class="headerlink" title="PLSQL development的安装及汉化"></a>PLSQL development的安装及汉化</h2><p>​        点击PLSQL development文件夹中的plsqldev1302x64压缩包，现在32位的电脑不多了，大多是64位的，当然文件夹中也提供了32位的版本。解压完之后，直接点击安装文件安装，然后无脑下一步就行了。</p>
-<p>​        安装完事之后，第一次打开软件会让你输入license，直接输入注册码.txt中的内容即可。</p>
-<p>​        汉化也是直接点击chinese.exe文件，然后出现安装路径，需要选择PLSQL的安装路径。安装完后，在重启软件即可。</p>
+begin
+  if val=&#39;一&#39; then res:=1;
+  elsif val=&#39;二&#39; then res:=2;
+  elsif val=&#39;三&#39; then res:=3;
+  elsif val=&#39;四&#39; then res:=4;
+  elsif val=&#39;五&#39; then res:=5;
+  elsif val=&#39;六&#39; then res:=6;
+  elsif val=&#39;七&#39; then res:=6;
+  elsif val=&#39;八&#39; then res:=8;
+  elsif val=&#39;九&#39; then res:=9;
+  elsif val=&#39;十&#39; then res:=10;
+  elsif val=&#39;十一&#39; then res:=11;
+  elsif val=&#39;十二&#39; then res:=12;
+  elsif val=&#39;十三&#39; then res:=13;
+  elsif val=&#39;十四&#39; then res:=14;
+  elsif val=&#39;十五&#39; then res:=15;
+  elsif val=&#39;十六&#39; then res:=16;
+  elsif val=&#39;十七&#39; then res:=17;
+  elsif val=&#39;十八&#39; then res:=18;
+  elsif val=&#39;十九&#39; then res:=19;
+  elsif val=&#39;二十&#39; then res:=20;
+
+  else
+    res:=&#39;&#39;;
+  end if;
+  return res;
+end;</code></pre>
+<p>调用语句与结果</p>
+<pre><code class="plsql">SQL&gt; select numchange(&#39;十六&#39;) from dual;
+
+NUMCHANGE(&#39;十六&#39;)
+---------------
+             16</code></pre>
+<p>可以看到将中文数字十六转换成了16，但是这种方式有很大的局限性，当要求转换的数字很多时，代码过于冗长。所以应该用一个更好、更简短的代码去实现更强大的功能。</p>
+<h2 id="2-通过建立数组的办法实现"><a href="#2-通过建立数组的办法实现" class="headerlink" title="2.    通过建立数组的办法实现"></a>2.    通过建立数组的办法实现</h2><p>一般的项目需要转换的数字往往很大，所以按照上诉的方法肯定无法达到目标，那么通过建立数组一一对应的关系，就可以实现几乎所有日常生活所用的数字的转换。</p>
+<p>代码如下：</p>
+<pre><code class="plsql">create or replace function numchangepro(chinum in varchar2) return number is
+
+--定义一个数组
+  type map is table of binary_integer index by varchar2(10);
+  ling_jiu_map   map;--0~9数组变量
+  shibaiqian_map map;--十百千数组变量
+  wanyizhao_map  map;--万亿兆数组变量
+  --临时变量
+  i            int := 0; --临时变量，用于汉字数值字符串的记录与截取
+  k            int := 0; --临时变量，用于小数部分循环体的参数
+  x            int := 0; --临时变量，用于存储整数部分的长度
+  str          varchar2(100) := &#39;&#39;; --临时变量
+  tmp          int := 0; --临时变量，存储碰到单位之后，经过运算之后的数值
+  tmp2         int := 0; --临时变量，存储单位之前的数字
+  integer_part varchar2(100) := &#39;&#39;; --数字形式整数部分
+  float_part   varchar2(100) := &#39;&#39;; --数字形式小数部分
+  returnvalue  number := 0; --返回值
+begin
+  --初始化数组
+  ling_jiu_map(&#39;零&#39;) := 0;
+  ling_jiu_map(&#39;一&#39;) := 1;
+  ling_jiu_map(&#39;二&#39;) := 2;
+  ling_jiu_map(&#39;三&#39;) := 3;
+  ling_jiu_map(&#39;四&#39;) := 4;
+  ling_jiu_map(&#39;五&#39;) := 5;
+  ling_jiu_map(&#39;六&#39;) := 6;
+  ling_jiu_map(&#39;七&#39;) := 7;
+  ling_jiu_map(&#39;八&#39;) := 8;
+  ling_jiu_map(&#39;九&#39;) := 9;
+  shibaiqian_map(&#39;&#39;) := 0;--如果数字只有个位数字，则这个数组变量输出空位
+  shibaiqian_map(&#39;十&#39;) := 1;
+  shibaiqian_map(&#39;百&#39;) := 2;
+  shibaiqian_map(&#39;千&#39;) := 3;
+  wanyizhao_map(&#39;&#39;) := 0;--如果数字没有到万位，则这个数组变量输出空位
+  wanyizhao_map(&#39;万&#39;) := 1;
+  wanyizhao_map(&#39;亿&#39;) := 2;
+  wanyizhao_map(&#39;兆&#39;) := 3;
+
+  str := regexp_replace(chinum, &#39;^十&#39;, &#39;一十&#39;);
+  str := regexp_replace(str, &#39;零十&#39;, &#39;零一十&#39;);
+  --将数字拆分为整数与浮点数两个数字数组
+  i := instr(str, &#39;点&#39;, 1);--记录点这个汉字的第一次出现的位置
+  if i = 0 then
+    integer_part := substr(str, 1);--如果是没有点，直接截取为整数部分
+  else
+    integer_part := substr(str, 1, i - 1);--如果有点，则将点之前的数字截取成为整数部分。
+    float_part   := substr(str, i + 1);--如果有点，则将点之后的数字截取成为小数部分。
+  end if;
+
+  --整型部分
+  x    := length(integer_part);
+  str  := &#39;&#39;;
+  tmp  := 0;
+  tmp2 := 0;
+
+  for k in 1 .. x loop --整数部分的第一位到最后一位的循环体
+    str := substr(integer_part, k, 1);--截取整数部分的每一个汉字
+
+    if str in (&#39;万&#39;, &#39;亿&#39;, &#39;兆&#39;) then
+      --当碰到万亿兆时
+      tmp         := tmp + tmp2;
+      returnvalue := returnvalue + tmp * power(10000, wanyizhao_map(str));--碰到万则将万前面的数值乘以10000的1次方，亿和兆类似。并将值输入返回值。因为tmp需要清0
+      tmp         := 0;--此处tmp需要清0，因为在万亿兆单位之后的计数方式还是千百十。比如‘九亿九千九百九十九万’。
+      tmp2        := 0;--tmp2清0，继续用来接收万亿兆后面的数字。
+    elsif str in (&#39;十&#39;, &#39;百&#39;, &#39;千&#39;) then
+      --当碰到十百千时
+      tmp  := tmp + tmp2 * POWER(10, shibaiqian_map(str));--碰到十则将十前面的数值乘以10的1次方，百和千类似。
+      --此处tmp不需要清0，因为最后经过千百十单位之后，整数部分后面不再有单位。接下来的是小数部分。
+      tmp2 := 0;--tmp2清0，继续用来接收十百千后面的数字。
+   else
+      --当碰到数字时
+      tmp2 := ling_jiu_map(str);--碰到数字，则接收这个汉字对应的阿拉伯数字
+    end if;
+  end loop;
+
+  --最后将万位数之后的数加到返回值中去
+  tmp         := tmp + tmp2;
+  returnvalue := returnvalue + tmp;
+
+  if float_part is not null then
+    --计算小数部分
+    k   := 0;
+    tmp := &#39;&#39;;--tmp重新赋值为字符串的形式，因为小数部分的日常命名方式是‘九点九三’，即没有单位，只要将数字进行转换即可。
+
+    for k in 1 .. length(float_part) loop
+      tmp := tmp || ling_jiu_map(substr(float_part, k, 1));--截取小数部分的每一个汉字，并且直接连接，不需要power函数。
+    end loop;
+
+    returnvalue := returnvalue || &#39;.&#39; || tmp;--将整数部分后面加上小数点符号，再连接小数部分的字符串，既可以得到整体的数字。
+  end if;
+
+  return returnvalue;
+end;
+</code></pre>
+<p>调试语句与结果</p>
+<pre><code class="plsql">SQL&gt; select numchangepro(&#39;九百九十九亿九千九百九十九万九千九百九十九&#39;) from dual;
+
+NUMCHANGEPRO(&#39;九百九十九亿九千九百九十九万九千九百九十九&#39;)
+-------------------------------------
+                          99999999999</code></pre>
+<pre><code class="plsql">SQL&gt; select numchangepro(&#39;九千九百九十九&#39;) from dual;
+
+NUMCHANGEPRO(&#39;九千九百九十九&#39;)
+-----------------------
+                   9999</code></pre>
+<pre><code class="plsql">SQL&gt; select numchangepro(&#39;九千九百九十九点九五三&#39;) from dual;
+
+NUMCHANGEPRO(&#39;九千九百九十九点九五三&#39;)
+---------------------------
+                   9999.953</code></pre>
 
             </div>
             <hr/>
@@ -515,7 +650,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/">http://Double-Sail.github.io/2020/03/25/Oracle11g%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E6%B1%89%E5%8C%96/</a>
+                    <a href="http://Double-Sail.github.io/2020/04/06/%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99%E9%98%BF%E6%8B%89%E4%BC%AF%E6%95%B0%E5%AD%97%E2%80%94%E2%80%94Oracle/">http://Double-Sail.github.io/2020/04/06/%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99%E9%98%BF%E6%8B%89%E4%BC%AF%E6%95%B0%E5%AD%97%E2%80%94%E2%80%94Oracle/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +688,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Oracle-11g/">
-                                    <span class="chip bg-color">Oracle 11g</span>
+                                <a href="/tags/Oracle%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
+                                    <span class="chip bg-color">Oracle数字类型转换</span>
                                 </a>
                             
                         </div>
@@ -725,7 +860,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-03-25T23-54-28',
+        id: '2020-04-06T17-34-19',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -751,30 +886,92 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2020/04/11/%E6%AD%A3%E5%88%99%E5%BC%8F-Oracle/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PLSQL学习日志（一）">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="正则式--Oracle">
                         
-                        <span class="card-title">PLSQL学习日志（一）</span>
+                        <span class="card-title">正则式--Oracle</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PLSQL编程
+                            Oracle正则表达式1.    常用字符1.1    匹配字符
 
-1.1    PL/SQL简介1.1.1    PL/SQL块结构DECLARE（可选） 
---定义标识符，标识符：变量，常量，游标 
-BEGIN：开始执行主体（必须） --类似于java中的main方法
---SQL 语句
+
+字符类
+匹配的字符
+举 例
+
+
+
+\d
+从０-９的任一数字
+\d\d 匹配 72, 但不匹配 aa 或 7a
+
+
+\D
+任一非数字字符
+\D\D\D 匹配 abc, 但不
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-11
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E5%BC%8F/">
+                        <span class="chip bg-color">正则式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="PLSQL学习日志（二）">
+                        
+                        <span class="card-title">PLSQL学习日志（二）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            过程、函数、包
+
+1.1    存储过程1.1.1    创建存储过程存储过程是事先经过编译并存储在数据库中的一段SQL语句的集合，调用存储过程可以简化应用开发人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -792,59 +989,6 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                     
                     <a href="/tags/PLSQL/">
                         <span class="chip bg-color">PLSQL</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/22/Markdown%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%B9%A6%E5%86%99%E4%B8%8E%E8%BF%90%E7%94%A8%EF%BC%88Typora%EF%BC%89/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Markdown的基本书写与运用（Typora）">
-                        
-                        <span class="card-title">Markdown的基本书写与运用（Typora）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Markdown的基本书写运用（Typora）
-
-一、拥有有快捷键的书写操作与测试Ctrl 1到Ctrl 6:==普通文本，一级~六级标题==；（一个#代表一级标题，以此类推六个#代表六级）
-
-一级标题二级标题三级标题四级标题五级标题六级标
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-22
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/technology/" class="post-category">
-                                    technology
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
                     </a>
                     
                 </div>
