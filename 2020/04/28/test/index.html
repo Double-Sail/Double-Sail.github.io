@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PLSQL实现先序遍历, Double-Sail">
+    <meta name="keywords" content="test, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PLSQL实现先序遍历 | Double-Sail</title>
+    <title>test | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PLSQL实现先序遍历</h1>
+                    <h1 class="description center-align post-title">test</h1>
                 </div>
             </div>
         </div>
@@ -428,23 +428,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/PLSQL%E3%80%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
-                                <span class="chip bg-color">PLSQL、先序遍历</span>
+                            <a href="/tags/12536/">
+                                <span class="chip bg-color">12536</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/technology/" class="post-category">
-                                technology
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -453,14 +444,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-27
+                    2020-04-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-27
+                    2020-04-28
                 </div>
                 
 
@@ -475,149 +466,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="PLSQL实现先序遍历"><a href="#PLSQL实现先序遍历" class="headerlink" title="PLSQL实现先序遍历"></a>PLSQL实现先序遍历</h1><h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>传统的遍历方法需要判断是否有左孩子右兄弟，还有递归的操作。那么想到可不可以不进行递归，直接一条线的去进行遍历，这样就可以降低时间复杂度。</p>
-<p>首先根节点赋值（1，2），后续插入节点则根据一定的排序操作进行赋值更新，这样每一个节点都会被赋以左值和右值。进行遍历时直接按照左节点的大小进行排序，并输出。</p>
-<h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><pre><code class="plsql">create table tree(
- nodename nvarchar2(50) not null,--节点名
- levelnum number(8) not null,--层号
- leftvalue number(8) not null,--左值
- rightvalue number(8) not null);--右值
-
-alter table tree add constraint pk_nodename primary key (nodename);</code></pre>
-<p><strong>表的结构:</strong></p>
-<pre><code class="plsql">SQL&gt;  select * from tree;
-
-NODENAME                                            LEVELNUM LEFTVALUE RIGHTVALUE
---------------------------------------------------  -------- --------- ----------</code></pre>
-<h2 id="插入节点与获取子孙节点"><a href="#插入节点与获取子孙节点" class="headerlink" title="插入节点与获取子孙节点"></a>插入节点与获取子孙节点</h2><p><strong>包头：</strong></p>
-<pre><code class="plsql">create or replace package tree_package is
-  --type retcursor is ref cursor;    
-  -- Author  : 86135
-  -- Created : 2020/4/12 20:27:16
-  -- Purpose : 
-
-   procedure insertnode --插入节点
-     (parentname in varchar2,--父节点名，插入最开始的节点时为空
-      nodename in varchar2
-      );--节点名
-   procedure hqzsjd--获取子孙节点
-     (parentname in varchar2,--父节点名，插入最开始的节点时为空
-      zsjd out sys_refcursor
-      );--子孙节点名
-
-end tree_package;</code></pre>
-<p><strong>包体：</strong></p>
-<pre><code class="plsql">create or replace package body tree_package is
-    --插入节点
-   procedure insertnode (parentname in varchar2,nodename in varchar2 ) is
-    parentright tree.rightvalue%type; --父节点右值
-    parentlevel tree.levelnum%type; --父节点层次
-   begin
-    if parentname is null then
-      insert into tree values (nodename, 1, 1, 2);--即如果是根节点，则直接输入节点名
-    else
-      --如果输入的父节点名在表中已经存在，则将父节点的右值和层次赋给一个变量，以便于后面运用。
-      select rightvalue, levelnum
-        into parentright, parentlevel
-        from tree
-       where nodename = parentname;
-
-      --如果节点的左值大于当前输入节点的父节点的右值名称减一，则左值加2。
-      --因为在插入了一个左孩子以后，所有的右兄弟以及右兄弟的父节点的左右值都需要加2，根节点只需要右节点加2即可。
-      update tree
-         set leftvalue = leftvalue + 2
-       where leftvalue &gt; parentright - 1;
-
-       --如果节点的右值大于当前输入节点的父节点的右值名称减一，则右值加2。因为相当于插入了一个节点，先序遍历的最后回归位置是父节点的右值，所以右值加2.
-      update tree
-         set rightvalue = rightvalue + 2
-       where rightvalue &gt; parentright - 1;
-
-       --插入新的节点，左值为父节点的右值，右值为父节点的右值加1.
-      insert into tree
-      values
-        (nodename, parentlevel + 1, parentright, parentright + 1);
-     end if;
-   end insertnode;
-
-  --输出子孙节点
-   procedure hqzsjd --获取子孙节点
-  (parentname in varchar2, --父节点名
-   zsjd out sys_refcursor--子孙节点名
-   )is
-    parentleft  tree.leftvalue%type; --父节点左值
-    parentright tree.rightvalue%type; --父节点右值
-   begin
-     --将父节点的左值和右值赋给两个变量，用于后续的范围限定
-    select leftvalue,rightvalue
-      into parentleft,parentright
-      from tree
-     where nodename = parentname;
-
-     --直接输出左值在父节点左值和右值之间的子节点。
-    open zsjd for
-      select nodename
-        from tree
-       where leftvalue between parentleft and parentright
-       order by leftvalue asc;
-   end hqzsjd;
-end tree_package;</code></pre>
-<p><strong>插入节点结果：</strong></p>
-<pre><code class="plsql">select * from tree;
-begin  
-tree_package.insertnode(&#39;&#39;, &#39;A&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;B&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;C&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;D&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;E&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;F&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;G&#39;);  
-end;</code></pre>
-<TABLE BORDER="1">
-<TR><TH>NODENAME</TH><TH>LEVELNUM</TH><TH>LEFTVALUE</TH><TH>RIGHTVALUE</TH></TR>
-<TR><TD>A</TD><TD>1</TD><TD>1</TD><TD>14</TD></TR>
-<TR><TD>B</TD><TD>2</TD><TD>2</TD><TD>3</TD></TR>
-<TR><TD>C</TD><TD>2</TD><TD>4</TD><TD>11</TD></TR>
-<TR><TD>D</TD><TD>2</TD><TD>12</TD><TD>13</TD></TR>
-<TR><TD>E</TD><TD>3</TD><TD>5</TD><TD>6</TD></TR>
-<TR><TD>F</TD><TD>3</TD><TD>7</TD><TD>8</TD></TR>
-<TR><TD>G</TD><TD>3</TD><TD>9</TD><TD>10</TD></TR>
-</TABLE>
-**输出子孙节点结果：**
-
-<pre><code class="plsql">begin
-  -- Call the procedure
-  tree_package.hqzsjd(parentname =&gt; :parentname,
-                      zsjd =&gt; :zsjd);
-end;</code></pre>
-<table>
-<thead>
-<tr>
-<th>nodename</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>A</td>
-</tr>
-<tr>
-<td>B</td>
-</tr>
-<tr>
-<td>C</td>
-</tr>
-<tr>
-<td>E</td>
-</tr>
-<tr>
-<td>F</td>
-</tr>
-<tr>
-<td>G</td>
-</tr>
-<tr>
-<td>D</td>
-</tr>
-</tbody></table>
+                <p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2FjSyOCqsySV2LdPJiYbpBQukabmg6HMzww1Rn4T1D82GlC*fOpcJLnCOlJHEU9Qgag!!/mnull&bo=6ANkBegDZAURCT4!&rf=photolist&t=5" alt="img"></p>
 
             </div>
             <hr/>
@@ -643,7 +492,7 @@ end;</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/04/27/PLSQL%E5%AE%9E%E7%8E%B0%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">http://Double-Sail.github.io/2020/04/27/PLSQL%E5%AE%9E%E7%8E%B0%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/</a>
+                    <a href="http://Double-Sail.github.io/2020/04/28/test/">http://Double-Sail.github.io/2020/04/28/test/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -681,8 +530,8 @@ end;</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/PLSQL%E3%80%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
-                                    <span class="chip bg-color">PLSQL、先序遍历</span>
+                                <a href="/tags/12536/">
+                                    <span class="chip bg-color">12536</span>
                                 </a>
                             
                         </div>
@@ -853,7 +702,7 @@ end;</code></pre>
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-04-27T23-28-50',
+        id: '2020-04-28T22-32-30',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -875,9 +724,10 @@ end;</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/04/28/test/">
                     <div class="card-image">
@@ -896,9 +746,9 @@ end;</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -907,6 +757,7 @@ end;</code></pre>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -925,32 +776,32 @@ end;</code></pre>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/15/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5/">
+                <a href="/2020/04/27/PLSQL%E5%AE%9E%E7%8E%B0%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="贪心算法原理与实践">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="PLSQL实现先序遍历">
                         
-                        <span class="card-title">贪心算法原理与实践</span>
+                        <span class="card-title">PLSQL实现先序遍历</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            贪心算法贪心算法的原理贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。
-贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后
+                            PLSQL实现先序遍历理论传统的遍历方法需要判断是否有左孩子右兄弟，还有递归的操作。那么想到可不可以不进行递归，直接一条线的去进行遍历，这样就可以降低时间复杂度。
+首先根节点赋值（1，2），后续插入节点则根据一定的排序操作进行赋值更新，这样
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                    数据结构与算法
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
                                 </a>
                             
                             
@@ -960,8 +811,8 @@ end;</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E3%80%81Java/">
-                        <span class="chip bg-color">贪心算法、Java</span>
+                    <a href="/tags/PLSQL%E3%80%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
+                        <span class="chip bg-color">PLSQL、先序遍历</span>
                     </a>
                     
                 </div>
