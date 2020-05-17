@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="PLSQL学习日志（二）, Double-Sail">
+    <meta name="keywords" content="简述面向对象语言的封装、继承、多态, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>PLSQL学习日志（二） | Double-Sail</title>
+    <title>简述面向对象语言的封装、继承、多态 | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">PLSQL学习日志（二）</h1>
+                    <h1 class="description center-align post-title">简述面向对象语言的封装、继承、多态</h1>
                 </div>
             </div>
         </div>
@@ -428,8 +428,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/PLSQL/">
-                                <span class="chip bg-color">PLSQL</span>
+                            <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/">
+                                <span class="chip bg-color">面向对象三大特性</span>
                             </a>
                         
                     </div>
@@ -453,14 +453,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-06
+                    2020-05-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-06
+                    2020-05-17
                 </div>
                 
 
@@ -475,161 +475,78 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="过程、函数、包"><a href="#过程、函数、包" class="headerlink" title="过程、函数、包"></a>过程、函数、包</h1><a id="more"></a>
-
-<h2 id="1-1-存储过程"><a href="#1-1-存储过程" class="headerlink" title="1.1    存储过程"></a>1.1    存储过程</h2><h3 id="1-1-1-创建存储过程"><a href="#1-1-1-创建存储过程" class="headerlink" title="1.1.1    创建存储过程"></a>1.1.1    创建存储过程</h3><p>存储过程是事先经过编译并存储在数据库中的一段SQL语句的集合，调用存储过程可以简化应用开发人员的很多工作，减少数据在数据库和应用服务器之间的传输，对于提高数据处理的效率是有好处的。</p>
-<p><strong>优点：</strong></p>
+                <h1 id="简述面向对象语言的封装、继承、多态"><a href="#简述面向对象语言的封装、继承、多态" class="headerlink" title="简述面向对象语言的封装、继承、多态"></a>简述面向对象语言的封装、继承、多态</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>面向对象可以理解成是对现实事物的抽象，将一类事物抽象成为一个类。而面向对象的语言都具有三大特性：封装、继承、多态。</p>
 <ul>
-<li>允许模块化程序设计，就是说只需要创建一次过程，以后在程序中就可以调用该过程任意次。</li>
-<li>允许更快执行，如果某操作需要执行大量SQL语句或重复执行，存储过程比SQL语句执行的要快。</li>
-<li>减少网络流量，例如一个需要数百行的SQL代码的操作由一条执行语句完成，不需要在网络中发送数百行代码。</li>
-<li>更好的安全机制，对于没有权限执行存储过程的用户，也可授权他们执行存储过程。 </li>
+<li>封装可以隐藏细节，使得代码模块化，这在plsql也有类似的概念。</li>
+<li>继承可以扩展已存在的代码模块，运用继承的目的可以简单的理解为代码重用。</li>
+<li>多态是为了实现接口重用。</li>
 </ul>
-<h3 id="1-1-2-创建存储过程的语法"><a href="#1-1-2-创建存储过程的语法" class="headerlink" title="1.1.2    创建存储过程的语法"></a>1.1.2    <strong>创建存储过程的语法</strong></h3><pre><code class="plsql">create [or replace] procedure 存储过程名（param1 in type，param2 out type）
-as
-   变量1 类型（值范围）;
-   变量2 类型（值范围）;
-begin
-   语句;
-exception
-   when others then
-        rollback;
-end;</code></pre>
-<h3 id="1-1-3-存储过程的参数"><a href="#1-1-3-存储过程的参数" class="headerlink" title="1.1.3    存储过程的参数"></a>1.1.3    存储过程的参数</h3><p>oracle为了增强存储过程的灵活性，提供向存储过程传入参数的功能。参数是一种向程序单元输入和输出数据的机制。具体参数模式如下：</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装性在java中的体现主要是：方法，权限控制符等。在plsql中的存储过程也可以理解成一种封装。</p>
+<h3 id="封装的意义"><a href="#封装的意义" class="headerlink" title="封装的意义"></a>封装的意义</h3><p>保护或者放置代码被无意的破坏。因为面向对象的编程思想中，数据被看作是一个中心的元素，并且和使用它的函数结合很密切，从而保护它不会被其他的函数意外的修改。</p>
+<p>plsql中的存储过程类似于java中的方法，但是java中的权限控制符确实plsql中没有的。java中的权限控制符主要是如下几种：private，default，protected，public。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>private</th>
+<th>default</th>
+<th>protected</th>
+<th>public</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同一类中</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>同一包中</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>子类</td>
+<td></td>
+<td></td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>全局范围</td>
+<td></td>
+<td></td>
+<td></td>
+<td>√</td>
+</tr>
+</tbody></table>
+<p>封装性是三大特性中，相对来说最好理解的一种。</p>
+<p>虽然private关键字表示只有在同一个类中才能进行使用。但是可以通过使用get—set方法（即在类中编写一对get，set。使别的类可以调用此方法来实现对private限制的变量进行引用）。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承，顾名思义，就是继承之前已经有的东西。运用到面向对象的思想中就是，在原本已经编写好的类中，添加新的功能，但是无需重新编写原来的类。</p>
+<p>通过继承创建的新类成为“子类”，“派生类”。被继承的类成为“基类”，“父类”，“超类”。实现继承主要是通过“继承”和“组合”两种方式。</p>
+<p>继承和组合的区别可以简单地理解成，组合是在新编写的类中，运用已有的类，只是运用功能而不是运用形式。而继承则是利用现有类的形式创建新的类，即在原有的基础上添加新的代码。</p>
+<p>但是有几个注意事项：</p>
 <ul>
-<li><strong>in</strong>是参数的默认模式，这种模式就是在程序运行的时候已经具有值，在程序体中值不会改变。参数值由调用方传入，并且只能被存储过程读取。</li>
+<li>继承可以从一定程度上访问了父类的实现细节和方法，违背了封装的定义。对父类进行的修改会影响到子类，所以在设计上应该优先考虑使用组合。</li>
+<li>一般情况下，一个子类只有一个基类，如果需要实现多重继承，即同时继承多个父类，可以通过多级继承来实现。</li>
 </ul>
-<p>eg. 创建一个过程，定义三个in模式变量，然后将这三个变量的值插入到dept表中，代码如下：</p>
-<pre><code class="plsql">create or replace procedure insert dept(
-    num_deptno in number,    --定义N模式的变量,它存储部门编号
-    var_ename in varchar2,    --定义N模式的变量,它存储部门名称
-    var_loc in varchar2)is
-begin
-    insert into dept        
-    values(num_deptno,var_ename,var_loc);    --向dept表中插入记录
-    commit;        --提交数据库
-end insert dept;</code></pre>
-<p>注意：存储过程的参数不可以指定长度。</p>
-<p>在调用这个存储过程时，需要传入参数来保证执行部分有值参与操作。具体有以下三种传递方法：</p>
+<h3 id="继承的实现方式"><a href="#继承的实现方式" class="headerlink" title="继承的实现方式"></a>继承的实现方式</h3><p>继承的实现方式有三类：实现继承、接口继承和可视继承。</p>
 <ol>
-<li><p>指定名称传递</p>
-<p>语法如下：</p>
-<p><code>过程名称（参数名称1=&gt;参数值[,参数名称2=&gt;参数值2]）</code></p>
-<p>拿上一小节的过程举例</p>
-<pre><code class="plsql">begin
- insert_dept(var_ename=&gt;&#39;采购部&#39;;var_loc=&gt;&#39;成都&#39;,num_deptno=&gt;15);
-end;</code></pre>
-</li>
+<li><strong>实现继承</strong>是指使用基类的属性和方法而无需额外编码的能力；</li>
+<li><strong>接口继承</strong>是指仅使用属性和方法的名称、但是子类必须提供实现的能力；</li>
+<li><strong>可视继承</strong>是指子窗体（类）使用基窗体（类）的外观和实现代码的能力。</li>
 </ol>
-<p><strong>可以看到，传递参数值和参数的定义顺序无关，但与参数的个数有关。</strong></p>
-<ol start="2">
-<li>按位置传递</li>
-</ol>
-<p>指定名称传递直观易读，但是在参数过多时，会显得代码冗长。所以可以直接按位置传递，这种方式和参数定义顺序有关，必须和过程中定义的参数顺序相同。</p>
-<pre><code class="plsql">begin
- insert_dept(15,&#39;采购部&#39;;&#39;成都&#39;);
-end;</code></pre>
-<ol start="3">
-<li>混合方式传递</li>
-</ol>
-<p>即将二者有点结合在一起。</p>
-<pre><code class="plsql">exec insert_dept (15,var_loc=&gt;&#39;成都&#39;,var_ename=&gt;&#39;采购部&#39;);</code></pre>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态的思想就是同一个操作用于不同的对象，可以有不同的解释，产生不同的执行结果。</p>
+<p>但是多态具有三个条件：</p>
 <ul>
-<li><p><strong>out</strong> 模式定义的参数只能在过程体内部赋值，表示该参数可以将某个值传递回调用他的过程。</p>
-</li>
-<li><p><strong>in out</strong> 表示高参数可以向该过程中传递值，也可以将某个值传出去。</p>
-</li>
-<li><p><strong>in参数的默认值</strong>  oracle在声明in参数的同时给其初始化一个默认值没。这样在运行过程时，如果没有参数，就会使用这个默认参数。</p>
-</li>
+<li>需要有继承（继承是多态的基础，没有继承就没有多态）</li>
+<li>子类重写父类的方法（多态下调用子类重写的方法）</li>
+<li>父类引用变量指向子类对象（子类到父类的类型转换）</li>
 </ul>
-<p><strong>注意：</strong>在使用in模式时，若是使用默认参数可能会出现传值的顺序不固定的情况，所以   </p>
-<p>​            最好使用指定名称传递，这样程序就不会出现混乱。</p>
-<h3 id="1-1-4-删除存储过程"><a href="#1-1-4-删除存储过程" class="headerlink" title="1.1.4    删除存储过程"></a>1.1.4    删除存储过程</h3><p>将过程从内存中删除，释放内存空间，用以下语句：</p>
-<pre><code class="plsql">drop procedure count_num;</code></pre>
-<p><strong>eg.</strong> 定一个存体过程:获取给定部门的工资私(通过out参数),要:部门号和工总定义方数</p>
-<pre><code class="plsql">--定一个存体过程:获取给定部门的工资私(通过out参数),要:部门号和工总定义方数
-create or replace procedure get_sal2 (dept_id number,sumsal out number)
-is
-       cursor salary_cursor is select salary from employees where department_id=dept_id;
-begin
-       sumsal :=0;
-       for c in salary_cursor loop
-           sumsal :=sumsal+c.salary;
-       end loop;
-       dbms_output.put_line(sumsal);
-end;</code></pre>
-<p>调用过程并传参</p>
-<pre><code class="plsql">declare
-  v_sal number(10):=0;
-begin
-  get_sal2(80,v_sal);
-end;</code></pre>
-<h2 id="1-2-函数"><a href="#1-2-函数" class="headerlink" title="1.2    函数"></a>1.2    函数</h2><h3 id="1-2-1-创建函数"><a href="#1-2-1-创建函数" class="headerlink" title="1.2.1    创建函数"></a>1.2.1    创建函数</h3><p>与存储过程的功能类似，但是不同的是函数有一个返回值，且不需要单独的语句调用。Oracle创建函数是通过PL/SQL自定义编写的，通过关键字function按照自己的需求把复杂的业务逻辑封装进PL/SQL函数中，函数提供一个返回值，返回给使用者。这样使用者就不需要去理解业务逻辑，把PL/SQL函数中的业务逻辑交给专门的开发人员进行编写。</p>
-<p>PL/SQL函数主要有下面几部分组成：</p>
-<ol>
-<li>输入部分：PL/SQL函数可以有输入参数，在调用函数时，必须给输入参数赋值。</li>
-<li>逻辑计算部分：逻辑计算部分是由PL/SQL块组成业务逻辑计算部分。这部分主要是通过输入参数、表数据、SQL计算函数等进行逻辑计算得到想要的结果。</li>
-<li>输出部分：通过逻辑计算部分，我们会得到一个函数的唯一返回值进行返回（函数必须要有返回值）。</li>
-</ol>
-<p><strong>语法结构如下：</strong></p>
-<pre><code class="plsql">create [or replace] function 函数名 ([p1,p2...pn])
---中括号里面是入参，oracle创建函数可以不需要入参。
-return datatype
-is|as
---声明部分 
-begin
---PL/SQL程序块
-end</code></pre>
-<p><strong>eg.</strong> 创建一个函数，输出hello world，并且给函数一个字符串参数</p>
-<pre><code class="plsql">--返回一个hello world！
-create or replace function hello_world(v_logo varchar2)
- return  varchar2
- is
-begin
-  return &#39;hello world!&#39;||v_logo;
-end;</code></pre>
-<p><strong>调用函数</strong></p>
-<ul>
-<li>运用PLSQL语句编写</li>
-</ul>
-<pre><code class="plsql">begin
-  dbms_output.put_line(hello_world(&#39;杨帆&#39;)); 
-end;</code></pre>
-<ul>
-<li>直接使用sql语句</li>
-</ul>
-<pre><code class="plsql">select hello_world(&#39;杨帆&#39;) from  dual;</code></pre>
-<h3 id="1-2-2-删除函数"><a href="#1-2-2-删除函数" class="headerlink" title="1.2.2    删除函数"></a>1.2.2    删除函数</h3><p>Oracle函数的修改是通过<code>or replace</code>关键词对原有的函数进行编辑覆盖，因此可以通过<strong>pl/sql developer</strong>工具直接点击右键进行编辑修改，修改完点击执行，即可完成覆盖。</p>
-<p>Oracle函数的删除是通过drop命令进行删除的，语法结构如下：</p>
-<pre><code class="plsql">drop function 函数名;</code></pre>
-<h2 id="1-3-程序包"><a href="#1-3-程序包" class="headerlink" title="1.3    程序包"></a>1.3    程序包</h2><h3 id="1-3-1-程序包的规范"><a href="#1-3-1-程序包的规范" class="headerlink" title="1.3.1    程序包的规范"></a>1.3.1    程序包的规范</h3><p>该“规范”用于规定在程序包中可以使用哪些变量、类型、游标和子程序(指各种命名的 PLSQL块),需要注意的是程序包一定要在“包主体”之前被创建,其语法格式如下：</p>
-<pre><code class="plsql">CREATE OR REPLACE PACKAGE 程序包名称 IS
-    规范内声明的变量；
-    规范内声明的类型；
-    规范内定义的游标；
-    规范内声明的函数；--但定义参数和返回值类型，不包括函数体；
-    规范内声明的存储过程；--但仅定义参数，不包括存储过程主体；
-END； </code></pre>
-<h3 id="1-3-2-程序包的主体"><a href="#1-3-2-程序包的主体" class="headerlink" title="1.3.2    程序包的主体"></a>1.3.2    程序包的主体</h3><p>程序包的主体包含了在规范中声明的游标,过程和函数的实现代码。另外,也可以在程序包的主体中声明一些内部变量,<strong>程序包主体的名称必须与规范的名称相同</strong>,这样通过这个相同的名称 Oracle就可以将“规范”和“主体”结合在一起组成程序包,并实现一起进行编译代码,在实现函数或存储过程主体时,可以将每一个函数成存储过程作为一个独立的 PL/SQL块来处理。与创建“规范”不同的是,创建程序包主体使用create package body语句,而不是 create package语句。建程序包主体的代码如下：</p>
-<pre><code class="plsql">CREATE [OR REPLACE] PACKAGE BODY 包名称 IS
- 程序包主体的内部变量；
- 游标主体;
- 从规范中引入的函数头的声明;
- BEGIN
-   功能语句;--这是函数主要功能的实现部分。
- EXCEPTION
-   异常处理语句；
- END
-
- 从规范中引入的存储过程头部声明；
- BEGIN
-    功能语句;--这是存储过程的功能的实现部分
- EXCEPTION
-    异常处理语句；
- END
-……
-END;</code></pre>
-<p>​    </p>
+<p>所以说，重载和重写是实现多态的两种主要方式。</p>
 
             </div>
             <hr/>
@@ -655,7 +572,7 @@ END;</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/">http://Double-Sail.github.io/2020/04/06/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%BA%8C%EF%BC%89/</a>
+                    <a href="http://Double-Sail.github.io/2020/05/17/%E7%AE%80%E8%BF%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81/">http://Double-Sail.github.io/2020/05/17/%E7%AE%80%E8%BF%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -693,8 +610,8 @@ END;</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/PLSQL/">
-                                    <span class="chip bg-color">PLSQL</span>
+                                <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/">
+                                    <span class="chip bg-color">面向对象三大特性</span>
                                 </a>
                             
                         </div>
@@ -865,7 +782,7 @@ END;</code></pre>
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-04-06T02-58-48',
+        id: '2020-05-17T21-04-37',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -887,32 +804,33 @@ END;</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/06/%E4%B8%AD%E6%96%87%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B0%8F%E5%86%99%E9%98%BF%E6%8B%89%E4%BC%AF%E6%95%B0%E5%AD%97%E2%80%94%E2%80%94Oracle/">
+                <a href="/2020/05/17/%E7%AE%80%E8%BF%B0%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%A4%9A%E6%80%81/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="中文数字转换为小写阿拉伯数字——Oracle">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="简述面向对象语言的封装、继承、多态">
                         
-                        <span class="card-title">中文数字转换为小写阿拉伯数字——Oracle</span>
+                        <span class="card-title">简述面向对象语言的封装、继承、多态</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Oracle实现中文数字转换成阿拉伯数字
+                            简述面向对象语言的封装、继承、多态前言面向对象可以理解成是对现实事物的抽象，将一类事物抽象成为一个类。而面向对象的语言都具有三大特性：封装、继承、多态。
 
-1.    通过if…elsif语句实现下面是用最简单的if…else语句实现“一至二十”的中文数字转换成阿拉伯数字，即使用条件判断语句去实现一一对应的关系。
-create or replace 
+封装可以隐藏细节，使得代码模块化，这在plsql也有类似的概念。
+继承可以扩展已存在
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -925,11 +843,12 @@ create or replace
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Oracle%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">
-                        <span class="chip bg-color">Oracle数字类型转换</span>
+                    <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/">
+                        <span class="chip bg-color">面向对象三大特性</span>
                     </a>
                     
                 </div>
@@ -943,29 +862,27 @@ create or replace
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/05/PLSQL%E5%AD%A6%E4%B9%A0%E6%97%A5%E5%BF%97%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <a href="/2020/04/27/PLSQL%E5%AE%9E%E7%8E%B0%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="PLSQL学习日志（一）">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="PLSQL实现先序遍历">
                         
-                        <span class="card-title">PLSQL学习日志（一）</span>
+                        <span class="card-title">PLSQL实现先序遍历</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            PLSQL编程
+                            PLSQL实现先序遍历
 
-1.1    PL/SQL简介1.1.1    PL/SQL块结构DECLARE（可选） 
---定义标识符，标识符：变量，常量，游标 
-BEGIN：开始执行主体（必须） --类似于java中的main方法
---SQL 语句
+理论传统的遍历方法需要判断是否有左孩子右兄弟，还有递归的操作。那么想到可不可以不进行递归，直接一条线的去进行遍历，这样就可以降低时间复杂度。
+首先根节点赋值（1，2），后续插入节点则根据一定的排序操作进行赋值更新，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-27
                             </span>
                         <span class="publish-author">
                             
@@ -982,8 +899,8 @@ BEGIN：开始执行主体（必须） --类似于java中的main方法
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/PLSQL/">
-                        <span class="chip bg-color">PLSQL</span>
+                    <a href="/tags/PLSQL%E3%80%81%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86/">
+                        <span class="chip bg-color">PLSQL、先序遍历</span>
                     </a>
                     
                 </div>

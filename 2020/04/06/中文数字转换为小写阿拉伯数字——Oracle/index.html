@@ -460,7 +460,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-04-09
+                    2020-04-30
                 </div>
                 
 
@@ -475,7 +475,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Oracle实现中文数字转换成阿拉伯数字"><a href="#Oracle实现中文数字转换成阿拉伯数字" class="headerlink" title="Oracle实现中文数字转换成阿拉伯数字"></a>Oracle实现中文数字转换成阿拉伯数字</h1><h2 id="1-通过if…elsif语句实现"><a href="#1-通过if…elsif语句实现" class="headerlink" title="1.    通过if…elsif语句实现"></a>1.    通过if…elsif语句实现</h2><p>下面是用最简单的if…else语句实现“一至二十”的中文数字转换成阿拉伯数字，即使用条件判断语句去实现一一对应的关系。</p>
+                <h1 id="Oracle实现中文数字转换成阿拉伯数字"><a href="#Oracle实现中文数字转换成阿拉伯数字" class="headerlink" title="Oracle实现中文数字转换成阿拉伯数字"></a>Oracle实现中文数字转换成阿拉伯数字</h1><a id="more"></a>
+
+<h2 id="1-通过if…elsif语句实现"><a href="#1-通过if…elsif语句实现" class="headerlink" title="1.    通过if…elsif语句实现"></a>1.    通过if…elsif语句实现</h2><p>下面是用最简单的if…else语句实现“一至二十”的中文数字转换成阿拉伯数字，即使用条件判断语句去实现一一对应的关系。</p>
 <pre><code class="plsql">create or replace function numchange(val in varchar2)
 return number is res number;
 
@@ -898,7 +900,9 @@ NUMCHANGEPRO(&#39;九千九百九十九点九五三&#39;)
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Oracle正则表达式1.    常用字符1.1    匹配字符
+                            Oracle正则表达式
+
+1.    常用字符1.1    匹配字符
 
 
 字符类
@@ -914,7 +918,7 @@ NUMCHANGEPRO(&#39;九千九百九十九点九五三&#39;)
 
 \D
 任一非数字字符
-\D\D\D 匹配 abc, 但不
+\D\D\D 匹配 abc, 
                         
                     </div>
                     <div class="publish-info">
