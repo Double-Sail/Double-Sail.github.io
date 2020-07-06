@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -479,109 +479,109 @@
 <p>主要的功能是模拟用户上传头像的案例，其中包括获取要上传图片的合法路径，判断要上传的文件是否存在以及具体的上传功能的实现。</p>
 <h2 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h2><p>模拟用户上传头像的功能，假设所有的用户头像都应该上传到项目下的lib文件夹<br>1.定义一个方法，用来获取上传的用户头像的路径。 getPath();<br>2.定义一个方法，用来判断要上传的用户头像，在lib文件夹中是否存在<br>3.如果存在，提示：该用户头像已经存在，上传失败<br>4.如果不存在，就上传该用户的头像，并提示上传成功。</p>
 <p><strong>代码：</strong></p>
-<pre><code class="java">package uploadFile;
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> uploadFile<span class="token punctuation">;</span>
 
-import java.io.*;
-import java.util.Scanner;
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span>
 
-/**
+<span class="token comment" spellcheck="true">/**
  * @author Double-Sail
  * @date 2020/7/6 - 22:13
- */
-public class UploadFile {
-    public static void main(String[] args) throws IOException {
-        //需求：模拟用户上传头像的功能，假设所有的用户头像都应该上传到项目下的lib文件夹
-        //定义一个方法，用来获取上传的用户头像的路径。 getPath();
-        File path = getPath();
-        System.out.println(path);  //E:\Document\photos\毕业照片人样板\QQ图片20190606133301.jpg
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UploadFile</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//需求：模拟用户上传头像的功能，假设所有的用户头像都应该上传到项目下的lib文件夹</span>
+        <span class="token comment" spellcheck="true">//定义一个方法，用来获取上传的用户头像的路径。 getPath();</span>
+        File path <span class="token operator">=</span> <span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//E:\Document\photos\毕业照片人样板\QQ图片20190606133301.jpg</span>
 
-        //定义一个方法，用来判断要上传的用户头像，在lib文件夹中是否存在
-        boolean flag = isExists(path.getName());
+        <span class="token comment" spellcheck="true">//定义一个方法，用来判断要上传的用户头像，在lib文件夹中是否存在</span>
+        <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token function">isExists</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //如果存在，提示：该用户头像已经存在，上传失败
-        if(flag){
-            System.out.println(&quot;该用户头像已经存在，上传失败！&quot;);
-        }else{
-            //如果不存在，就上传该用户的头像，并提示上传成功。
-            uploadFile(path);
-        }
+        <span class="token comment" spellcheck="true">//如果存在，提示：该用户头像已经存在，上传失败</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"该用户头像已经存在，上传失败！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//如果不存在，就上传该用户的头像，并提示上传成功。</span>
+            <span class="token function">uploadFile</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-    }
+    <span class="token punctuation">}</span>
 
-    //定义一个方法，用来获取上传的用户头像的路径。 getPath();
-    //用来获取要上传的用户头像的路径，返回具体要上传的用户头像的路径。
-    public static File getPath(){
-        //提示用户录入要上传的用户头像路径，并接收。
-        Scanner sc = new Scanner(System.in);
+    <span class="token comment" spellcheck="true">//定义一个方法，用来获取上传的用户头像的路径。 getPath();</span>
+    <span class="token comment" spellcheck="true">//用来获取要上传的用户头像的路径，返回具体要上传的用户头像的路径。</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> File <span class="token function">getPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//提示用户录入要上传的用户头像路径，并接收。</span>
+        Scanner sc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //因为不知道需要多少次录入正确，需要用到循环加以改进
-        while (true){
-            System.out.println(&quot;请录入您要上传的用户头像的路径:&quot;);
-            String path = sc.nextLine();
-            //判断改路径的后缀是不是：jpg，png，bmp
-            //如果不是，提示：您录入的不是图片，请重新录入
-            if (!path.endsWith(&quot;.jpg&quot;) &amp;&amp; !path.endsWith(&quot;.png&quot;) &amp;&amp; !path.endsWith(&quot;bmp&quot;)){
-                System.out.println(&quot;您录入的不是图片，请重新录入:&quot;);
-                //细节，如果录入不是图片，直接continue，因为不需要再判断是不是存在，是不是文件
-                continue;
-            }
-            //如果是，程序接着执行，判断改路径是否存在，并且是否是文件
-            File file = new File(path);
-            if(file.exists()&amp;&amp;file.isFile()){
-                //如果是，就是需要的数据（图片文件），直接返回
-                return file;
-            }else{
-                //如果不是文件，提示：您录入的路径不合法，请重新录入
-                System.out.println(&quot;您录入的路径不合法，请重新录入&quot;);
-            }
-        }
-    }
+        <span class="token comment" spellcheck="true">//因为不知道需要多少次录入正确，需要用到循环加以改进</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"请录入您要上传的用户头像的路径:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String path <span class="token operator">=</span> sc<span class="token punctuation">.</span><span class="token function">nextLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//判断改路径的后缀是不是：jpg，png，bmp</span>
+            <span class="token comment" spellcheck="true">//如果不是，提示：您录入的不是图片，请重新录入</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>path<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">".jpg"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>path<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">".png"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>path<span class="token punctuation">.</span><span class="token function">endsWith</span><span class="token punctuation">(</span><span class="token string">"bmp"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"您录入的不是图片，请重新录入:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//细节，如果录入不是图片，直接continue，因为不需要再判断是不是存在，是不是文件</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//如果是，程序接着执行，判断改路径是否存在，并且是否是文件</span>
+            File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>file<span class="token punctuation">.</span><span class="token function">isFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//如果是，就是需要的数据（图片文件），直接返回</span>
+                <span class="token keyword">return</span> file<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//如果不是文件，提示：您录入的路径不合法，请重新录入</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"您录入的路径不合法，请重新录入"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    //定义一个方法，用来判断要上传的用户头像，在lib文件夹中是否存在
-    public static boolean isExists(String path){
-        //将lib文件夹封装成file对象
-        File file = new File(&quot;lib&quot;);
-        //获取lib文件夹中所有的文件的名称数组
-        String[] names = file.list();
-        //遍历第二步获取到的数组，用获取到的数据依次和path进行比较
-        for(String name :names){
-            if(name.equals(path)){
-                //如果一致，说明已经存在，返回true
-                return true;
-            }
-        }
-        //如果不一致，返回false
-        return false;
-    }
+    <span class="token comment" spellcheck="true">//定义一个方法，用来判断要上传的用户头像，在lib文件夹中是否存在</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">boolean</span> <span class="token function">isExists</span><span class="token punctuation">(</span>String path<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//将lib文件夹封装成file对象</span>
+        File file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"lib"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取lib文件夹中所有的文件的名称数组</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> names <span class="token operator">=</span> file<span class="token punctuation">.</span><span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//遍历第二步获取到的数组，用获取到的数据依次和path进行比较</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>String name <span class="token operator">:</span>names<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//如果一致，说明已经存在，返回true</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//如果不一致，返回false</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    //定义方法，用来上传具体的头像
+    <span class="token comment" spellcheck="true">//定义方法，用来上传具体的头像</span>
 
-    /**
+    <span class="token comment" spellcheck="true">/**
      * 用于上传具体的用户头像
      * @param path  数据源文件的路径
-     */
-    public static void uploadFile(File path) throws IOException {
-        //创建字节输入流，关联数据源文件
-        BufferedInputStream bis = new BufferedInputStream(new FileInputStream(path));
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span>File path<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建字节输入流，关联数据源文件</span>
+        BufferedInputStream bis <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //创建字节输出流，关联数据源文件
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(&quot;lib/&quot;+path.getName()));
+        <span class="token comment" spellcheck="true">//创建字节输出流，关联数据源文件</span>
+        BufferedOutputStream bos <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span><span class="token string">"lib/"</span><span class="token operator">+</span>path<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //定义变量，记录读取到的数据
-        int len;
+        <span class="token comment" spellcheck="true">//定义变量，记录读取到的数据</span>
+        <span class="token keyword">int</span> len<span class="token punctuation">;</span>
 
-        //循环读取，只要条件满足就一直读，并将读取到的数据赋值给变量
-        while ((len = bis.read()) != -1){
-            //将读取到的数据写入到目的地文件中
-            bos.write(len);
-        }
-        //释放资源
-        bis.close();
-        bos.close();
+        <span class="token comment" spellcheck="true">//循环读取，只要条件满足就一直读，并将读取到的数据赋值给变量</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> bis<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//将读取到的数据写入到目的地文件中</span>
+            bos<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//释放资源</span>
+        bis<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        bos<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        System.out.println(&quot;上传成功！&quot;);
-    }
-}</code></pre>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"上传成功！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>

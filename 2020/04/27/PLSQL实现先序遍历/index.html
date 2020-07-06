@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -479,7 +479,7 @@
 
 <h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><p>传统的遍历方法需要判断是否有左孩子右兄弟，还有递归的操作。那么想到可不可以不进行递归，直接一条线的去进行遍历，这样就可以降低时间复杂度。</p>
 <p>首先根节点赋值（1，2），后续插入节点则根据一定的排序操作进行赋值更新，这样每一个节点都会被赋以左值和右值。进行遍历时直接按照左节点的大小进行排序，并输出。</p>
-<h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><pre><code class="plsql">create table tree(
+<h2 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h2><pre class=" language-plsql"><code class="language-plsql">create table tree(
  nodename nvarchar2(50) not null,--节点名
  levelnum number(8) not null,--层号
  leftvalue number(8) not null,--左值
@@ -487,12 +487,12 @@
 
 alter table tree add constraint pk_nodename primary key (nodename);</code></pre>
 <p><strong>表的结构:</strong></p>
-<pre><code class="plsql">SQL&gt;  select * from tree;
+<pre class=" language-plsql"><code class="language-plsql">SQL>  select * from tree;
 
 NODENAME                                            LEVELNUM LEFTVALUE RIGHTVALUE
 --------------------------------------------------  -------- --------- ----------</code></pre>
 <h2 id="插入节点与获取子孙节点"><a href="#插入节点与获取子孙节点" class="headerlink" title="插入节点与获取子孙节点"></a>插入节点与获取子孙节点</h2><p><strong>包头：</strong></p>
-<pre><code class="plsql">create or replace package tree_package is
+<pre class=" language-plsql"><code class="language-plsql">create or replace package tree_package is
   --type retcursor is ref cursor;    
   -- Author  : 86135
   -- Created : 2020/4/12 20:27:16
@@ -509,7 +509,7 @@ NODENAME                                            LEVELNUM LEFTVALUE RIGHTVALU
 
 end tree_package;</code></pre>
 <p><strong>包体：</strong></p>
-<pre><code class="plsql">create or replace package body tree_package is
+<pre class=" language-plsql"><code class="language-plsql">create or replace package body tree_package is
     --插入节点
    procedure insertnode (parentname in varchar2,nodename in varchar2 ) is
     parentright tree.rightvalue%type; --父节点右值
@@ -528,12 +528,12 @@ end tree_package;</code></pre>
       --因为在插入了一个左孩子以后，所有的右兄弟以及右兄弟的父节点的左右值都需要加2，根节点只需要右节点加2即可。
       update tree
          set leftvalue = leftvalue + 2
-       where leftvalue &gt; parentright - 1;
+       where leftvalue > parentright - 1;
 
        --如果节点的右值大于当前输入节点的父节点的右值名称减一，则右值加2。因为相当于插入了一个节点，先序遍历的最后回归位置是父节点的右值，所以右值加2.
       update tree
          set rightvalue = rightvalue + 2
-       where rightvalue &gt; parentright - 1;
+       where rightvalue > parentright - 1;
 
        --插入新的节点，左值为父节点的右值，右值为父节点的右值加1.
       insert into tree
@@ -565,15 +565,15 @@ end tree_package;</code></pre>
    end hqzsjd;
 end tree_package;</code></pre>
 <p><strong>插入节点结果：</strong></p>
-<pre><code class="plsql">select * from tree;
+<pre class=" language-plsql"><code class="language-plsql">select * from tree;
 begin  
-tree_package.insertnode(&#39;&#39;, &#39;A&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;B&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;C&#39;);  
-tree_package.insertnode(&#39;A&#39;, &#39;D&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;E&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;F&#39;);  
-tree_package.insertnode(&#39;C&#39;, &#39;G&#39;);  
+tree_package.insertnode('', 'A');  
+tree_package.insertnode('A', 'B');  
+tree_package.insertnode('A', 'C');  
+tree_package.insertnode('A', 'D');  
+tree_package.insertnode('C', 'E');  
+tree_package.insertnode('C', 'F');  
+tree_package.insertnode('C', 'G');  
 end;</code></pre>
 <TABLE BORDER="1">
 <TR><TH>NODENAME</TH><TH>LEVELNUM</TH><TH>LEFTVALUE</TH><TH>RIGHTVALUE</TH></TR>
@@ -587,10 +587,10 @@ end;</code></pre>
 </TABLE>
 **输出子孙节点结果：**
 
-<pre><code class="plsql">begin
+<pre class=" language-plsql"><code class="language-plsql">begin
   -- Call the procedure
-  tree_package.hqzsjd(parentname =&gt; :parentname,
-                      zsjd =&gt; :zsjd);
+  tree_package.hqzsjd(parentname => :parentname,
+                      zsjd => :zsjd);
 end;</code></pre>
 <table>
 <thead>

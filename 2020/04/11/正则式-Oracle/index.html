@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -655,24 +655,24 @@
 </tr>
 </tbody></table>
 <p><strong>注意：</strong>sql语句中的转义字符可以自己定义，用escape关键字即可。</p>
-<pre><code class="plsql">select * from dept_temp where dname like &#39;ITa_%&#39; escape &#39;a&#39;;
+<pre class=" language-plsql"><code class="language-plsql">select * from dept_temp where dname like 'ITa_%' escape 'a';
 --即将a定义成了转义字符，将_转换成它本身的含义，而不是通配符。</code></pre>
 <h2 id="2-常用函数"><a href="#2-常用函数" class="headerlink" title="2.    常用函数"></a>2.    常用函数</h2><p>正则式中主要有五种常用的函数</p>
 <h3 id="2-1-regexp-like"><a href="#2-1-regexp-like" class="headerlink" title="2.1     regexp_like"></a>2.1     regexp_like</h3><p><strong>regexp_like(expression, regexp)</strong></p>
 <p>返回值为一个布尔值。如果第一个参数匹配第二个参数所代表的正则表达式，那么将返回真，否则将返回假。</p>
 <p><strong>举例:</strong> </p>
-<pre><code class="plsql">select * from people where regexp_like(name, &#39;^J.*$&#39;); </code></pre>
+<pre class=" language-plsql"><code class="language-plsql">select * from people where regexp_like(name, '^J.*$'); </code></pre>
 <p>即在people表中匹配name列中以J开头，且后面跟着匹配任意次的任意字符，直到字符串结尾。</p>
 <p><strong>相当于:</strong> </p>
-<pre><code class="plsql">select * from people where name like &#39;J%&#39;; </code></pre>
+<pre class=" language-plsql"><code class="language-plsql">select * from people where name like 'J%'; </code></pre>
 <p><strong>注意：</strong></p>
 <p>在进行正则表达式匹配时，还可以忽略字符大小写形式进行匹配。但是不能解除[[:upper:]]和[[:lower:]]的作用.</p>
-<pre><code class="plsql">select * from people where regexp_like(name, &#39;or&#39;); 
-select * from people where regexp_like(name, &#39;or&#39;, &#39;i&#39;);  
+<pre class=" language-plsql"><code class="language-plsql">select * from people where regexp_like(name, 'or'); 
+select * from people where regexp_like(name, 'or', 'i');  
 --‘i’表示忽略大小写</code></pre>
 <p><strong>举例：</strong></p>
-<pre><code class="plsql">--查找员工姓名以“a”字母开头，不区分大小写
-SQL&gt; select empno,ename from emp where regexp_like(ename,&#39;^a&#39;,&#39;i&#39;);
+<pre class=" language-plsql"><code class="language-plsql">--查找员工姓名以“a”字母开头，不区分大小写
+SQL> select empno,ename from emp where regexp_like(ename,'^a','i');
      EMPNO ENAME
 ---------- ----------
       7499 ALLEN
@@ -680,17 +680,17 @@ SQL&gt; select empno,ename from emp where regexp_like(ename,&#39;^a&#39;,&#39;i&
 <h3 id="2-2-regexp-instr"><a href="#2-2-regexp-instr" class="headerlink" title="2.2    regexp_instr"></a>2.2    regexp_instr</h3><p><strong>regexp_instr(expression, regexp, startindex, times)</strong></p>
 <p>返回找到的匹配字符串的位置。参数<strong>startindex</strong>表示开始进行匹配比较的位置(默认为字符串开始)；参数<strong>times</strong>表示第几次匹配作为最终匹配结果（默认是第一次）。</p>
 <p><strong>举例:</strong> </p>
-<pre><code class="plsql">select regexp_instr(&#39;12.158&#39;, &#39;\.&#39;) position from dual; </code></pre>
+<pre class=" language-plsql"><code class="language-plsql">select regexp_instr('12.158', '\.') position from dual; </code></pre>
 <p><code>regexp_instr(&#39;12.158&#39;, &#39;\.&#39;)</code>。用于获取第一个小数点的位置。</p>
 <h3 id="2-3-regexp-substr"><a href="#2-3-regexp-substr" class="headerlink" title="2.3    regexp_substr"></a>2.3    regexp_substr</h3><p><strong>regexp_substr(expression, regexp)</strong></p>
 <p>返回第一个字符串参数中，与第二个正则表达式参数相匹配的子字符串。</p>
 <p>  <strong>举例:</strong> </p>
-<pre><code class="plsql">select object_name,regexp_substr(object_name,&#39;L.*\$$&#39;,2) from HH;</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">select object_name,regexp_substr(object_name,'L.*\$$',2) from HH;</code></pre>
 <p>表示从HH表中object_name中，从第二个字符开始检索，且以L开头以$结尾。<strong>（注意要用转义字符将$转换成普通的$符号）</strong></p>
 <h3 id="2-4-regexp-replace"><a href="#2-4-regexp-replace" class="headerlink" title="2.4    regexp_replace"></a>2.4    regexp_replace</h3><p><strong>regexp_replace(expression, regexp, replacement)</strong></p>
 <p> 将expression中的按regexp匹配到的部分用replacement代替.</p>
 <p><strong>举例：</strong></p>
-<pre><code class="plsql">select regexp_replace(object_name,&#39;[^a-z|A-Z]&#39;,&#39;A&#39;) from HH;
+<pre class=" language-plsql"><code class="language-plsql">select regexp_replace(object_name,'[^a-z|A-Z]','A') from HH;
 --把对象名中所有非字母字符替换为“A”,其中|可以不用写</code></pre>
 <h3 id="2-5-REGEXP-COUNT"><a href="#2-5-REGEXP-COUNT" class="headerlink" title="2.5    REGEXP_COUNT"></a>2.5    REGEXP_COUNT</h3><p><strong>REGEXP_COUNT (source_char, pattern,position,match_param)</strong></p>
 <p>REGEXP_COUNT 返回pattern 在source_char 串中出现的次数。如果未找到匹配，则函数返回0。position 变量告诉Oracle 在源字符串的什么位置开始搜索。在开始位置之后每出现一次模式，都会使计数结果增加1。</p>
@@ -701,7 +701,7 @@ SQL&gt; select empno,ename from emp where regexp_like(ename,&#39;^a&#39;,&#39;i&
 <p><strong>‘m’</strong> 将源串视为多行。即Oracle 将^和$分别看作源字符串中任意位置任何行的开始和结束，而不是仅仅看作整个源字符串的开始或结束。如果省略该参数，则Oracle将源字符串看作一行。</p>
 <p><strong>‘x’</strong> 忽略空格字符。默认情况下，空格字符与自身相匹配。</p>
 <p><strong>举例：</strong></p>
-<pre><code class="plsql">select regexp_count (&#39;THE PRO-NIECE WAS BORN TODAY, SO EXCITING!&#39;, &#39;Was&#39;, 1,&#39;i&#39;) from dual;
+<pre class=" language-plsql"><code class="language-plsql">select regexp_count ('THE PRO-NIECE WAS BORN TODAY, SO EXCITING!', 'Was', 1,'i') from dual;
 --从第一位开始，查询字符串中was的出现次数，忽略大小写。</code></pre>
 
             </div>

@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -567,30 +567,30 @@
 <p>按两次回车键既可以跳出上一级的引用。</p>
 <h2 id="二、不带快捷书写操作与测试"><a href="#二、不带快捷书写操作与测试" class="headerlink" title="二、不带快捷书写操作与测试"></a>二、不带快捷书写操作与测试</h2><p>三个` :==代码块的输入==。</p>
 <p>代码块输入测试</p>
-<pre><code class="python">#hello python
-print(&#39;hello world!&#39;)</code></pre>
-<pre><code class="java">//java 代码块输入
-package demo04;
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#hello python</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello world!'</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//java 代码块输入</span>
+<span class="token keyword">package</span> demo04<span class="token punctuation">;</span>
 
-import java.util.Arrays;
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Arrays<span class="token punctuation">;</span>
 
-//请使用 Arrays 相关的API，将一个随机字符串中的所有字符升序排列，并倒序打印。
-public class Demo02ArraysTest {
-    public static void main(String[] args) {
-        String str =&quot;sadfasfwqfwqdfs&quot;;
+<span class="token comment" spellcheck="true">//请使用 Arrays 相关的API，将一个随机字符串中的所有字符升序排列，并倒序打印。</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo02ArraysTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String str <span class="token operator">=</span><span class="token string">"sadfasfwqfwqdfs"</span><span class="token punctuation">;</span>
 
-        //如何进行升序排列：sort
-//        必须是一个数组，才能使用Arrays。sort方法
-//        String--&gt;数组，用toCharArray
-        char[] chars = str.toCharArray();
-        Arrays.sort(chars);
+        <span class="token comment" spellcheck="true">//如何进行升序排列：sort</span>
+<span class="token comment" spellcheck="true">//        必须是一个数组，才能使用Arrays。sort方法</span>
+<span class="token comment" spellcheck="true">//        String-->数组，用toCharArray</span>
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chars <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>chars<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        //需要倒叙排列.chars.forr
-        for (int i = chars.length - 1; i &gt;= 0; i--) {
-            System.out.print(chars[i]);
-        }
-    }
-}</code></pre>
+        <span class="token comment" spellcheck="true">//需要倒叙排列.chars.forr</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> chars<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>chars<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>==无序、有序、任务列表==：</p>
 <p>无序：<code>+ 空格</code>；</p>
 <ul>
@@ -616,8 +616,8 @@ public class Demo02ArraysTest {
 <p>==参考链接==：<code>[^具体数字]</code>；</p>
 <p>应对恐惧最好的办法就是勇敢的面对他，加油，奥利给！<a href="巨魔之王。">^1</a>（再点击这个标志，即可以生成相应格式，再输入来源）</p>
 <p>==行内链接==：链接文字都是用 [方括号] 来标记，使用 (圆括号) 来把文字转成链接。还可以为链接文字配个Title，当然 Title 属性是可选项，加不加看心情咯。</p>
-<pre><code class="php">[链接文字](链接网址 &quot;标题&quot;)</code></pre>
-<pre><code class="php">This is an [example link](http://example.com/ &quot;With a Title&quot;). </code></pre>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">[</span>链接文字<span class="token punctuation">]</span><span class="token punctuation">(</span>链接网址 <span class="token string">"标题"</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-php"><code class="language-php">This is an <span class="token punctuation">[</span>example link<span class="token punctuation">]</span><span class="token punctuation">(</span>http<span class="token punctuation">:</span><span class="token comment" spellcheck="true">//example.com/ "With a Title"). </span></code></pre>
 <p>This is an <a href="https://links.jianshu.com/go?to=http%3A%2F%2Fexample.com%2F" target="_blank" rel="noopener">example link</a>.</p>
 <p>==上标和下标==：上标<code>^具体数字^</code>,下标<code>~具体数字~</code>；        x^2^        H<del>2</del>O</p>
 <p>==高亮==：<code>==文本输入==</code>；    </p>

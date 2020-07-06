@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -477,7 +477,7 @@
             <div id="articleContent">
                 <h1 id="PLSQL编程"><a href="#PLSQL编程" class="headerlink" title="PLSQL编程"></a>PLSQL编程</h1><a id="more"></a>
 
-<h2 id="1-1-PL-SQL简介"><a href="#1-1-PL-SQL简介" class="headerlink" title="1.1    PL/SQL简介"></a>1.1    PL/SQL简介</h2><h3 id="1-1-1-PL-SQL块结构"><a href="#1-1-1-PL-SQL块结构" class="headerlink" title="1.1.1    PL/SQL块结构"></a>1.1.1    PL/SQL块结构</h3><pre><code class="plsql">DECLARE（可选） 
+<h2 id="1-1-PL-SQL简介"><a href="#1-1-PL-SQL简介" class="headerlink" title="1.1    PL/SQL简介"></a>1.1    PL/SQL简介</h2><h3 id="1-1-1-PL-SQL块结构"><a href="#1-1-1-PL-SQL块结构" class="headerlink" title="1.1.1    PL/SQL块结构"></a>1.1.1    PL/SQL块结构</h3><pre class=" language-plsql"><code class="language-plsql">DECLARE（可选） 
 --定义标识符，标识符：变量，常量，游标 
 BEGIN：开始执行主体（必须） --类似于java中的main方法
 --SQL 语句 PL/SQL 语句  
@@ -487,8 +487,8 @@ END：
 --结束执行主体（必须） 
 </code></pre>
 <p>eg.定义一个代码块，计算两个整数的和与这两个整数的差的商</p>
-<pre><code class="plsql">SQL&gt; set serveroutput on;
-SQL&gt; declare
+<pre class=" language-plsql"><code class="language-plsql">SQL> set serveroutput on;
+SQL> declare
   2    a int:=100;
   3    b int:=200;
   4    c number;
@@ -497,7 +497,7 @@ SQL&gt; declare
   7    dbms_output.put_line(c); 
   8  exception
   9    when zero_divide then
- 10    dbms_output.put_line(&#39;除数不允许是0！&#39;); 
+ 10    dbms_output.put_line('除数不允许是0！'); 
  11  end;
  12  /
 
@@ -505,14 +505,14 @@ SQL&gt; declare
 
 PL/SQL procedure successfully completed</code></pre>
 <h3 id="1-1-2-代码注释和标识符"><a href="#1-1-2-代码注释和标识符" class="headerlink" title="1.1.2     代码注释和标识符"></a>1.1.2     代码注释和标识符</h3><p><strong>单行注释：</strong>– 开始后面加上注释内容</p>
-<pre><code class="plsql">begin
-    dbms_output.put_line(&#39;hello world!&#39;);   --这是一条输出hello world!的语句。
+<pre class=" language-plsql"><code class="language-plsql">begin
+    dbms_output.put_line('hello world!');   --这是一条输出hello world!的语句。
 end;</code></pre>
 <p><strong>多行注释：</strong> 类似于java<code>/*注释内容*/</code> </p>
-<pre><code class="plsql">SQL&gt; set serveroutput on;
+<pre class=" language-plsql"><code class="language-plsql">SQL> set serveroutput on;
 /*计算两个整数的和
 与这两个整数的差的商*/ 
-SQL&gt; declare
+SQL> declare
   2    a int:=100;
   3    b int:=200;
   4    c number;
@@ -521,12 +521,12 @@ SQL&gt; declare
   7    dbms_output.put_line(c); 
   8  exception
   9    when zero_divide then
- 10    dbms_output.put_line(&#39;除数不允许是0！&#39;); 
+ 10    dbms_output.put_line('除数不允许是0！'); 
  11  end;</code></pre>
 <p><strong>标识符：</strong></p>
 <p>科学计数法和幂操作符<code>**</code>。例如<code>6*10**3</code>即表示输入6*10^3。</p>
 <p><strong>注意：</strong>如果使用分隔符<code>[],&lt;&gt;,{}</code>等为字符串赋值，那么不仅需要在分隔符前后加单引号，而且要带前缀q。</p>
-<pre><code class="plsql">string_var:=q&#39;[I&#39;m a string!]&#39;;</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">string_var:=q'[I'm a string!]';</code></pre>
 <h2 id="1-2-基本数据类型"><a href="#1-2-基本数据类型" class="headerlink" title="1.2     基本数据类型"></a>1.2     基本数据类型</h2><p> ORACLE基本数据类型（亦叫内置数据类型 built-in datatypes)可以按类型分为：字符串类型、数字类型、日期类型、LOB类型、LONG RAW&amp; RAW类型、ROWID &amp; UROWID类型。</p>
 <h3 id="1-2-1-字符串类型"><a href="#1-2-1-字符串类型" class="headerlink" title="1.2.1    字符串类型"></a><strong>1.2.1    字符串类型</strong></h3><p>  字符串数据类型还可以依据存储空间分为固定长度类型（CHAR/NCHAR) 和可变长度类型（VARCHAR2/NVARCHAR2)两种.</p>
 <p><strong>固定长度：</strong>是指虽然输入的字段值小于该字段的限制长度，但是实际存储数据时，会先<strong>自动向右补足空格</strong>后，才将字段值的内容存储到数据块中。这种方式虽然比较<strong>浪费空间</strong>，但是<strong>存储效率较可变长度类型要好</strong>。<strong>同时还能减少数据行迁移情况发生。</strong></p>
@@ -667,15 +667,15 @@ SQL&gt; declare
 <h4 id="1-2-5-2-LONG-RAW-类型"><a href="#1-2-5-2-LONG-RAW-类型" class="headerlink" title="1.2.5.2 LONG RAW 类型"></a><strong>1.2.5.2 LONG RAW 类型</strong></h4><p>能存储2GB 的原始二进制数据（不用进行字符集转换的数据）</p>
 <h4 id="1-2-5-3-RAW类型"><a href="#1-2-5-3-RAW类型" class="headerlink" title="1.2.5.3 RAW类型"></a><strong>1.2.5.3 RAW类型</strong></h4><p>用于<strong>存储二进制或字符类型数据</strong>，变长二进制数据类型，这说明采用这种数据类型存储的数据不会发生字符集转换。<strong>这种类型最多可以存储2,000字节的信息</strong></p>
 <h3 id="1-2-6-特殊数据类型"><a href="#1-2-6-特殊数据类型" class="headerlink" title="1.2.6    特殊数据类型"></a>1.2.6    特殊数据类型</h3><h4 id="1-2-6-1-type类型"><a href="#1-2-6-1-type类型" class="headerlink" title="1.2.6.1    %type类型"></a>1.2.6.1    %type类型</h4><p>​    使用%TYPE类型声明一个指定列名相同的数据类型，他通常紧跟着指定列名的后面。<br>声明一个EMP表JOB列相同数据类型变量    </p>
-<pre><code class="plsql">SQL&gt; set serveroutput on; 
-SQL&gt; declare
+<pre class=" language-plsql"><code class="language-plsql">SQL> set serveroutput on; 
+SQL> declare
   2    VAR_ENAME EMP.ENAME%TYPE;
   3    VAR_JOB EMP.JOB%TYPE;
   4  BEGIN
   5    SELECT ENAME,JOB
   6    INTO VAR_ENAME,VAR_JOB
   7    FROM EMP WHERE EMPNO=7369;
-  8    DBMS_OUTPUT.PUT_LINE( VAR_ENAME||&#39;的职务是&#39;||VAR_JOB);
+  8    DBMS_OUTPUT.PUT_LINE( VAR_ENAME||'的职务是'||VAR_JOB);
   9  END;
  10/
 
@@ -685,60 +685,60 @@ SQL&gt; declare
 <h4 id="1-2-6-2-RECORD类型"><a href="#1-2-6-2-RECORD类型" class="headerlink" title="1.2.6.2    RECORD类型"></a>1.2.6.2    RECORD类型</h4><p>记录之意。RECORD类型存储多个行列组成的数据。</p>
 <h3 id="1-2-7-定义变量"><a href="#1-2-7-定义变量" class="headerlink" title="1.2.7    定义变量"></a>1.2.7    定义变量</h3><h4 id="1-2-7-1-定义变量"><a href="#1-2-7-1-定义变量" class="headerlink" title="1.2.7.1    定义变量"></a>1.2.7.1    定义变量</h4><p>运行过程中可以改变数据存储结构。<code>&lt;变量名&gt;&lt;数据类型&gt;[&lt;长度&gt;:=&lt;初始值&gt;]；</code></p>
 <p><strong>eg.</strong> 定义一个用于存储国家名称的可变字符串常量var_countryname，该变量的最大长度是50，并且该变量的初始值为中国</p>
-<pre><code class="plsql">`var_countryname varchar2(50):=&quot;中国&quot;;`</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">`var_countryname varchar2(50):="中国";`</code></pre>
 <h4 id="1-2-7-2-定义常量"><a href="#1-2-7-2-定义常量" class="headerlink" title="1.2.7.2    定义常量"></a>1.2.7.2    定义常量</h4><p>常量指定值在运行过程中不可改变的数据存储结构。比如一些防止被修改的数值，列如圆周率，光速等。最好定义常量</p>
 <p><code>&lt;常量名&gt; constant &lt;数据类型&gt;:=&lt;常量值&gt;;</code></p>
 <p><strong>eg.</strong> 定义常量存储一年的天数</p>
-<pre><code class="plsql">con_day constant integer:=365;</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">con_day constant integer:=365;</code></pre>
 <h2 id="1-3-流程控制语句"><a href="#1-3-流程控制语句" class="headerlink" title="1.3 流程控制语句"></a>1.3 流程控制语句</h2><p>编程语言的流程控制语句的逻辑类似，只是在写法上有一定的区别。</p>
 <h3 id="1-3-1-选择语句"><a href="#1-3-1-选择语句" class="headerlink" title="1.3.1    选择语句"></a>1.3.1    选择语句</h3><h4 id="1-3-1-1-if…then语句"><a href="#1-3-1-1-if…then语句" class="headerlink" title="1.3.1.1    if…then语句"></a>1.3.1.1    if…then语句</h4><p>最简单的一种形式，只做一种情况的判断。语法格式如下：</p>
-<pre><code class="plsql">if &lt;条件表达式&gt; then        --条件表达式的值为true时，执行语句1。否则end if
+<pre class=" language-plsql"><code class="language-plsql">if <条件表达式> then        --条件表达式的值为true时，执行语句1。否则end if
     语句1
 end if;</code></pre>
 <h4 id="1-3-1-2-if…then…else"><a href="#1-3-1-2-if…then…else" class="headerlink" title="1.3.1.2    if…then…else"></a>1.3.1.2    if…then…else</h4><p>最常用到的一种选择语句，可以实现判断两种情况。语法格式如下：</p>
-<pre><code class="plsql">if &lt;条件表达式&gt; then        --条件表达式的值为true时，执行语句1。否则执行语句2
+<pre class=" language-plsql"><code class="language-plsql">if <条件表达式> then        --条件表达式的值为true时，执行语句1。否则执行语句2
     语句1;
 else
     语句2;
 end if;</code></pre>
 <h4 id="1-3-1-3-if…then…elsif"><a href="#1-3-1-3-if…then…elsif" class="headerlink" title="1.3.1.3    if…then…elsif"></a>1.3.1.3    if…then…elsif</h4><p>实现多分支判断选择，是程序的判断条件更加丰富，更加多样化。该语句判断哪个判断分支的条件是true，就执行哪个分支。语法格式如下：</p>
-<pre><code class="plsql">if &lt;条件表达式1&gt; then        --哪个判断分支的条件是true，就执行哪个分支。
+<pre class=" language-plsql"><code class="language-plsql">if <条件表达式1> then        --哪个判断分支的条件是true，就执行哪个分支。
     语句1;
-elsif&lt;条件表达式2&gt; then
+elsif<条件表达式2> then
     语句2;
 …………
 else
     语句n;
 end if;</code></pre>
 <h4 id="1-3-1-4-case"><a href="#1-3-1-4-case" class="headerlink" title="1.3.1.4    case"></a>1.3.1.4    case</h4><p>和if…then…elsif类似。case关键字后有一个选择器，通常是一个变量，程序就从这个选择器开始执行。后面是when子句，并且在when关键字的后面是一个表达式，程序将根据选择器的值去匹配每一个when子句的表达式的值。语法格式如下：</p>
-<pre><code class="plsql">case&lt;变量&gt;
-    when&lt;表达式1&gt; then  --表达式通常是一个常量。
+<pre class=" language-plsql"><code class="language-plsql">case<变量>
+    when<表达式1> then  --表达式通常是一个常量。
         语句1;
-    when&lt;表达式1&gt; then 
+    when<表达式1> then 
         语句2;
     …………
-    when&lt;表达式1&gt; then 
+    when<表达式1> then 
         语句n;
     else
         语句
 end case;</code></pre>
 <h3 id="1-3-2-循环语句"><a href="#1-3-2-循环语句" class="headerlink" title="1.3.2    循环语句"></a>1.3.2    循环语句</h3><h4 id="1-3-2-1-loop…exit-when…end"><a href="#1-3-2-1-loop…exit-when…end" class="headerlink" title="1.3.2.1    loop…exit when…end"></a>1.3.2.1    loop…exit when…end</h4><p>先执行一个循环体语句，当when之后的条件表达式是true时，则跳出循环，否则再执行一次循环体。语法格式如下：</p>
-<pre><code class="plsql">loop
+<pre class=" language-plsql"><code class="language-plsql">loop
     语句；
     exit when 条件语句;
 end loop;</code></pre>
 <h4 id="1-3-2-2-while…loop…end"><a href="#1-3-2-2-while…loop…end" class="headerlink" title="1.3.2.2    while…loop…end"></a>1.3.2.2    while…loop…end</h4><p>while语句根据他的条件表达式执行零次或者多次循环体，每次执行循环体时，先判断条件表达式是否为true，是true则执行循环体，否则跳出循环。语法格式如下：</p>
-<pre><code class="plsql">while 条件 loop
+<pre class=" language-plsql"><code class="language-plsql">while 条件 loop
     语句;
 end loop;</code></pre>
 <h4 id="1-3-2-3-for…in…loop…end"><a href="#1-3-2-3-for…in…loop…end" class="headerlink" title="1.3.2.3    for…in…loop…end"></a>1.3.2.3    for…in…loop…end</h4><p>for语句是一个可以预置循环次数的循环控制语句，有一个循环计数器，通常是一个整型变量。通过这个循环计数器来控制循环执行的次数。该计数器可以从小到大的进行记录，也可以相反。另外该计数器的合法性有上限制和下限值控制，若计数器在限定范围内，则程序执行循环，否则跳出循环。语法格式如下：</p>
-<pre><code class="plsql">for 变量 in [reverse] 下限值..上限值 loop/*默认是循环递增，使用reverse之后*/    语句                                 /*就是循环递减*/
+<pre class=" language-plsql"><code class="language-plsql">for 变量 in [reverse] 下限值..上限值 loop/*默认是循环递增，使用reverse之后*/    语句                                 /*就是循环递减*/
 end loop;                                     
 </code></pre>
 <h4 id="1-3-2-4-goto"><a href="#1-3-2-4-goto" class="headerlink" title="1.3.2.4    goto"></a>1.3.2.4    goto</h4><p>goto语句是一个无条件转向语句。当执行时，控制程序会立即转到由标签标识的语句。label使用在plsql中定义的符号。标签使用双箭头括号&lt;&lt;&gt;&gt;括起来。语法格式如下：</p>
-<pre><code class="plsql">goto label；</code></pre>
-<pre><code class="plsql">程序其他部分
-&lt;&lt;goto_mark&gt;&gt;        --定义一个转向标签
+<pre class=" language-plsql"><code class="language-plsql">goto label；</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">程序其他部分
+<<goto_mark>>        --定义一个转向标签
 程序其他部分
 if 条件 then
     goto goto_mark;        --如果条件成立则立即转向goto_mark执行
@@ -750,35 +750,35 @@ if 条件 then
 <ol>
 <li><strong>声明游标:</strong>主要包括游标名称和为游标提供结果集的select语句。语法格式如下：</li>
 </ol>
-<pre><code class="plsql">CURSOR 游标名( 参数 列表)   [返回值类型]   IS   Select 语句;</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">CURSOR 游标名( 参数 列表)   [返回值类型]   IS   Select 语句;</code></pre>
 <ol start="2">
 <li><strong>打开游标:</strong>执行Select 语句，获得结果集存储到游标中，此时游标指向结果集头， 而不是第一条记录。语法格式如下：</li>
 </ol>
-<pre><code class="plsql">Open 游标名( 参数 列表);</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">Open 游标名( 参数 列表);</code></pre>
 <ol start="3">
 <li><strong>读取游标:</strong>（可能是一个反复操作的步骤，因为游标只能读取一行数据，所以对于多条记录需要反复的读取，直到数据为空为止）</li>
 </ol>
-<pre><code class="plsql">Fetch  游标名 InTo  临时记录或属性类型变量；</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">Fetch  游标名 InTo  临时记录或属性类型变量；</code></pre>
 <ol start="4">
 <li><strong>关闭游标:</strong>将游标放入缓冲池中，没有完全释放资源。可重新打开。</li>
 </ol>
-<pre><code class="plsql">Close  游标名；</code></pre>
+<pre class=" language-plsql"><code class="language-plsql">Close  游标名；</code></pre>
 <h4 id="1-4-2-2-隐式游标"><a href="#1-4-2-2-隐式游标" class="headerlink" title="1.4.2.2    隐式游标"></a>1.4.2.2    隐式游标</h4><p>在执行一个sql语句时，Oracle会自动创建一个隐式游标。这个游标是内存中处理该语句的工作区域。隐式游标主要是处理数据操纵语句（update，delete等）的执行结果。特殊情况下，也可以处理select语句的查询结果。当使用隐式游标的属性时，需要在属性前面加上隐式游标的默认名称——SQL。</p>
 <h4 id="1-4-2-3-游标属性"><a href="#1-4-2-3-游标属性" class="headerlink" title="1.4.2.3    游标属性"></a>1.4.2.3    游标属性</h4><p>%found    布尔属性，当最近一次度记录时成功返回，则值为true</p>
 <p>%notfound    布尔属性，与%found相反</p>
 <p>%isopen    布尔属性，当游标已打开时返回true</p>
 <p>%rowcount    数字属性，返回从游标中读取的记录数。</p>
 <p>eg.</p>
-<pre><code class="plsql">Begin
-   Update emp Set  SAL = SAL + 0.1  Where JOB = &#39;CLERK&#39;;
+<pre class=" language-plsql"><code class="language-plsql">Begin
+   Update emp Set  SAL = SAL + 0.1  Where JOB = 'CLERK';
    If  SQL%Found  Then
-    DBMS_OUTPUT.PUT_LINE(&#39;已经更新！&#39;);
+    DBMS_OUTPUT.PUT_LINE('已经更新！');
    Else
-    DBMS_OUTPUT.PUT_LINE(&#39;更新失败！&#39;);
+    DBMS_OUTPUT.PUT_LINE('更新失败！');
    End  If；
   End；</code></pre>
 <h3 id="1-4-3-通过for语句循环游标"><a href="#1-4-3-通过for语句循环游标" class="headerlink" title="1.4.3    通过for语句循环游标"></a>1.4.3    通过for语句循环游标</h3><p>根据1.4.2.1的游标使用四大步骤可以用while语句来实现一个游标的使用</p>
-<pre><code class="plsql">--打印出80部门所有的员工的工资
+<pre class=" language-plsql"><code class="language-plsql">--打印出80部门所有的员工的工资
 declare
 --声明一个记录类型
   type emp_record is record(
@@ -799,7 +799,7 @@ begin
 
    --设置循环
    while emp_sal_cursor%found loop
-                                                      dbms_output.put_line(&#39;empid:&#39;||v_emp_record.v_empid||&#39;,&#39;||&#39;salary:&#39;||v_emp_record.v_sal);  --这里的salary与employee_id的顺序要和记录类型中设置变量的顺序一样
+                                                      dbms_output.put_line('empid:'||v_emp_record.v_empid||','||'salary:'||v_emp_record.v_sal);  --这里的salary与employee_id的顺序要和记录类型中设置变量的顺序一样
      fetch emp_sal_cursor into v_emp_record;
    end loop;
 
@@ -810,17 +810,17 @@ END;</code></pre>
 <li>在for语句遍历隐式游标时，在in后面提供有select语句检索的结果集，在检索过程中，oracle会自动提供一个隐式游标SQL；</li>
 <li>在for语句遍历显式游标时，在in后面提供游标的名称，语法格式如下；</li>
 </ol>
-<pre><code class="plsql">for 变量 in 游标名称 loop
+<pre class=" language-plsql"><code class="language-plsql">for 变量 in 游标名称 loop
     语句；
 end loop；</code></pre>
 <p>所以利用for语句可以很大的简化游标使用的代码量。但是理论步骤上还是那四步。下面是根据上面的while语句设计的游标使用代码的for语句代码设计</p>
-<pre><code class="plsql">--打印出80部门所有的员工的工资
+<pre class=" language-plsql"><code class="language-plsql">--打印出80部门所有的员工的工资
 declare
   --定义游标
   cursor emp_sal_cursor is select salary,employee_id from employees where department_id = 80; 
 begin
   for c in emp_sal_cursor loop
-    dbms_output.put_line(&#39;empid:&#39;||c.employee_id||&#39;,&#39;||&#39;salary:&#39;||c.salary);
+    dbms_output.put_line('empid:'||c.employee_id||','||'salary:'||c.salary);
    end loop;
 END;</code></pre>
 <h2 id="1-5-PL-SQL异常处理"><a href="#1-5-PL-SQL异常处理" class="headerlink" title="1.5 PL/SQL异常处理"></a>1.5 PL/SQL异常处理</h2><h3 id="1-5-1-异常处理方式"><a href="#1-5-1-异常处理方式" class="headerlink" title="1.5.1    异常处理方式"></a>1.5.1    异常处理方式</h3><p>Oracle提供了三种异常处理方式：</p>
@@ -830,7 +830,7 @@ END;</code></pre>
 <li>自定义异常    用于处理于Oracle错误无关的其他情况</li>
 </ol>
 <p>语法：</p>
-<pre><code class="plsql">EXCEPTION
+<pre class=" language-plsql"><code class="language-plsql">EXCEPTION
  WHEN exception_Name THEN --exception_Name为异常的名字
   　 说明1;
  WHEN OTHERS THEN
@@ -940,11 +940,11 @@ END;</code></pre>
 <li>最终在异常处理部分捕捉并处理异常。</li>
 </ol>
 <p>下面<strong>以更新特定雇员的部门号</strong>，并处理<strong>ORA-02291</strong>错误为例，说明使用非预定义异常的方法。示例如下:</p>
-<pre><code class="plsql">DECLARE
+<pre class=" language-plsql"><code class="language-plsql">DECLARE
   e_integrity EXCEPTION; --1、定义部分
   PRAGMA EXCEPTION_INIT (e_integrity, -2291);  --2、建立关联关系
 BEGIN
-  UPDATE emp SET deptno= &amp;dno WHERE empno = &amp;eno;
+  UPDATE emp SET deptno= &dno WHERE empno = &eno;
 EXCEPTION
   WHEN e_integrity THEN  --3、捕捉处理
     DBMS_OUTPUT.PUT_LINE(‘该部门不存在’);
@@ -957,18 +957,18 @@ END;</code></pre>
 <li>在异常处理部分（EXCEPTION）捕捉并处理异常。 </li>
 </ol>
 <p>eg. 查询100号员工 的工资，如果工资太高了，则输出“工资太高了！”。</p>
-<pre><code class="plsql">declare
+<pre class=" language-plsql"><code class="language-plsql">declare
   e_too_high_sal exception;
   v_sal employees.salary%type;
 
 begin
   select salary into v_sal from employees where employee_id=100;
 
-  if v_sal&gt;10000 then
+  if v_sal>10000 then
   raise e_too_high_sal;
   end if;
 exception
-  when e_too_high_sal then dbms_output.put_line(&#39;工资太高了！&#39;);
+  when e_too_high_sal then dbms_output.put_line('工资太高了！');
 end; 
 
 --结果输出工资太高了！</code></pre>

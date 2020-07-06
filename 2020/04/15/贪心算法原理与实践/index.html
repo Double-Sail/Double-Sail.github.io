@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -511,109 +511,109 @@
 <p><strong>总结思路：</strong>最优解就是先按照3来切，切到最后如果剩下4则切成（22），如果不是4，则无需改动。</p>
 <p><strong>注：</strong>可以利用数学归纳法来证明先按3切分是最优解的方式。数学归纳法的思想也是类似于动态规划和贪心算法。都是将一个证明划分成一个个的子小块，在证明每一个子小块都正确，最后得出整体正确。</p>
 <p>所以按照上面分析出来的结论，可以直接使用贪心算法，不用再自下而上的求解。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre><code class="java">public class CuttingRope {
-    // ======动态规划======
-    public int maxProductAfterCutting_solution1(int length) {
-        if (length &lt;= 1)
-            return 0;
-        if (length == 2)
-            return 1;
-        if (length == 3)
-            return 2;
-        int[] product = new int[length + 1]; // 用于存放最大乘积值
-        // 下面几个不是乘积，因为其本身长度比乘积大
-        product[0] = 0;
-        product[1] = 1;
-        product[2] = 2;
-        product[3] = 3;
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CuttingRope</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ======动态规划======</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxProductAfterCutting_solution1</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> product <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用于存放最大乘积值</span>
+        <span class="token comment" spellcheck="true">// 下面几个不是乘积，因为其本身长度比乘积大</span>
+        product<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        product<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        product<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        product<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
 
-        // 开始从下到上计算长度为i绳子的最大乘积值product[i]
-        for (int i = 4; i &lt;= length; i++) {
-            int max = 0;
-            // 算不同子长度的乘积，找出最大的乘积
-            for (int j = 1; j &lt;= i / 2; j++) {
-                if (max &lt; product[j] * product[i - j])
-                    max = product[j] * product[i - j];
-            }
-            product[i] = max;
-        }
-        return product[length];
-    }
+        <span class="token comment" spellcheck="true">// 开始从下到上计算长度为i绳子的最大乘积值product[i]</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// 算不同子长度的乘积，找出最大的乘积</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&lt;</span> product<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> product<span class="token punctuation">[</span>i <span class="token operator">-</span> j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    max <span class="token operator">=</span> product<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">*</span> product<span class="token punctuation">[</span>i <span class="token operator">-</span> j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            product<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> max<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> product<span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // =======贪婪算法========
-    public int maxProductAfterCutting_solution2(int length) {
-        if (length &lt;= 1)
-            return 0;
-        if (length == 2)
-            return 1;
-        if (length == 3)
-            return 2;
-        int timesOf3 = length / 3;
-        int timesOf2 = 0;
-        if (length - timesOf3 * 3 == 1) {
-            timesOf3--;
-            // timesOf2=2;  //错误！
-        }
-        timesOf2 = (length - timesOf3 * 3) / 2;
-        return (int) (Math.pow(3, timesOf3) * Math.pow(2, timesOf2));
-    }
+    <span class="token comment" spellcheck="true">// =======贪婪算法========</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxProductAfterCutting_solution2</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> timesOf3 <span class="token operator">=</span> length <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> timesOf2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>length <span class="token operator">-</span> timesOf3 <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            timesOf3<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">// timesOf2=2;  //错误！</span>
+        <span class="token punctuation">}</span>
+        timesOf2 <span class="token operator">=</span> <span class="token punctuation">(</span>length <span class="token operator">-</span> timesOf3 <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> timesOf3<span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> timesOf2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    // =====测试代码======
-    void test(String testName, int length, int expected) {
-        if (testName != null)
-            System.out.println(testName + &quot;:&quot;);
-        if (maxProductAfterCutting_solution1(length) == expected) {
-            System.out.print(&quot;    动态规划:&quot; + &quot;passed  &quot;);
-        } else {
-            System.out.print(&quot;    动态规划:&quot; + &quot;failed  &quot;);
-        }
+    <span class="token comment" spellcheck="true">// =====测试代码======</span>
+    <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span>String testName<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">,</span> <span class="token keyword">int</span> expected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>testName <span class="token operator">!=</span> null<span class="token punctuation">)</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>testName <span class="token operator">+</span> <span class="token string">":"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">maxProductAfterCutting_solution1</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> expected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"    动态规划:"</span> <span class="token operator">+</span> <span class="token string">"passed  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"    动态规划:"</span> <span class="token operator">+</span> <span class="token string">"failed  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        if (maxProductAfterCutting_solution2(length) == expected) {
-            System.out.println(&quot;贪婪算法:&quot; + &quot;passed  &quot;);
-        } else {
-            System.out.println(&quot;贪婪算法:&quot; + &quot;failed  &quot;);
-        }
-    }
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">maxProductAfterCutting_solution2</span><span class="token punctuation">(</span>length<span class="token punctuation">)</span> <span class="token operator">==</span> expected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"贪婪算法:"</span> <span class="token operator">+</span> <span class="token string">"passed  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"贪婪算法:"</span> <span class="token operator">+</span> <span class="token string">"failed  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 
-    void test1() {
-        test(&quot;test1&quot;, 1, 0);
-    }
+    <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test1"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test2() {
-        test(&quot;test2&quot;, 2, 1);
-    }
+    <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test2"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test3() {
-        test(&quot;test3&quot;, 3, 2);
-    }
+    <span class="token keyword">void</span> <span class="token function">test3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test3"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test4() {
-        test(&quot;test4&quot;, 4, 4);
-    }
+    <span class="token keyword">void</span> <span class="token function">test4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test4"</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test5() {
-        test(&quot;test5&quot;, 5, 6);
-    }
+    <span class="token keyword">void</span> <span class="token function">test5</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test5"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test6() {
-        test(&quot;test6&quot;, 10, 36);
-    }
+    <span class="token keyword">void</span> <span class="token function">test6</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test6"</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    void test7() {
-        test(&quot;test7&quot;, 50, 86093442);
-    }
+    <span class="token keyword">void</span> <span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"test7"</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">86093442</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public static void main(String[] args) {
-        CuttingRope demo = new CuttingRope();
-        demo.test1();
-        demo.test2();
-        demo.test3();
-        demo.test4();
-        demo.test5();
-        demo.test6();
-        demo.test7();
-    }
-}</code></pre>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        CuttingRope demo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CuttingRope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test6</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demo<span class="token punctuation">.</span><span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
