@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="有关Maven——简述, Double-Sail">
+    <meta name="keywords" content="有关Maven——Maven基本原理, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>有关Maven——简述 | Double-Sail</title>
+    <title>有关Maven——Maven基本原理 | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">有关Maven——简述</h1>
+                    <h1 class="description center-align post-title">有关Maven——Maven基本原理</h1>
                 </div>
             </div>
         </div>
@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-15
+                    2020-07-16
                 </div>
                 
 
@@ -475,54 +475,197 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="有关Maven（连载一）"><a href="#有关Maven（连载一）" class="headerlink" title="有关Maven（连载一）"></a>有关Maven（连载一）</h1><a id="more"></a>
-
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​    进来工作渐渐转入Java，需要学习Spring Boot 相关的内容。Maven算是学习Spring Boot 的开端。</p>
-<h2 id="一、为什么使用Maven"><a href="#一、为什么使用Maven" class="headerlink" title="一、为什么使用Maven"></a>一、为什么使用Maven</h2><p>​    即使不适用Maven，也可以完成B/S结构项目的开发。从表述层、业务逻辑层、持久化层、最后到数据库都有一套完整的解决方案。那使用Maven的原因是什么呢？首先需要纠正一个误区，Maven并不是直接用来辅助编码的，他战斗的岗位并不是以上各层。</p>
-<ol>
-<li><p>添加第三方jar包</p>
-<p>使用Maven后，每个jar包本身只在本地仓库中保存一份，需要jar包的工程只需要以坐标的方式简单的引用即可。而不是和以前一样，每次新建一个工程就需要将jar包重复的复制到lib目录下，从而造成工作区中存在大量重复的文件。</p>
-<p>所以使用Maven后，每个jar包本身只在本地仓库中保存一份，有需要使用的工程，引用这个接口即可，而不是直接复制过来。引用的机制，使得jar包只存一份，节省空间。</p>
-<p>让项目更加的轻巧，更避免了重复文件太多造成的混乱。</p>
+                <h1 id="有关Maven（连载二）"><a href="#有关Maven（连载二）" class="headerlink" title="有关Maven（连载二）"></a>有关Maven（连载二）</h1><h2 id="一、安装Maven核心程序"><a href="#一、安装Maven核心程序" class="headerlink" title="一、安装Maven核心程序"></a>一、安装Maven核心程序</h2><ul>
+<li><p>检查java环境变量</p>
+<p><code>echo %JAVA_HOME%</code></p>
 </li>
-<li><p>jar之间的依赖关系</p>
-<p>即jar包之间并不是单独存在的，往往整个项目跑完，一个jar包需要在其他jar包的支持下，才可以正常工作。使用Maven之后，当使用一个jar包，就会自动导入当前jar包所依赖的其他所有的jar包。无需人工参与，节省时间。</p>
-</li>
-<li><p>获取第三方jar包</p>
-<p>当使用Maven后，只需要在项目中以坐标的方式依赖一个jar包，Maven会自动从仓库中进行下载，并同时下载这个jar包所依赖的其他jar包。避免因为不规范的下载导致的问题，以及寻找jar包浪费的时间。</p>
-</li>
-<li><p>项目拆分</p>
-<p>利用Maven的依赖管理机制，将大项目进行拆分。使分工明确。</p>
-</li>
-</ol>
-<h2 id="二、什么是Maven"><a href="#二、什么是Maven" class="headerlink" title="二、什么是Maven"></a>二、什么是Maven</h2><p>​    首先进行简要的概括，Maven是一款自动化构建工具，专注于服务Java平台的项目构建和依赖管理。</p>
-<h3 id="2-1-怎样自动化构建"><a href="#2-1-怎样自动化构建" class="headerlink" title="2.1 怎样自动化构建"></a>2.1 怎样自动化构建</h3><h4 id="2-1-1-Java（Web）工程的构建过程"><a href="#2-1-1-Java（Web）工程的构建过程" class="headerlink" title="2.1.1 Java（Web）工程的构建过程"></a>2.1.1 Java（Web）工程的构建过程</h4><p>​    构建不是创建，构建不仅仅是创建一个工程。以下由浅入深从三个层面来看：</p>
-<ul>
-<li><p>纯Java代码</p>
-<p>.Java文件需要被编译成.class字节码文件才可以运行。</p>
-</li>
-<li><p>Web工程</p>
-<p>浏览器访问Java程序时需要包含Java程序的Web工程<strong>编译的结果</strong>拿到服务器上的指定目录下，再启动服务器。这个过程叫做部署。</p>
-<p><strong>Tips：</strong>服务器上运行的是编译的结果，而不是Java代码！</p>
-<p>所以Web工程类似于一只生的鸡，编译好的Web工程是一个煮熟的鸡，编译部署的过程就是煮熟鸡。</p>
-</li>
-<li><p>实际项目</p>
-<p>实际项目需要整合第三方框架，所以除了Java程序和JSP页面、图片等静态资源外，还需要包括第三方jar包以及各种配置文件。所有的这写资源都需要整合到服务器上，项目才可以运行。</p>
+<li><p>下载Maven核心程序包</p>
 </li>
 </ul>
-<p>综上：构建就是以各种可用的资源去生产处一个可以运行的项目的工程。</p>
-<p>​    <strong>构建主要包含以下几个环节：</strong></p>
+<p>​       链接：<a href="https://pan.baidu.com/s/1Z8Q7HO_yhl94Y8Ydfhd3kg" target="_blank" rel="noopener">https://pan.baidu.com/s/1Z8Q7HO_yhl94Y8Ydfhd3kg</a><br>​       提取码：lo8p</p>
 <ul>
-<li>清理：消除陈旧的编译结果。</li>
-<li>编译：生成字节码文件</li>
-<li>测试：确保项目关键点的正确性。</li>
-<li>报告：测试后，以标准的格式记录和展示测试结果。</li>
-<li>打包：将一个包含诸多文件的工程封装为一个压缩文件用于安装和部署。Java工程对jar包，Web工程对应var包。</li>
-<li>安装：Maven环境下指将jar包或者war包安装到本地的仓库中。</li>
-<li>部署：将打包的结果部署到远程仓库或将war包部署到服务器上运行。</li>
+<li><p>配置Maven环境变量</p>
+<p>Tips：最好是配置M2_HOME,向下兼容可以避免没有必要的问题。</p>
+</li>
+<li><p>检查Maven版本</p>
+</li>
 </ul>
-<p>那么问题来了，这些过程ide已经可以相当标准的进行构建了，那为何还要用Maven呢？</p>
-<p>这是因为，对于开发人员来说，宝贵的时间应该放在项目的核心算法上，而不是不需要人的智慧去参与的机械化的编译-&gt;打包-&gt;部署-&gt;测试的流程。这就是Maven的意义，他讲这些机械化的步骤进行封装，使得实现自动构建的功能。</p>
+<h2 id="二、Maven工程创建"><a href="#二、Maven工程创建" class="headerlink" title="二、Maven工程创建"></a>二、Maven工程创建</h2><h3 id="2-1-约定的目录结构"><a href="#2-1-约定的目录结构" class="headerlink" title="2.1 约定的目录结构"></a>2.1 约定的目录结构</h3><p>​    Maven负责自动化构建，他必须要知道java源程序在哪里。所以必须按照约定来创建结构。</p>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token code keyword">        Hello    //工程名</span>
+<span class="token code keyword">        |---src    //源码</span>
+<span class="token code keyword">        |---|---main    //主程序</span>
+<span class="token code keyword">        |---|---|---java    //java源文件</span>
+<span class="token code keyword">        |---|---|---resources    //框架或其他工具的配置文件</span>
+<span class="token code keyword">        |---|---test    //测试程序</span>
+<span class="token code keyword">        |---|---|---java</span>
+<span class="token code keyword">        |---|---|---resources</span>
+<span class="token code keyword">        |---pom.xml    //核心配置文件</span></code></pre>
+<h3 id="2-2-Maven常用命令"><a href="#2-2-Maven常用命令" class="headerlink" title="2.2 Maven常用命令"></a>2.2 Maven常用命令</h3><p>注意：执行与构建过程相关的Maven命令需要进入pom.xml所在的目录。</p>
+<p><strong>常用命令：</strong></p>
+<ul>
+<li>mvn clean  //清理</li>
+<li>mvn compile  //编译主程序</li>
+<li>mvn test_complie  //编译测试程序</li>
+<li>mvn test  //执行测试</li>
+<li>mvn package  //打包</li>
+</ul>
+<h3 id="2-3-修改本地仓库"><a href="#2-3-修改本地仓库" class="headerlink" title="2.3 修改本地仓库"></a>2.3 修改本地仓库</h3><ul>
+<li>默认本地仓库位置：~.m2\repository<br>~表示当前用户的家目录，例如：C:\Users[你当前登录系统的用户名]</li>
+<li>指定本地仓库位置的配置信息文件：apache-maven-3.2.2\conf\settings.xml</li>
+<li>在根标签settings下添加如下内容：<localRepository>[本地仓库路径，也就是RepMaven.zip的解压目录]</localRepository></li>
+</ul>
+<h3 id="2-4-POM（项目对象模型）"><a href="#2-4-POM（项目对象模型）" class="headerlink" title="2.4 POM（项目对象模型）"></a>2.4 POM（项目对象模型）</h3><ul>
+<li>含义：Project Object Model</li>
+<li>pom.xml是Maven工程的核心配置文件。构建先关的设置都在此文件中配置</li>
+</ul>
+<h3 id="2-5-坐标"><a href="#2-5-坐标" class="headerlink" title="2.5 坐标"></a>2.5 坐标</h3><p>使用如下三个向量在 Maven 的仓库中唯一的确定一个 Maven 工程。 </p>
+<ul>
+<li><p>groupid：公司或组织的域名倒序+当前项目名称</p>
+</li>
+<li><p>artifactId：当前项目的模块名称</p>
+</li>
+<li><p>version：当前模块的版本</p>
+</li>
+</ul>
+<pre class=" language-markdown"><code class="language-markdown"> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.yf.maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>  
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>Hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>  
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.0.1-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span> </code></pre>
+<p><strong>通过坐标到仓库中查找 jar 包</strong></p>
+<ul>
+<li><p>将 gav 三个向量连起来 com.yf.maven+Hello+0.0.1-SNAPSHOT</p>
+</li>
+<li><p>以连起来的字符串作为目录结构到仓库中查找 com/yf/maven/Hello/0.0.1-SNAPSHOT/Hello-0.0.1-SNAPSHOT.jar </p>
+<p><strong>注意：</strong>自己的 Maven 工程必须执行安装操作才会进入仓库。安装的命令是：mvn install 。如果进行此命令，后续运行会报错，原因是仓库中找不到这个jar包</p>
+</li>
+</ul>
+<h3 id="2-6-仓库"><a href="#2-6-仓库" class="headerlink" title="2.6 仓库"></a>2.6 仓库</h3><h4 id="2-6-1-分类"><a href="#2-6-1-分类" class="headerlink" title="2.6.1 分类"></a>2.6.1 分类</h4><ul>
+<li><p>本地仓库：为当前本机电脑上的所有 Maven 工程服务。</p>
+</li>
+<li><p>远程仓库 ：</p>
+<p>(1)私服：架设在当前局域网环境下，为当前局域网范围内的所有 Maven 工程服务。 </p>
+<p>(2)中央仓库：架设在 Internet 上，为全世界所有 Maven 工程服务。 (3)中央仓库的镜像：架设在各个大洲，为中央仓库分担流量。减轻中央仓库的压力，同                        时更快的响应用户请求。</p>
+</li>
+</ul>
+<h4 id="2-6-2-仓库中的文件"><a href="#2-6-2-仓库中的文件" class="headerlink" title="2.6.2 仓库中的文件"></a>2.6.2 仓库中的文件</h4><ul>
+<li><p>Maven 的插件</p>
+</li>
+<li><p>我们自己开发的项目的模块</p>
+</li>
+<li><p>第三方框架或工具的 jar 包 </p>
+<p><strong>注意：</strong>不管是什么样的 jar 包，在仓库中都是按照坐标生成目录结构，所以可以通过统一的方式查询或依赖。</p>
+</li>
+</ul>
+<h3 id="2-7-依赖"><a href="#2-7-依赖" class="headerlink" title="2.7  依赖"></a>2.7  依赖</h3><p>​    依赖是Maven中最关键的部分，使用Maven就是使用它的依赖管理功能。</p>
+<ul>
+<li><p>依赖的目的</p>
+<p>当 A jar 包用到了 B jar 包中的某些类时，A 就对 B 产生了依赖。以下是在项目中以依赖的方式引入一个我们需要的jar包</p>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>  
+<span class="token code keyword">    &lt;groupId>com.yf.maven&lt;/groupId>  </span>
+<span class="token code keyword">    &lt;artifactId>Hello&lt;/artifactId> </span>
+<span class="token code keyword">    &lt;version>0.0.1-SNAPSHOT&lt;/version>  </span>
+<span class="token code keyword">    &lt;scope>compile&lt;/scope> </span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
+</li>
+<li><p>依赖的范围（scope）</p>
+<p>上述依赖方式中，scope即是依赖的范围。他有几个可选值，用得到的是：compile、test、provided 三个</p>
+<ul>
+<li><p>从项目的角度来看</p>
+<p>简单来说，compile范围的依赖，即是主程序和测试程序都需要的依赖的jar包。test范围的依赖，仅仅对测试程序有效。</p>
+</li>
+<li><p>从开发和运行的角度</p>
+<p>由于在运行阶段，类似于servlet_API可以由Servlet容器提供。则无需要再添加依赖。所以provide范围的依赖不参与部署。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>compile</th>
+<th>test</th>
+<th>provide</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>主程序</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>测试部署</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>参与部署</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>依赖传递</p>
+<p>A 依赖 B，B 依赖 C，A 能否使用 C 呢？那要看 B 依赖 C 的范围是不是 compile，如果是则可用，否则不可用。 </p>
+</li>
+<li><p>依赖排除</p>
+<p>​       如果我们在当前工程中引入了一个依赖是 A，而 A 又依赖了 B，那么 Maven 会自动将 A 依赖的 B 引入当 前工程，但是个别情况下 B 有可能是一个不稳定版，或对当前工程有不良影响。这时我们可以在引入 A 的时 候将 B 排除。 </p>
+<p><strong>配置方式：</strong></p>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+<span class="token code keyword">    &lt;groupId>com.yf.maven&lt;/groupId></span>
+<span class="token code keyword">    &lt;artifactId>HelloFriend&lt;/artifactId> </span>
+<span class="token code keyword">    &lt;version>0.0.1-SNAPSHOT&lt;/version> </span>
+<span class="token code keyword">    &lt;type>jar&lt;/type>     </span>
+<span class="token code keyword">    &lt;scope>compile&lt;/scope>     </span>
+<span class="token code keyword">        &lt;exclusions>          </span>
+<span class="token code keyword">            &lt;exclusion>              </span>
+<span class="token code keyword">                &lt;groupId>commons-logging&lt;/groupId>    </span>
+<span class="token code keyword">                &lt;artifactId>commons-logging&lt;/artifactId>     </span>
+<span class="token code keyword">            &lt;/exclusion> </span>
+<span class="token code keyword">        &lt;/exclusions> </span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span> </code></pre>
+</li>
+<li><p>统一管理所依赖 jar 包的版本 </p>
+<p>对同一个框架的一组 jar 包最好使用相同的版本。为了方便升级框架，可以将 jar 包的版本信息统一提取出来</p>
+<ul>
+<li>统一声明版本号</li>
+</ul>
+<pre class=" language-markdown"><code class="language-markdown"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>    
+<span class="token code keyword">    &lt;yf.spring.version>4.1.1.RELEASE&lt;/yf.spring.version> </span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span> </code></pre>
+<ul>
+<li><p>应用声明的版本号</p>
+<p>将version改为<code>yf.spring.version</code>即可。</p>
+</li>
+</ul>
+</li>
+<li><p>依赖的原则：解决 jar 包冲突</p>
+<p>遵守两个原则：</p>
+<ul>
+<li>路径最短这优先</li>
+<li>路径相同的时候，最先声明者优先</li>
+</ul>
+<p>注意：先后顺序指的是 dependency 标签配置的先后顺序。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-8-生命周期"><a href="#2-8-生命周期" class="headerlink" title="2.8 生命周期"></a>2.8 生命周期</h3><ul>
+<li><p>各个构建环节执行的顺序：不能打乱顺序，必须按照既定的正确顺序来执行。</p>
+</li>
+<li><p>Maven的核心程序中定义了抽象的生命周期，生命周期中各个阶段的具体任务是由插件来完成的。</p>
+</li>
+<li><p>Maven核心程序为了更好的实现自动化构建，按照这一个特点执行生命周期中的各阶段：不论现在要执行生命周期中的哪一个阶段，都是从这一个生命周期最初的位置开始执行。（即如果执行“mvn test” 则会把test之前的所有的时序全部执行一遍。）</p>
+<p><strong>即运行任何一个阶段的时候，它前面的所有阶段都会被运行。</strong></p>
+</li>
+</ul>
+<h3 id="2-9-插件和目标"><a href="#2-9-插件和目标" class="headerlink" title="2.9 插件和目标"></a>2.9 插件和目标</h3><ul>
+<li><p>Maven 的核心仅仅定义了抽象的生命周期，具体的任务都是交由插件完成的。 </p>
+</li>
+<li><p>每个插件都能实现多个功能，每个功能就是一个插件目标。</p>
+</li>
+<li><p>Maven 的生命周期与插件目标相互绑定，以完成某个具体的构建任务。 </p>
+<p>例如：compile 就是插件 maven-compiler-plugin 的一个目标；pre-clean 是插件 maven-clean-plugin 的一个目标。</p>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -548,7 +691,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/07/15/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%80%EF%BC%89/">http://Double-Sail.github.io/2020/07/15/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%80%EF%BC%89/</a>
+                    <a href="http://Double-Sail.github.io/2020/07/16/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%BA%8C%EF%BC%89/">http://Double-Sail.github.io/2020/07/16/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%BA%8C%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,7 +901,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-07-15T22-50-52',
+        id: '2020-07-16T22-02-41',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -784,31 +927,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/07/16/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%BA%8C%EF%BC%89/">
+                <a href="/2020/07/18/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%89%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="有关Maven——Maven基本原理">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="有关Maven——idea建立Maven工程步骤">
                         
-                        <span class="card-title">有关Maven——Maven基本原理</span>
+                        <span class="card-title">有关Maven——idea建立Maven工程步骤</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有关Maven（连载二）一、安装Maven核心程序
-检查java环境变量
-echo %JAVA_HOME%
-
-下载Maven核心程序包
-
-
-​       链接：https://pan.baidu.com/s/1Z8Q7HO_yhl94Y8
+                            IDEA建立Maven工程一、创建空工程
+二、设置Maven
+三、创建java工程
+四、设置gav
+然后就一直下一步即可完成建立，第一次导入会耗费一些时间去下载插件。
+注意：
+有时候会遇到main文件夹下的java文件夹无法添加class类
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-18
                         </span>
                         <span class="publish-author">
                             
@@ -840,28 +982,27 @@ echo %JAVA_HOME%
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/07/06/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%A8%A1%E6%8B%9F%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0/">
+                <a href="/2020/07/15/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%80%EF%BC%89/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java基础语法--模拟用户头像上传">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="有关Maven——简述">
                         
-                        <span class="card-title">Java基础语法--模拟用户头像上传</span>
+                        <span class="card-title">有关Maven——简述</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            模拟用户头像上传
+                            有关Maven（连载一）
 
-学习到Java基础语法中的IO流知识模块。考虑找寻案例用以熟悉代码编写。
-主要的功能是模拟用户上传头像的案例，其中包括获取要上传图片的合法路径，判断要上传的文件是否存在以及具体的上传功能的实现。
-功能需求模拟用户上传头像
+摘要​    进来工作渐渐转入Java，需要学习Spring Boot 相关的内容。Maven算是学习Spring Boot 的开端。
+一、为什么使用Maven​    即使不适用Maven，也可以完成B/S结构
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
                             </span>
                         <span class="publish-author">
                             
@@ -878,12 +1019,8 @@ echo %JAVA_HOME%
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-                        <span class="chip bg-color">Java基础语法</span>
-                    </a>
-                    
-                    <a href="/tags/IO%E6%B5%81/">
-                        <span class="chip bg-color">IO流</span>
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
                     </a>
                     
                 </div>

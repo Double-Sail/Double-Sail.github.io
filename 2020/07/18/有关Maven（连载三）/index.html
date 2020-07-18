@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="有关Maven——简述, Double-Sail">
+    <meta name="keywords" content="有关Maven——idea建立Maven工程步骤, Double-Sail">
     <meta name="description" content="记录点滴！">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>有关Maven——简述 | Double-Sail</title>
+    <title>有关Maven——idea建立Maven工程步骤 | Double-Sail</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -306,12 +306,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">有关Maven——简述</h1>
+                    <h1 class="description center-align post-title">有关Maven——idea建立Maven工程步骤</h1>
                 </div>
             </div>
         </div>
@@ -453,7 +453,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-15
+                    2020-07-18
                 </div>
                 
 
@@ -475,54 +475,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="有关Maven（连载一）"><a href="#有关Maven（连载一）" class="headerlink" title="有关Maven（连载一）"></a>有关Maven（连载一）</h1><a id="more"></a>
-
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>​    进来工作渐渐转入Java，需要学习Spring Boot 相关的内容。Maven算是学习Spring Boot 的开端。</p>
-<h2 id="一、为什么使用Maven"><a href="#一、为什么使用Maven" class="headerlink" title="一、为什么使用Maven"></a>一、为什么使用Maven</h2><p>​    即使不适用Maven，也可以完成B/S结构项目的开发。从表述层、业务逻辑层、持久化层、最后到数据库都有一套完整的解决方案。那使用Maven的原因是什么呢？首先需要纠正一个误区，Maven并不是直接用来辅助编码的，他战斗的岗位并不是以上各层。</p>
-<ol>
-<li><p>添加第三方jar包</p>
-<p>使用Maven后，每个jar包本身只在本地仓库中保存一份，需要jar包的工程只需要以坐标的方式简单的引用即可。而不是和以前一样，每次新建一个工程就需要将jar包重复的复制到lib目录下，从而造成工作区中存在大量重复的文件。</p>
-<p>所以使用Maven后，每个jar包本身只在本地仓库中保存一份，有需要使用的工程，引用这个接口即可，而不是直接复制过来。引用的机制，使得jar包只存一份，节省空间。</p>
-<p>让项目更加的轻巧，更避免了重复文件太多造成的混乱。</p>
-</li>
-<li><p>jar之间的依赖关系</p>
-<p>即jar包之间并不是单独存在的，往往整个项目跑完，一个jar包需要在其他jar包的支持下，才可以正常工作。使用Maven之后，当使用一个jar包，就会自动导入当前jar包所依赖的其他所有的jar包。无需人工参与，节省时间。</p>
-</li>
-<li><p>获取第三方jar包</p>
-<p>当使用Maven后，只需要在项目中以坐标的方式依赖一个jar包，Maven会自动从仓库中进行下载，并同时下载这个jar包所依赖的其他jar包。避免因为不规范的下载导致的问题，以及寻找jar包浪费的时间。</p>
-</li>
-<li><p>项目拆分</p>
-<p>利用Maven的依赖管理机制，将大项目进行拆分。使分工明确。</p>
-</li>
-</ol>
-<h2 id="二、什么是Maven"><a href="#二、什么是Maven" class="headerlink" title="二、什么是Maven"></a>二、什么是Maven</h2><p>​    首先进行简要的概括，Maven是一款自动化构建工具，专注于服务Java平台的项目构建和依赖管理。</p>
-<h3 id="2-1-怎样自动化构建"><a href="#2-1-怎样自动化构建" class="headerlink" title="2.1 怎样自动化构建"></a>2.1 怎样自动化构建</h3><h4 id="2-1-1-Java（Web）工程的构建过程"><a href="#2-1-1-Java（Web）工程的构建过程" class="headerlink" title="2.1.1 Java（Web）工程的构建过程"></a>2.1.1 Java（Web）工程的构建过程</h4><p>​    构建不是创建，构建不仅仅是创建一个工程。以下由浅入深从三个层面来看：</p>
-<ul>
-<li><p>纯Java代码</p>
-<p>.Java文件需要被编译成.class字节码文件才可以运行。</p>
-</li>
-<li><p>Web工程</p>
-<p>浏览器访问Java程序时需要包含Java程序的Web工程<strong>编译的结果</strong>拿到服务器上的指定目录下，再启动服务器。这个过程叫做部署。</p>
-<p><strong>Tips：</strong>服务器上运行的是编译的结果，而不是Java代码！</p>
-<p>所以Web工程类似于一只生的鸡，编译好的Web工程是一个煮熟的鸡，编译部署的过程就是煮熟鸡。</p>
-</li>
-<li><p>实际项目</p>
-<p>实际项目需要整合第三方框架，所以除了Java程序和JSP页面、图片等静态资源外，还需要包括第三方jar包以及各种配置文件。所有的这写资源都需要整合到服务器上，项目才可以运行。</p>
-</li>
-</ul>
-<p>综上：构建就是以各种可用的资源去生产处一个可以运行的项目的工程。</p>
-<p>​    <strong>构建主要包含以下几个环节：</strong></p>
-<ul>
-<li>清理：消除陈旧的编译结果。</li>
-<li>编译：生成字节码文件</li>
-<li>测试：确保项目关键点的正确性。</li>
-<li>报告：测试后，以标准的格式记录和展示测试结果。</li>
-<li>打包：将一个包含诸多文件的工程封装为一个压缩文件用于安装和部署。Java工程对jar包，Web工程对应var包。</li>
-<li>安装：Maven环境下指将jar包或者war包安装到本地的仓库中。</li>
-<li>部署：将打包的结果部署到远程仓库或将war包部署到服务器上运行。</li>
-</ul>
-<p>那么问题来了，这些过程ide已经可以相当标准的进行构建了，那为何还要用Maven呢？</p>
-<p>这是因为，对于开发人员来说，宝贵的时间应该放在项目的核心算法上，而不是不需要人的智慧去参与的机械化的编译-&gt;打包-&gt;部署-&gt;测试的流程。这就是Maven的意义，他讲这些机械化的步骤进行封装，使得实现自动构建的功能。</p>
+                <h1 id="IDEA建立Maven工程"><a href="#IDEA建立Maven工程" class="headerlink" title="IDEA建立Maven工程"></a>IDEA建立Maven工程</h1><h2 id="一、创建空工程"><a href="#一、创建空工程" class="headerlink" title="一、创建空工程"></a>一、创建空工程</h2><p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2FvHfSMeNHIAvIbHbuSaCBlPhinl2MbbCZjZJVsv.7AtrU1G1qZeWBw5QLXaCHvFzSQ!!/mnull&bo=OAQoAgAAAAADBzQ!&rf=photolist&t=5" alt="img"></p>
+<h2 id="二、设置Maven"><a href="#二、设置Maven" class="headerlink" title="二、设置Maven"></a>二、设置Maven</h2><p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2FslbqiM3nG6x3UB5KrSj0dhfxiLlea22mSvOmOlvV5C9Goy*J0anU*tgjcSypZC0UQ!!/mnull&bo=5gPMAgAAAAADBwk!&rf=photolist&t=5" alt="img"></p>
+<h2 id="三、创建java工程"><a href="#三、创建java工程" class="headerlink" title="三、创建java工程"></a>三、创建java工程</h2><p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2FiKz8fZiONohtRykhmSE7gLRS86fYmvrRloB1rCQ96DkU.SHbIAQQbkhg7KbuzmyDw!!/mnull&bo=OAQMAwAAAAADBxE!&rf=photolist&t=5" alt="img"></p>
+<h2 id="四、设置gav"><a href="#四、设置gav" class="headerlink" title="四、设置gav"></a>四、设置gav</h2><p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2Fo6ZXdpvSJbIK*FFJaFVqo6Xb0nc96tMXA6j6puMxtwfSbNVOEfkNT96W0i3AQ.3oA!!/mnull&bo=OAQMAwAAAAADBxE!&rf=photolist&t=5" alt="img"></p>
+<p>然后就一直下一步即可完成建立，第一次导入会耗费一些时间去下载插件。</p>
+<p><strong>注意：</strong></p>
+<p>有时候会遇到main文件夹下的java文件夹无法添加class类，这是因为idea里采用了权限控制管理，在不同的文件夹里面可以放不同的东西，规定文件下有没有建立class的权限。修改方式如下：</p>
+<p>文件–&gt;工程机构–&gt;modules–&gt;然后点击需要添加的权限，如果可以添加class类，文件夹会变成蓝色。</p>
+<p><img src="http://m.qpic.cn/psc?/V10f6nWd3R3r6n/UJ0ftVJULiGAYqy0z7L2Fj6qlRe9.GrTU0ZYjpOoMTzJ2rdP*geRpZRxQhaNx8IqvQe2qvOr5r4qY7Ux.fuT4w!!/mnull&bo=EARTAwAAAAADB2Y!&rf=photolist&t=5" alt="img"></p>
 
             </div>
             <hr/>
@@ -548,7 +509,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Double-Sail.github.io/2020/07/15/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%80%EF%BC%89/">http://Double-Sail.github.io/2020/07/15/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%80%EF%BC%89/</a>
+                    <a href="http://Double-Sail.github.io/2020/07/18/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%89%EF%BC%89/">http://Double-Sail.github.io/2020/07/18/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%89%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -758,7 +719,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-07-15T22-50-52',
+        id: '2020-07-18T18-51-14',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -780,9 +741,66 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/07/18/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%B8%89%EF%BC%89/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="有关Maven——idea建立Maven工程步骤">
+                        
+                        <span class="card-title">有关Maven——idea建立Maven工程步骤</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            IDEA建立Maven工程一、创建空工程
+二、设置Maven
+三、创建java工程
+四、设置gav
+然后就一直下一步即可完成建立，第一次导入会耗费一些时间去下载插件。
+注意：
+有时候会遇到main文件夹下的java文件夹无法添加class类
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/technology/" class="post-category">
+                                    technology
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/07/16/%E6%9C%89%E5%85%B3Maven%EF%BC%88%E8%BF%9E%E8%BD%BD%E4%BA%8C%EF%BC%89/">
                     <div class="card-image">
@@ -807,9 +825,9 @@ echo %JAVA_HOME%
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -827,63 +845,6 @@ echo %JAVA_HOME%
                     
                     <a href="/tags/Maven/">
                         <span class="chip bg-color">Maven</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/07/06/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%E6%A8%A1%E6%8B%9F%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F%E4%B8%8A%E4%BC%A0/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Java基础语法--模拟用户头像上传">
-                        
-                        <span class="card-title">Java基础语法--模拟用户头像上传</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            模拟用户头像上传
-
-学习到Java基础语法中的IO流知识模块。考虑找寻案例用以熟悉代码编写。
-主要的功能是模拟用户上传头像的案例，其中包括获取要上传图片的合法路径，判断要上传的文件是否存在以及具体的上传功能的实现。
-功能需求模拟用户上传头像
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-06
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/technology/" class="post-category">
-                                    technology
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-                        <span class="chip bg-color">Java基础语法</span>
-                    </a>
-                    
-                    <a href="/tags/IO%E6%B5%81/">
-                        <span class="chip bg-color">IO流</span>
                     </a>
                     
                 </div>
